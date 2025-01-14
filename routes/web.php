@@ -8,3 +8,4 @@ Route::get('/', function () {
 Route::get('/catalog', function () {
     return view('catalog');
 })->name('catalog');
+

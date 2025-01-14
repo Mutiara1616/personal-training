@@ -20,7 +20,7 @@
         <div>
             <a href="/login" class="px-8 py-2 border border-blue-900 rounded-full text-blue-900 hover:bg-blue-50">Login</a>
         </div>
-    </nav>
+    </nav> 
 
     <!-- Main Content -->
     <main class="container mx-auto px-8 mt-20 flex justify-between items-start">
