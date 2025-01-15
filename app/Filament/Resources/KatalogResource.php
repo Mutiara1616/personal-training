@@ -11,6 +11,7 @@ use Filament\Tables;
 use Filament\Tables\Table;
 use Illuminate\Support\Str;
 use Filament\Forms\Components\FileUpload;
+use Illuminate\Support\Facades\Storage;
 
 class KatalogResource extends Resource
 {
@@ -70,6 +71,7 @@ class KatalogResource extends Resource
                             ->label('Gambar')
                             ->image()
                             ->directory('katalog')
+                            ->disk('public')
                             ->preserveFilenames()
                             ->maxSize(5120)
                     ])->columns(1)
@@ -106,9 +108,7 @@ class KatalogResource extends Resource
 
                 Tables\Columns\ImageColumn::make('gambar')
                     ->label('Gambar')
-                    ->disk('public') // Tambahkan ini
-                    ->square() // Optional, untuk tampilan square
-                    ->width(100)
+                    ->size(100),
             ])
             ->filters([
                 //

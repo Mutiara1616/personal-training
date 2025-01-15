@@ -18,7 +18,7 @@
             <a href="#" class="text-gray-400">Contact</a>
         </div>
         <div>
-            <a href="/login" class="px-8 py-2 border border-blue-900 rounded-full text-blue-900 hover:bg-blue-50">Login</a>
+            <a href="{{ route('login') }}" class="px-8 py-2 border border-blue-900 rounded-full text-blue-900 hover:bg-blue-50">Login</a>
         </div>
     </nav> 
 

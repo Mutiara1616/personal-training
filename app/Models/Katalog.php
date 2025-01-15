@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Database\Eloquent\Casts\Attribute;
 
 class Katalog extends Model
 {
@@ -38,11 +39,10 @@ class Katalog extends Model
    }
 
    // Accessor untuk URL gambar dengan url()
-   public function getGambarUrlAttribute(): ?string 
+   protected function gambar(): Attribute
    {
-       if ($this->gambar) {
-           return url('storage/' . $this->gambar);
-       }
-       return null;
+       return Attribute::make(
+           get: fn (string $value) => $value ? asset('storage/' . $value) : null,
+       );
    }
 }
