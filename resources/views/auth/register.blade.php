@@ -1,46 +1,109 @@
 <x-guest-layout>
-    <div class="w-full">
-        <h2 class="text-2xl font-bold text-center mb-5">Register</h2>
-        
-        <form method="POST" action="{{ route('register') }}">
-            @csrf
+    <!DOCTYPE html>
+    <html lang="en" class="h-full">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Register</title>
+        <style>
+            body {
+                margin: 0;
+                padding: 0;
+                min-height: 100vh;
+                background-color: black;
+            }
             
-            <div class="mb-4">
-                <label class="block text-gray-700 text-sm font-bold mb-2" for="name">
-                    Name
-                </label>
-                <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="name" type="text" name="name" required autofocus>
-            </div>
+            .fullscreen-container {
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100vw;
+                height: 100vh;
+                overflow: hidden;
+            }
 
-            <div class="mb-4">
-                <label class="block text-gray-700 text-sm font-bold mb-2" for="email">
-                    Email
-                </label>
-                <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="email" type="email" name="email" required>
-            </div>
+            .bg-image {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+                filter: grayscale(100%);
+            }
+        </style>
+    </head>
+    <body class="h-full">
+        <div class="fullscreen-container">
+            <!-- Background Image -->
+            <img src="{{ asset('images/image 6.png') }}" alt="Background" class="bg-image">
+            
+            <!-- Content -->
+            <div class="absolute inset-0 flex items-center justify-center">
+                <div class="bg-white rounded-[32px] w-[420px] p-8">
+                    <h2 class="text-2xl font-medium text-center mb-6">Register Your Account</h2>
 
-            <div class="mb-4">
-                <label class="block text-gray-700 text-sm font-bold mb-2" for="password">
-                    Password
-                </label>
-                <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline" id="password" type="password" name="password" required>
-            </div>
+                    <form method="POST" action="{{ route('register') }}" class="space-y-4">
+                        @csrf
 
-            <div class="mb-6">
-                <label class="block text-gray-700 text-sm font-bold mb-2" for="password_confirmation">
-                    Confirm Password
-                </label>
-                <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline" id="password_confirmation" type="password" name="password_confirmation" required>
-            </div>
+                        <div>
+                            <label class="text-gray-800 mb-1.5 block">Name</label>
+                            <input 
+                                class="w-full px-4 py-2.5 rounded-lg border border-gray-200" 
+                                type="text" 
+                                name="name" 
+                                placeholder="Enter your name"
+                                required
+                            >
+                        </div>
 
-            <div class="flex items-center justify-between">
-                <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="submit">
-                    Register
-                </button>
-                <a class="inline-block align-baseline font-bold text-sm text-blue-500 hover:text-blue-800" href="{{ route('login') }}">
-                    Already have an account?
-                </a>
+                        <div>
+                            <label class="text-gray-800 mb-1.5 block">Email</label>
+                            <input 
+                                class="w-full px-4 py-2.5 rounded-lg border border-gray-200" 
+                                type="email" 
+                                name="email" 
+                                placeholder="Enter your email adress"
+                                required
+                            >
+                        </div>
+
+                        <div>
+                            <label class="text-gray-800 mb-1.5 block">Password</label>
+                            <input 
+                                class="w-full px-4 py-2.5 rounded-lg border border-gray-200" 
+                                type="password" 
+                                name="password" 
+                                placeholder="Enter your password"
+                                required
+                            >
+                        </div>
+
+                        <div>
+                            <label class="text-gray-800 mb-1.5 block">Confirm Password</label>
+                            <input 
+                                class="w-full px-4 py-2.5 rounded-lg border border-gray-200" 
+                                type="password" 
+                                name="password_confirmation" 
+                                placeholder="Enter your password"
+                                required
+                            >
+                        </div>
+
+                        <div class="pt-4">
+                            <button 
+                                type="submit"
+                                class="w-full bg-[#3B4EDB] hover:bg-blue-700 text-white py-2.5 rounded-lg"
+                            >
+                                Register
+                            </button>
+                        </div>
+
+                        <div class="text-center text-sm mt-4">
+                            <span class="text-gray-600">Already Have an Account? </span>
+                            <a href="{{ route('login') }}" class="text-[#3B4EDB] hover:text-blue-700">Sign In</a>
+                        </div>
+                    </form>
+                </div>
             </div>
-        </form>
-    </div>
+        </div>
+    </body>
+    </html>
 </x-guest-layout>
