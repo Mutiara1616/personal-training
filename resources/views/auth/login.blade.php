@@ -70,7 +70,7 @@
                                 type="submit"
                                 class="w-full bg-[#3B4EDB] hover:bg-blue-700 text-white py-2.5 rounded-lg"
                             >
-                                Sign In
+                                Sign Inn
                             </button>
                         </div>
 
