@@ -15,7 +15,7 @@
         <div class="flex space-x-8">
             <a href="#" class="text-blue-900 font-medium border-b-2 border-blue-900">Home</a>
             <a href="{{ route('catalog') }}" class="text-gray-400">Catalog</a>
-            <a href="#" class="text-gray-400">Contact</a>
+            <a href="{{ route('contact') }}" class="text-gray-400">Contact</a>
         </div>
         <div>
             <a href="{{ route('login') }}" class="px-8 py-2 border border-blue-900 rounded-full text-blue-900 hover:bg-blue-50">Login</a>
