@@ -81,6 +81,13 @@
                     </form>
                 </div>
             </div>
+
+            @if (session('success'))
+                <div class="mb-4 text-sm text-green-600">
+                    {{ session('success') }}
+                </div>
+            @endif
+
         </div>
     </body>
     </html>

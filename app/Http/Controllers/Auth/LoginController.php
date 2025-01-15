@@ -15,11 +15,12 @@ class LoginController extends Controller
             'password' => ['required'],
         ]);
 
-        if (Auth::attempt($credentials)) {
+        if (Auth::guard('member')->attempt($credentials)) {
             $request->session()->regenerate();
             
-            // Ubah ini menjadi redirect ke homepage
-            return redirect('/');
+            // Redirect ke homepage dengan pesan sukses
+            return redirect()->route('home')
+                ->with('success', 'Welcome back! You have successfully logged in.');
         }
 
         return back()->withErrors([

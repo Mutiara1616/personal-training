@@ -23,9 +23,11 @@ class RegisterController extends Controller
             'password' => Hash::make($request->password),
         ]);
 
-        auth()->guard('member')->login($member);
+        // Remove automatic login
+        // auth()->guard('member')->login($member);
 
-        // Ubah ini menjadi redirect ke homepage
-        return redirect('/');
+        // Redirect to login page with success message
+        return redirect()->route('login')
+            ->with('success', 'Registration successful! Please login to continue.');
     }
 }

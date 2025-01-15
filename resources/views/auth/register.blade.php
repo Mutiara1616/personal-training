@@ -44,7 +44,7 @@
                         @csrf
 
                         <div>
-                            <label class="text-gray-800 mb-1.5 block">Namee</label>
+                            <label class="text-gray-800 mb-1.5 block">Name</label>
                             <input 
                                 class="w-full px-4 py-2.5 rounded-lg border border-gray-200" 
                                 type="text" 
