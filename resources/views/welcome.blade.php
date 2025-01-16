@@ -105,7 +105,7 @@
     <div class="container mx-auto px-8">
         <!-- Heading -->
         <!-- Heading Section -->
-<div class="max-w-3xl mx-auto text-center font-poppins">
+<div class="max-w-5xl mx-auto text-center font-poppins">
         <h2 class="text-3xl mb-4 leading-normal">
             <div class="font-bold">
                 <span class="text-blue-900">"This is </span>
@@ -152,8 +152,8 @@
                 <!-- Experiences -->
                 <div class="text-center px-4">
                     <h4 class="text-gray-800 font-medium text-lg mb-3">Experiences</h4>
-                    <h3 class="text-[#3446AC] text-5xl font-bold mb-4">11+</h3>
-                    <p class="text-gray-600 leading-relaxed">
+                    <h3 class="text-[#3B4EDB] text-5xl font-bold mb-4">11+</h3>
+                    <p class="text-gray-800 leading-relaxed">
                         PT Dirgantara Indonesia with<br>
                         more than 11 years personal<br>
                         training
@@ -161,10 +161,10 @@
                 </div>
 
                 <!-- Total clients -->
-                <div class="text-center px-4 border-x-2 border-gray-200">
+                <div class="text-center px-4 border-x-2 border-blue-600">
                     <h4 class="text-gray-800 font-medium text-lg mb-3">Total clients</h4>
-                    <h3 class="text-[#3446AC] text-5xl font-bold mb-4">250+</h3>
-                    <p class="text-gray-600 leading-relaxed">
+                    <h3 class="text-[#3B4EDB] text-5xl font-bold mb-4">250+</h3>
+                    <p class="text-gray-800 leading-relaxed">
                         PT Dirgantara Indonesia has<br>
                         collaborated with more than 250<br>
                         other companies
@@ -174,8 +174,8 @@
                 <!-- Testimonials -->
                 <div class="text-center px-4">
                     <h4 class="text-gray-800 font-medium text-lg mb-3">Testimonials</h4>
-                    <h3 class="text-[#3446AC] text-5xl font-bold mb-4">200+</h3>
-                    <p class="text-gray-600 leading-relaxed">
+                    <h3 class="text-[#3B4EDB] text-5xl font-bold mb-4">200+</h3>
+                    <p class="text-gray-800 leading-relaxed">
                         Personal training's PT Dirgantara<br>
                         Indonesia, successfully produces<br>
                         professional output
@@ -189,7 +189,7 @@
 <section class="container mx-auto px-8 mt-20">
     <!-- Catalog Header -->
     <div class="text-center">
-        <h2 class="text-[#3B4EDB] text-4xl font-bold mb-4">Our Catalog Training</h2>
+        <h2 class="text-[#3446AC] text-4xl font-bold mb-4">Our Catalog Training</h2>
         <p class="text-gray-600 mb-12">
             Ready to Soar Higher? Browse our specialized training programs and<br>
             unlock your potential with an official PT Dirgantara Indonesia certification.
@@ -310,7 +310,7 @@
     
     <!-- Training Roadmap -->
     <div class="text-center mb-20">
-        <h2 class="text-[#3B4EDB] text-4xl font-bold mb-12">Ready to Begin? Here's Your Training Roadmap</h2>
+        <h2 class="text-[#3446AC] text-4xl font-bold mb-24">Ready to Begin? Here's Your Training Roadmap</h2>
         
         <div class="flex justify-center items-center gap-8">
             <!-- Step 1 -->
@@ -443,7 +443,7 @@
 <div class="max-w-7xl mx-auto">
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
         <!-- Testimonial 1 -->
-        <div class="testimonial-card bg-white rounded-xl p-6 shadow-sm">
+        <div class="testimonial-card bg-white rounded-3xl p-6 shadow-sm border-2 border-[#929CD7]">
             <div class="flex gap-4 mb-4">
                 <div class="avatar" style="background-color: #0D9488;">
                     M
@@ -460,11 +460,11 @@
                     <p class="text-sm text-gray-500">15 Okt 2024</p>
                 </div>
             </div>
-            <p class="text-gray-600 text-sm">The Aircraft Systems Training exceeded my expectations. The hands-on experience with actual aircraft components was invaluable. Instructors are true industry experts!</p>
+            <p class="text-gray-600 text-xs">The Aircraft Systems Training exceeded my expectations. The hands-on experience with actual aircraft components was invaluable. Instructors are true industry experts!</p>
         </div>
 
         <!-- Testimonial 2 -->
-        <div class="testimonial-card bg-white rounded-xl p-6 shadow-sm">
+        <div class="testimonial-card bg-white rounded-3xl p-6 shadow-sm border-2 border-[#929CD7]">
             <div class="flex gap-4 mb-4">
                 <div class="avatar" style="background-color: #84B442;">
                     R
@@ -481,11 +481,11 @@
                     <p class="text-sm text-gray-500">28 Sept 2024</p>
                 </div>
             </div>
-            <p class="text-gray-600 text-sm">Quality Ground training was very thorough and practical. The qualification process is well-structured and professional. Really appreciate the real-world case studies.</p>
+            <p class="text-gray-600 text-xs">Quality Ground training was very thorough and practical. The qualification process is well-structured and professional. Really appreciate the real-world case studies.</p>
         </div>
 
         <!-- Testimonial 3 -->
-        <div class="testimonial-card bg-white rounded-xl p-6 shadow-sm">
+        <div class="testimonial-card bg-white rounded-3xl p-6 shadow-sm border-2 border-[#929CD7]">
             <div class="flex gap-4 mb-4">
                 <div class="avatar" style="background-color: #6D28D9;">
                     S
@@ -502,11 +502,11 @@
                     <p class="text-sm text-gray-500">03 Des 2024</p>
                 </div>
             </div>
-            <p class="text-gray-600 text-sm">Excellent training on Aircraft Maintenance Planning. The practical sessions were comprehensive and the facilities are state-of-the-art. Highly recommended for aviation professionals.</p>
+            <p class="text-gray-600 text-xs">Excellent training on Aircraft Maintenance Planning. The practical sessions were comprehensive and the facilities are state-of-the-art. Highly recommended for aviation professionals.</p>
         </div>
 
         <!-- Testimonial 4 -->
-        <div class="testimonial-card bg-white rounded-xl p-6 shadow-sm">
+        <div class="testimonial-card bg-white rounded-3xl p-6 shadow-sm border-2 border-[#929CD7]">
             <div class="flex gap-4 mb-4">
                 <div class="avatar" style="background-color: #0EA5E9;">
                     D
@@ -523,7 +523,7 @@
                     <p class="text-sm text-gray-500">28 Nov 2024</p>
                 </div>
             </div>
-            <p class="text-gray-600 text-sm">The CAD/CAM in Aerospace program was exactly what I needed. Great balance of theory and practical application. The instructors shared many valuable insights.</p>
+            <p class="text-gray-600 text-xs">The CAD/CAM in Aerospace program was exactly what I needed. Great balance of theory and practical application. The instructors shared many valuable insights.</p>
         </div>
     </div>
 </div>
@@ -533,11 +533,8 @@
 
 
 
-
-
-
 <!-- resources/views/components/footer.blade.php -->
-<div class="bg-white font-[Poppins] py-12">
+<div class="bg-white font-[Poppins] py-12 mt-10">
     <div class="max-w-7xl mx-auto px-4">
         <div class="grid grid-cols-2 gap-40">
             <!-- Left Side -->
