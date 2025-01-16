@@ -152,101 +152,115 @@
         </p>
     </div>
 
-    <!-- Training Cards Slider -->
-    <div class="relative mb-32">
-        <div class="overflow-x-auto hide-scrollbar">
-            <div class="flex gap-6 pb-4">
-                <!-- Card 1 -->
-                <div class="flex-none bg-[#001E42] rounded-2xl overflow-hidden w-[422px] h-[511px]">
-                    <img src="{{ asset('images/catalog1.png') }}" alt="Aircraft Structure" class="w-full h-[280px] object-cover">
-                    <div class="p-8 text-left">
-                        <h3 class="font-bold text-white text-2xl mb-3">Aircraft Structure</h3>
-                        <p class="text-gray-400 text-base mb-3">January 28, 2025</p>
-                        <p class="text-gray-400 text-base mb-6">Aircraft Lab</p>
-                        <a href="#" class="inline-flex items-center px-6 py-2.5 bg-white rounded-full text-base text-[#001E42]">
-                            See <svg class="ml-2" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M4.16666 10H15.8333" stroke="#001E42" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                                <path d="M10 4.16666L15.8333 10L10 15.8333" stroke="#001E42" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                            </svg>
-                        </a>
-                    </div>
-                </div>
+   <!-- Training Cards Slider -->
+<div class="relative mb-32">
+   <div class="overflow-x-auto hide-scrollbar">
+       <div class="flex gap-6 pb-4">
+           <!-- Card 1 -->
+           <div class="flex-none bg-[#001E42] rounded-2xl overflow-hidden w-[380px]">
+               <img src="{{ asset('images/catalog1.png') }}" alt="Aircraft Structure" class="w-full h-[220px] object-cover">
+               <div class="p-6 text-left h-[200px] relative">
+                   <div>
+                       <h3 class="font-bold text-white text-2xl mb-3">Aircraft Structure</h3>
+                       <p class="text-gray-400 text-base">January 28, 2025</p>
+                       <p class="text-gray-400 text-base">Aircraft Lab</p>
+                   </div>
+                   <button class="inline-flex items-center px-6 py-2 bg-white rounded-full text-base text-[#001E42] gap-2 absolute bottom-6">
+                       See
+                       <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                           <path d="M4.16666 10H15.8333" stroke="#001E42" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                           <path d="M10 4.16666L15.8333 10L10 15.8333" stroke="#001E42" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                       </svg>
+                   </button>
+               </div>
+           </div>
 
-                <!-- Card 2 -->
-                <div class="flex-none bg-[#001E42] rounded-2xl overflow-hidden w-[422px] h-[511px]">
-                    <img src="{{ asset('images/catalog2.png') }}" alt="Aircraft Systems Engineering" class="w-full h-[280px] object-cover">
-                    <div class="p-8 text-left">
-                        <h3 class="font-bold text-white text-2xl mb-3">Aircraft Systems Engineering</h3>
-                        <p class="text-gray-400 text-base mb-3">January 28, 2025</p>
-                        <p class="text-gray-400 text-base mb-6">Aircraft Lab</p>
-                        <a href="#" class="inline-flex items-center px-6 py-2.5 bg-white rounded-full text-base text-[#001E42]">
-                            See <svg class="ml-2" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M4.16666 10H15.8333" stroke="#001E42" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                                <path d="M10 4.16666L15.8333 10L10 15.8333" stroke="#001E42" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                            </svg>
-                        </a>
-                    </div>
-                </div>
+           <!-- Card 2 -->
+           <div class="flex-none bg-[#001E42] rounded-2xl overflow-hidden w-[380px]">
+               <img src="{{ asset('images/catalog2.png') }}" alt="Aircraft Systems Engineering" class="w-full h-[220px] object-cover">
+               <div class="p-6 text-left h-[200px] relative">
+                   <div>
+                       <h3 class="font-bold text-white text-2xl mb-3">Aircraft Systems<br/>Engineering</h3>
+                       <p class="text-gray-400 text-base">January 28, 2025</p>
+                       <p class="text-gray-400 text-base">Aircraft Lab</p>
+                   </div>
+                   <button class="inline-flex items-center px-6 py-2 bg-white rounded-full text-base text-[#001E42] gap-2 absolute bottom-6">
+                       See
+                       <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                           <path d="M4.16666 10H15.8333" stroke="#001E42" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                           <path d="M10 4.16666L15.8333 10L10 15.8333" stroke="#001E42" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                       </svg>
+                   </button>
+               </div>
+           </div>
 
-                <!-- Card 3 -->
-                <div class="flex-none bg-[#001E42] rounded-2xl overflow-hidden w-[422px] h-[511px]">
-                    <img src="{{ asset('images/catalog3.png') }}" alt="Manufacturing Process Optimization" class="w-full h-[280px] object-cover">
-                    <div class="p-8 text-left">
-                        <h3 class="font-bold text-white text-2xl mb-3">Manufacturing Process </h3>
-                        <p class="text-gray-400 text-base mb-3">February 05, 2025</p>
-                        <p class="text-gray-400 text-base mb-6">ManufacT Lab</p>
-                        <a href="#" class="inline-flex items-center px-6 py-2.5 bg-white rounded-full text-base text-[#001E42]">
-                            See <svg class="ml-2" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M4.16666 10H15.8333" stroke="#001E42" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                                <path d="M10 4.16666L15.8333 10L10 15.8333" stroke="#001E42" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                            </svg>
-                        </a>
-                    </div>
-                </div>
+           <!-- Card 3 -->
+           <div class="flex-none bg-[#001E42] rounded-2xl overflow-hidden w-[380px]">
+               <img src="{{ asset('images/catalog3.png') }}" alt="Manufacturing Process" class="w-full h-[220px] object-cover">
+               <div class="p-6 text-left h-[200px] relative">
+                   <div>
+                       <h3 class="font-bold text-white text-2xl mb-3">Manufacturing Process</h3>
+                       <p class="text-gray-400 text-base">February 05, 2025</p>
+                       <p class="text-gray-400 text-base">ManufacT Lab</p>
+                   </div>
+                   <button class="inline-flex items-center px-6 py-2 bg-white rounded-full text-base text-[#001E42] gap-2 absolute bottom-6">
+                       See
+                       <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                           <path d="M4.16666 10H15.8333" stroke="#001E42" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                           <path d="M10 4.16666L15.8333 10L10 15.8333" stroke="#001E42" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                       </svg>
+                   </button>
+               </div>
+           </div>
 
-                <!-- Card 4 -->
-                <div class="flex-none bg-[#001E42] rounded-2xl overflow-hidden w-[422px] h-[511px]">
-                    <img src="{{ asset('images/catalog4.png') }}" alt="Structural Repair Techniques" class="w-full h-[280px] object-cover">
-                    <div class="p-8 text-left">
-                        <h3 class="font-bold text-white text-2xl mb-3">Structural Repair Techniques</h3>
-                        <p class="text-gray-400 text-base mb-3">Maret 10, 2025</p>
-                        <p class="text-gray-400 text-base mb-6">HC3000 lt.1</p>
-                        <a href="#" class="inline-flex items-center px-6 py-2.5 bg-white rounded-full text-base text-[#001E42]">
-                            See <svg class="ml-2" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M4.16666 10H15.8333" stroke="#001E42" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                                <path d="M10 4.16666L15.8333 10L10 15.8333" stroke="#001E42" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                            </svg>
-                        </a>
-                    </div>
-                </div>
+           <!-- Card 4 -->
+           <div class="flex-none bg-[#001E42] rounded-2xl overflow-hidden w-[380px]">
+               <img src="{{ asset('images/catalog4.png') }}" alt="Structural Repair" class="w-full h-[220px] object-cover">
+               <div class="p-6 text-left h-[200px] relative">
+                   <div>
+                       <h3 class="font-bold text-white text-2xl mb-3">Structural Repair Techniques</h3>
+                       <p class="text-gray-400 text-base">March 10, 2025</p>
+                       <p class="text-gray-400 text-base">HC3000 lt.1</p>
+                   </div>
+                   <button class="inline-flex items-center px-6 py-2 bg-white rounded-full text-base text-[#001E42] gap-2 absolute bottom-6">
+                       See
+                       <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                           <path d="M4.16666 10H15.8333" stroke="#001E42" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                           <path d="M10 4.16666L15.8333 10L10 15.8333" stroke="#001E42" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                       </svg>
+                   </button>
+               </div>
+           </div>
 
-                <!-- Card 5 -->
-                <div class="flex-none bg-[#001E42] rounded-2xl overflow-hidden w-[422px] h-[511px]">
-                    <img src="{{ asset('images/catalog5.png') }}" alt="Supply Chain Management" class="w-full h-[280px] object-cover">
-                    <div class="p-8 text-left">
-                        <h3 class="font-bold text-white text-2xl mb-3">Supply Chain Management</h3>
-                        <p class="text-gray-400 text-base mb-3">Maret 24, 2025</p>
-                        <p class="text-gray-400 text-base mb-6">Aircraft Lab</p>
-                        <a href="#" class="inline-flex items-center px-6 py-2.5 bg-white rounded-full text-base text-[#001E42]">
-                            See <svg class="ml-2" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M4.16666 10H15.8333" stroke="#001E42" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                                <path d="M10 4.16666L15.8333 10L10 15.8333" stroke="#001E42" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                            </svg>
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
+           <!-- Card 5 -->
+           <div class="flex-none bg-[#001E42] rounded-2xl overflow-hidden w-[380px]">
+               <img src="{{ asset('images/catalog5.png') }}" alt="Supply Chain" class="w-full h-[220px] object-cover">
+               <div class="p-6 text-left h-[200px] relative">
+                   <div>
+                       <h3 class="font-bold text-white text-2xl mb-3">Supply Chain Management</h3>
+                       <p class="text-gray-400 text-base">March 24, 2025</p>
+                       <p class="text-gray-400 text-base">Aircraft Lab</p>
+                   </div>
+                   <button class="inline-flex items-center px-6 py-2 bg-white rounded-full text-base text-[#001E42] gap-2 absolute bottom-6">
+                       See
+                       <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                           <path d="M4.16666 10H15.8333" stroke="#001E42" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                           <path d="M10 4.16666L15.8333 10L10 15.8333" stroke="#001E42" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                       </svg>
+                   </button>
+               </div>
+           </div>
+       </div>
+   </div>
+</div>
 
 <style>
 .hide-scrollbar {
-    -ms-overflow-style: none;  /* IE and Edge */
-    scrollbar-width: none;  /* Firefox */
+   -ms-overflow-style: none;  /* IE and Edge */
+   scrollbar-width: none;  /* Firefox */
 }
 .hide-scrollbar::-webkit-scrollbar {
-    display: none;  /* Chrome, Safari and Opera */
+   display: none;  /* Chrome, Safari and Opera */
 }
 </style>
     
