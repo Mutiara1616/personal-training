@@ -56,56 +56,91 @@
         <a href="https://www.indonesian-aerospace.com/en/" class="text-gray-500 border-t border-gray-300 pt-4 block">https://www.indonesian-aerospace.com/en/</a>
     </div>
 
-    <!-- Personal Training Section -->
-<section class="bg-[#FAFBFF] py-20">
-    <div class="container mx-auto px-8 text-center">
-        <div class="max-w-3xl mx-auto">
-            <h2 class="text-3xl mb-4">
-                <span class="text-blue-900 font-medium">"This is</span> Personal Training, <span class="text-[#3B4EDB]">where talent meets growth. Our</span>
-                dedicated trainers deliver impactful corporate <span class="text-[#3B4EDB]">learning solutions"</span>
-            </h2>
-            <p class="text-gray-500 mb-12">
-                We provide personal training which aims to ensure that employees who have
-                carried out this training have better output, and also get certificates
-            </p>
-        </div>
+   <!-- Personal Training Section -->
+<section class="bg-[#FAFBFF] py-20 font-['Poppins']">
+    <div class="container mx-auto px-8">
+        <!-- Heading -->
+        <!-- Heading Section -->
+<div class="max-w-3xl mx-auto text-center font-poppins">
+        <h2 class="text-3xl mb-4 leading-normal">
+            <div class="font-bold">
+                <span class="text-blue-900">"This is </span>
+                <span>Personal Training</span>
+                <span>, </span>
+                <span class="text-[#3446AC]">where talent meets growth. Our</span>"
+            </div>
+            <div>
+                <span class="font-normal">dedicated trainers deliver impactful corporate </span>
+                <span class="font-bold text-[#3446AC]">learning solutions</span>"
+            </div>
+        </h2>
+    <p class="text-gray-400 mb-12">
+        We provide personal training which aims to ensure that employees who have<br>
+        carried out this training have better output, and also get certificates
+    </p>
+</div>
+            <!-- Features -->
+            <div class="flex justify-center items-center gap-6 mb-24">
+                <div class="px-8 py-4 border-2 border-[#3446AC] rounded-full">
+                    <p class="text-[#3446AC] font-medium leading-snug">
+                        Industry-Recognized<br>Certification
+                    </p>
+                </div>
+                <div class="px-8 py-4 border-2 border-[#3446AC] rounded-full">
+                    <p class="text-[#3446AC] font-medium leading-snug">
+                        Hands-on Experience<br>with Advanced Technology
+                    </p>
+                </div>
+                <div class="px-8 py-4 border-2 border-[#3446AC] rounded-full">
+                    <p class="text-[#3446AC] font-medium leading-snug">
+                        Expert-Led<br>Training Programs
+                    </p>
+                </div>
+                <div class="px-8 py-4 border-2 border-[#3446AC] rounded-full">
+                    <p class="text-[#3446AC] font-medium leading-snug">
+                        Comprehensive<br>Industry Knowledge
+                    </p>
+                </div>
+            </div>
 
-        <!-- Features -->
-        <div class="flex justify-center gap-4 mb-20">
-            <div class="px-6 py-3 border border-[#3B4EDB] rounded-full text-[#3B4EDB]">
-                Industry-Recognized<br>Certification
-            </div>
-            <div class="px-6 py-3 border border-[#3B4EDB] rounded-full text-[#3B4EDB]">
-                Hands-on Experience<br>with Advanced Technology
-            </div>
-            <div class="px-6 py-3 border border-[#3B4EDB] rounded-full text-[#3B4EDB]">
-                Expert-Led<br>Training Programs
-            </div>
-            <div class="px-6 py-3 border border-[#3B4EDB] rounded-full text-[#3B4EDB]">
-                Comprehensive<br>Industry Knowledge
-            </div>
-        </div>
+            <!-- Statistics -->
+            <div class="grid grid-cols-3 gap-8 max-w-6xl mx-auto">
+                <!-- Experiences -->
+                <div class="text-center px-4">
+                    <h4 class="text-gray-800 font-medium text-lg mb-3">Experiences</h4>
+                    <h3 class="text-[#3446AC] text-5xl font-bold mb-4">11+</h3>
+                    <p class="text-gray-600 leading-relaxed">
+                        PT Dirgantara Indonesia with<br>
+                        more than 11 years personal<br>
+                        training
+                    </p>
+                </div>
 
-        <!-- Statistics -->
-        <div class="grid grid-cols-3 gap-8 max-w-6xl mx-auto">
-            <div>
-                <h4 class="text-gray-600 font-medium mb-2">Experiences</h4>
-                <h3 class="text-[#3B4EDB] text-4xl font-bold mb-4">11+</h3>
-                <p class="text-gray-600">PT Dirgantara Indonesia with more than 11 years personal training</p>
-            </div>
-            <div>
-                <h4 class="text-gray-600 font-medium mb-2">Total clients</h4>
-                <h3 class="text-[#3B4EDB] text-4xl font-bold mb-4">250+</h3>
-                <p class="text-gray-600">PT Dirgantara Indonesia has collaborated with more than 250 other companies</p>
-            </div>
-            <div>
-                <h4 class="text-gray-600 font-medium mb-2">Testimonials</h4>
-                <h3 class="text-[#3B4EDB] text-4xl font-bold mb-4">200+</h3>
-                <p class="text-gray-600">Personal training's PT Dirgantara Indonesia successfully produces professional output</p>
+                <!-- Total clients -->
+                <div class="text-center px-4 border-x-2 border-gray-200">
+                    <h4 class="text-gray-800 font-medium text-lg mb-3">Total clients</h4>
+                    <h3 class="text-[#3446AC] text-5xl font-bold mb-4">250+</h3>
+                    <p class="text-gray-600 leading-relaxed">
+                        PT Dirgantara Indonesia has<br>
+                        collaborated with more than 250<br>
+                        other companies
+                    </p>
+                </div>
+
+                <!-- Testimonials -->
+                <div class="text-center px-4">
+                    <h4 class="text-gray-800 font-medium text-lg mb-3">Testimonials</h4>
+                    <h3 class="text-[#3446AC] text-5xl font-bold mb-4">200+</h3>
+                    <p class="text-gray-600 leading-relaxed">
+                        Personal training's PT Dirgantara<br>
+                        Indonesia, successfully produces<br>
+                        professional output
+                    </p>
+                </div>
             </div>
         </div>
     </div>
-
+</section>
        <!<!-- Catalog Training Section -->
 <section class="container mx-auto px-8 mt-20">
     <!-- Catalog Header -->
@@ -275,67 +310,246 @@
     </div>
 </section>
 
-        <!-- resources/views/components/footer.blade.php -->
-<footer class="bg-white py-12">
-    <div class="container mx-auto px-8">
-        <div class="flex justify-between">
-            <!-- Left Section -->
-            <div class="max-w-xl">
-                <div class="flex items-center gap-4 mb-6">
-                    <img src="{{ asset('images/logo.png') }}" alt="Logo" class="h-10">
-                    <h2 class="font-bold text-xl">PT DIRGANTARA INDONESIA</h2>
+<!DOCTYPE html>
+<html>
+<head>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+
+<!DOCTYPE html>
+<html>
+<head>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+
+<!DOCTYPE html>
+<html>
+<head>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+
+<!DOCTYPE html>
+<html>
+<head>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+
+<!DOCTYPE html>
+<html>
+<head>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+
+<!DOCTYPE html>
+<html>
+<head>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+
+<!-- resources/views/components/testimonials.blade.php -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Testimonials</title>
+    <!-- Poppins Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+        }
+        .testimonial-card {
+            transition: all 0.3s ease;
+        }
+        .testimonial-card:hover {
+            transform: translateY(-5px);
+        }
+        .avatar {
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
+            font-size: 1.25rem;
+            color: white;
+        }
+    </style>
+</head>
+<body class="bg-gray-100 p-8">
+
+<div class="max-w-7xl mx-auto">
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        <!-- Testimonial 1 -->
+        <div class="testimonial-card bg-white rounded-xl p-6 shadow-sm">
+            <div class="flex gap-4 mb-4">
+                <div class="avatar" style="background-color: #0D9488;">
+                    M
                 </div>
-                <p class="text-gray-600 mb-8">
+                <div>
+                    <h3 class="font-semibold text-gray-900">Mutiara Sabrina</h3>
+                    <div class="flex gap-1">
+                        @for ($i = 0; $i < 5; $i++)
+                            <svg class="w-4 h-4 text-yellow-400" fill="currentColor" viewBox="0 0 20 20">
+                                <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
+                            </svg>
+                        @endfor
+                    </div>
+                    <p class="text-sm text-gray-500">15 Okt 2024</p>
+                </div>
+            </div>
+            <p class="text-gray-600 text-sm">The Aircraft Systems Training exceeded my expectations. The hands-on experience with actual aircraft components was invaluable. Instructors are true industry experts!</p>
+        </div>
+
+        <!-- Testimonial 2 -->
+        <div class="testimonial-card bg-white rounded-xl p-6 shadow-sm">
+            <div class="flex gap-4 mb-4">
+                <div class="avatar" style="background-color: #84B442;">
+                    R
+                </div>
+                <div>
+                    <h3 class="font-semibold text-gray-900">Rasyania Sherryl</h3>
+                    <div class="flex gap-1">
+                        @for ($i = 0; $i < 5; $i++)
+                            <svg class="w-4 h-4 text-yellow-400" fill="currentColor" viewBox="0 0 20 20">
+                                <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
+                            </svg>
+                        @endfor
+                    </div>
+                    <p class="text-sm text-gray-500">28 Sept 2024</p>
+                </div>
+            </div>
+            <p class="text-gray-600 text-sm">Quality Ground training was very thorough and practical. The qualification process is well-structured and professional. Really appreciate the real-world case studies.</p>
+        </div>
+
+        <!-- Testimonial 3 -->
+        <div class="testimonial-card bg-white rounded-xl p-6 shadow-sm">
+            <div class="flex gap-4 mb-4">
+                <div class="avatar" style="background-color: #6D28D9;">
+                    S
+                </div>
+                <div>
+                    <h3 class="font-semibold text-gray-900">Sarah Maysara</h3>
+                    <div class="flex gap-1">
+                        @for ($i = 0; $i < 5; $i++)
+                            <svg class="w-4 h-4 text-yellow-400" fill="currentColor" viewBox="0 0 20 20">
+                                <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
+                            </svg>
+                        @endfor
+                    </div>
+                    <p class="text-sm text-gray-500">03 Des 2024</p>
+                </div>
+            </div>
+            <p class="text-gray-600 text-sm">Excellent training on Aircraft Maintenance Planning. The practical sessions were comprehensive and the facilities are state-of-the-art. Highly recommended for aviation professionals.</p>
+        </div>
+
+        <!-- Testimonial 4 -->
+        <div class="testimonial-card bg-white rounded-xl p-6 shadow-sm">
+            <div class="flex gap-4 mb-4">
+                <div class="avatar" style="background-color: #0EA5E9;">
+                    D
+                </div>
+                <div>
+                    <h3 class="font-semibold text-gray-900">David Wijaya</h3>
+                    <div class="flex gap-1">
+                        @for ($i = 0; $i < 5; $i++)
+                            <svg class="w-4 h-4 text-yellow-400" fill="currentColor" viewBox="0 0 20 20">
+                                <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
+                            </svg>
+                        @endfor
+                    </div>
+                    <p class="text-sm text-gray-500">28 Nov 2024</p>
+                </div>
+            </div>
+            <p class="text-gray-600 text-sm">The CAD/CAM in Aerospace program was exactly what I needed. Great balance of theory and practical application. The instructors shared many valuable insights.</p>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>
+
+
+
+
+
+
+<!-- resources/views/components/footer.blade.php -->
+<div class="bg-white font-[Poppins] py-12">
+    <div class="max-w-7xl mx-auto px-4">
+        <div class="grid grid-cols-2 gap-40">
+            <!-- Left Side -->
+            <div>
+                <!-- Logo and Title -->
+                <div class="flex items-center gap-2 mb-4">
+                    <img src="{{ asset('images/logo.png') }}" alt="Logo" class="h-9 w-9">
+                    <h2 class="font-bold text-base tracking-tight">PT DIRGANTARA INDONESIA</h2>
+                </div>
+
+                <!-- Description -->
+                <p class="text-sm text-gray-600 leading-relaxed mb-8">
                     PT Dirgantara Indonesia (PTDI) is an Indonesian aircraft industry company engaged in the aerospace sector. PTDI produces various types of aircraft to meet the needs of civil airlines, military operators, and special missions.
                 </p>
-                <div class="flex gap-6">
-                    <a href="#" class="hover:opacity-80">
-                        <img src="{{ asset('images/socialmedia.png') }}" alt="Facebook" class="h-5">
-                    </a>
+
+                <!-- Social Media -->
+                <div class="flex items-center gap-5 mb-16">
+                    <a href="#"><img src="{{ asset('images/facebook.png') }}" alt="Facebook" class="h-5"></a>
+                    <a href="#"><img src="{{ asset('images/twitter.png') }}" alt="Twitter" class="h-5"></a>
+                    <a href="#"><img src="{{ asset('images/instagram.png') }}" alt="Instagram" class="h-5"></a>
+                    <a href="#"><img src="{{ asset('images/youtube.png') }}" alt="YouTube" class="h-5"></a>
+                </div>
+
+                <!-- Company Info -->
+                <div>
+                    <h3 class="font-semibold text-sm mb-1">PT Dirgantara Indonesia</h3>
+                    <p class="text-sm text-gray-600 leading-relaxed">
+                        Leading Indonesia's Aerospace Excellence Since 1976. Your trusted partner in aviation training and certification
+                    </p>
                 </div>
             </div>
 
-            <!-- Right Section -->
-            <div class="max-w-sm">
-                <h3 class="font-bold text-lg mb-6">Our Contact</h3>
-                <div class="space-y-4">
-                    <div class="flex items-start gap-3">
-                        <img src="{{ asset('images/phone.png') }}" alt="Phone" class="h-5 mt-1">
-                        <p>(0285) XXXXXX</p>
+            <!-- Right Side -->
+            <div class="mt-[52px]"> <!-- Sejajar dengan paragraf deskripsi -->
+                <h3 class="font-bold text-lg mb-4">Our Contact</h3>
+                <div class="space-y-3">
+                    <!-- Phone -->
+                    <div class="flex items-center gap-2">
+                        <img src="{{ asset('images/Phone.png') }}" alt="Phone" class="h-4">
+                        <span class="text-sm">(0285) XXXXXX</span>
                     </div>
-                    <div class="flex items-start gap-3">
-                        <img src="{{ asset('images/envelope.png') }}" alt="Email" class="h-5 mt-1">
-                        <div class="flex flex-col gap-1">
-                            <a href="mailto:marketing-ptdi@indonesian-aerospace.com" class="text-[#3B4EDB] hover:underline">
+                    
+                    <!-- Email -->
+                    <div class="flex items-start gap-2">
+                        <img src="{{ asset('images/Envelope.png') }}" alt="Email" class="h-4 mt-1">
+                        <div class="space-y-1">
+                            <a href="mailto:marketing-ptdi@indonesian-aerospace.com" class="block text-sm underline">
                                 marketing-ptdi@indonesian-aerospace.com
                             </a>
-                            <a href="mailto:sekretariatptdi@indonesian-aerospace.com" class="text-[#3B4EDB] hover:underline">
+                            <a href="mailto:sekretariatptdi@indonesian-aerospace.com" class="block text-sm underline">
                                 sekretariatptdi@indonesian-aerospace.com
                             </a>
-                            <a href="mailto:pub-rel@indonesian-aerospace.com" class="text-[#3B4EDB] hover:underline">
+                            <a href="mailto:pub-rel@indonesian-aerospace.com" class="block text-sm underline">
                                 pub-rel@indonesian-aerospace.com
                             </a>
                         </div>
                     </div>
-                    <div class="flex items-start gap-3">
-                        <img src="{{ asset('images/location.png') }}" alt="Location" class="h-5 mt-1">
-                        <p>Jalan Pajajaran No. 154 Bandung 40174 West Java - Indonesia</p>
+
+                    <!-- Location -->
+                    <div class="flex items-start gap-2">
+                        <img src="{{ asset('images/location.png') }}" alt="Location" class="h-4 mt-1">
+                        <span class="text-sm text-gray-600">Jalan Pajajaran No. 154 Bandung 40174 West Java - Indonesia</span>
                     </div>
                 </div>
             </div>
         </div>
 
-        <!-- Bottom Text -->
-        <div class="mt-16 pt-8 border-t border-gray-200">
-            <p class="text-gray-600 text-center">
-                © 2025 Sistem Personal Training - PT Dirgantara Indonesia
-            </p>
-        </div>
-        <!-- Company Description -->
-        <div class="mt-4">
-            <p class="text-gray-600 text-center">
-                PT Dirgantara Indonesia - Leading Indonesia's Aerospace Excellence Since 1976. Your trusted partner in aviation training and certification
-            </p>
+        <!-- Copyright -->
+        <div class="text-center text-sm text-gray-600 mt-12">
+            © 2025 Sistem Personal Training - PT Dirgantara Indonesia
         </div>
     </div>
-</footer>
+</div>
