@@ -62,9 +62,9 @@
                             <p>January 18, 2025</p>
                             <p>Aircraft Lab</p>
                         </div>
-                        <button class="px-4 py-1 rounded-full border border-white hover:bg-white hover:text-[#10162c]">
+                        <a href="{{ route('catalog.detail', 'aircraft-structure-design') }}" class="px-4 py-1 rounded-full border border-white hover:bg-white hover:text-[#10162c]">
                             See →
-                        </button>
+                        </a>
                     </div>
                 </div>
             </div>
@@ -79,9 +79,9 @@
                             <p>January 28, 2025</p>
                             <p>Aircraft Lab</p>
                         </div>
-                        <button class="px-4 py-1 rounded-full border border-white hover:bg-white hover:text-[#10162c]">
+                        <a href="{{ route('catalog.detail', 'aircraft-structure-design') }}" class="px-4 py-1 rounded-full border border-white hover:bg-white hover:text-[#10162c]">
                             See →
-                        </button>
+                        </a>
                     </div>
                 </div>
             </div>
@@ -96,9 +96,9 @@
                             <p>February 06, 2025</p>
                             <p>Manufact Lab</p>
                         </div>
-                        <button class="px-4 py-1 rounded-full border border-white hover:bg-white hover:text-[#10162c]">
+                        <a href="{{ route('catalog.detail', 'aircraft-structure-design') }}" class="px-4 py-1 rounded-full border border-white hover:bg-white hover:text-[#10162c]">
                             See →
-                        </button>
+                        </a>
                     </div>
                 </div>
             </div>
@@ -113,9 +113,9 @@
                             <p>Maret 10, 2025</p>
                             <p>HC3000 lt.1</p>
                         </div>
-                        <button class="px-4 py-1 rounded-full border border-white hover:bg-white hover:text-[#10162c]">
+                        <a href="{{ route('catalog.detail', 'aircraft-structure-design') }}" class="px-4 py-1 rounded-full border border-white hover:bg-white hover:text-[#10162c]">
                             See →
-                        </button>
+                        </a>
                     </div>
                 </div>
             </div>
@@ -130,9 +130,9 @@
                             <p>February 06, 2025</p>
                             <p>Manufact Lab</p>
                         </div>
-                        <button class="px-4 py-1 rounded-full border border-white hover:bg-white hover:text-[#10162c]">
+                        <a href="{{ route('catalog.detail', 'aircraft-structure-design') }}" class="px-4 py-1 rounded-full border border-white hover:bg-white hover:text-[#10162c]">
                             See →
-                        </button>
+                        </a>
                     </div>
                 </div>
             </div>
@@ -147,9 +147,9 @@
                             <p>February 06, 2025</p>
                             <p>Manufact Lab</p>
                         </div>
-                        <button class="px-4 py-1 rounded-full border border-white hover:bg-white hover:text-[#10162c]">
+                        <a href="{{ route('catalog.detail', 'aircraft-structure-design') }}" class="px-4 py-1 rounded-full border border-white hover:bg-white hover:text-[#10162c]">
                             See →
-                        </button>
+                        </a>
                     </div>
                 </div>
             </div>

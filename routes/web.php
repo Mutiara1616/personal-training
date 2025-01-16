@@ -13,6 +13,10 @@ Route::get('/catalog', function () {
     return view('katalog.katalog');
 })->name('catalog');
 
+Route::get('/catalog/{slug}', function ($slug) {
+    return view('katalog.detail');  // ubah dari 'detail' menjadi 'katalog.detail'
+})->name('catalog.detail');
+
 Route::get('/contact', function () {
     return view('contact.contact');
 })->name('contact');
