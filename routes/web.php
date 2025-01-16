@@ -32,3 +32,10 @@ Route::get('/register', function () {
 })->name('register');
 
 Route::post('/register', [RegisterController::class, 'register']);
+
+Route::post('/logout', function () {
+    auth('member')->logout();
+    return redirect('/');
+})->name('logout');
+
+Route::post('/logout', [LoginController::class, 'logout'])->name('logout');

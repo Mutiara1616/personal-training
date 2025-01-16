@@ -10,7 +10,7 @@
     <!-- Navbar -->
     <nav class="container mx-auto px-8 py-6 flex justify-between items-center">
         <div>
-            <img src="{{ asset('images/logo.png') }}" alt="Logo" class="h-8">
+            <img src="{{ asset('images/logo.png') }}" alt="Logo" class="h-12">
         </div>
         <div class="flex space-x-8">
             <a href="/" class="text-gray-400">Home</a>
