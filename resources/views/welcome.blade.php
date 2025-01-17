@@ -105,20 +105,20 @@
     <div class="container mx-auto px-8">
         <!-- Heading -->
         <!-- Heading Section -->
-<div class="max-w-5xl mx-auto text-center font-poppins">
+<div class="max-w-6xl mx-auto text-center font-poppins">
         <h2 class="text-3xl mb-4 leading-normal">
             <div class="font-bold">
                 <span class="text-blue-900">"This is </span>
                 <span>Personal Training</span>
                 <span>, </span>
-                <span class="text-[#3446AC]">where talent meets growth. Our</span>"
+                <span class="text-[#3446AC]">where talent meets growth. </span>
             </div>
             <div>
-                <span class="font-normal">dedicated trainers deliver impactful corporate </span>
-                <span class="font-bold text-[#3446AC]">learning solutions</span>"
+                <span class="font-normal">Our dedicated trainers deliver impactful corporate </span>
+                <span class="font-bold text-[#3446AC]">learning solutions"</span>
             </div>
         </h2>
-    <p class="text-gray-400 mb-12">
+    <p class="text-gray-400 mb-12 leading-7">
         We provide personal training which aims to ensure that employees who have<br>
         carried out this training have better output, and also get certificates
     </p>

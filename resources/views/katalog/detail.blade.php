@@ -24,7 +24,6 @@
 
     <!-- Detail Content -->
     <main class="container mx-auto px-8 py-12">
-        <div class="max-w-4xl mx-auto">
             <!-- Image Header -->
             <div class="rounded-2xl overflow-hidden mb-8">
                 <img src="{{ asset('images/gambar1.jpg') }}" alt="Aircraft Structure Design" class="w-full h-[400px] object-cover">
@@ -62,9 +61,9 @@
                     <button class="px-8 py-3 bg-blue-900 text-white rounded-full hover:bg-blue-800">
                         Start The Negotiation
                     </button>
-                    <button class="px-8 py-3 border border-blue-900 text-blue-900 rounded-full hover:bg-blue-50">
+                    <a href="{{ route('payment') }}" class="px-8 py-3 border border-blue-900 text-blue-900 rounded-full hover:bg-blue-50">
                         Payment
-                    </button>
+                    </a>
                 </div>
             </div>
         </div>
