@@ -23,8 +23,8 @@
                         PT Dirgantara Indonesia
                     </h1>
                     <p class="text-gray-600 mb-8 text-lg leading-relaxed">
-                        PT Dirgantara Indonesia (PTDI) manufactures various aircraft for civilian, military, and special mission needs. PTDI has the capability to design new aircraft and modify aircraft systems and structures for specific missions like maritime patrol and surveillance.
-                    </p>
+                    Transform to actively contribute to human resource development and skills improvement through integrated education and training programs.
+Therefore, the IAe Training Center can be accessed by anyone who needs it because it integrates specialized knowledge in the aerospace field with facilities to support the learning process.</p>
                     <a href="#" class="inline-flex items-center px-6 py-3 bg-blue-900 text-white rounded-full hover:bg-blue-800">
                         See the catalog
                         <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-2" viewBox="0 0 20 20" fill="currentColor">
@@ -34,10 +34,10 @@
                 </div>
                 <div class="w-[50%] space-y-6">
                     <div class="rounded-2xl overflow-hidden shadow-lg">
-                        <img src="{{ asset('images/gambar3.jpg') }}" alt="Aircraft 1" class="w-full h-[300px] object-cover">
+                        <img src="{{ asset('images/gambar4.png') }}" alt="Aircraft 1" class="w-full h-[300px] object-cover">
                     </div>
                     <div class="rounded-2xl overflow-hidden shadow-lg">
-                        <img src="{{ asset('images/gambar1.jpg') }}" alt="Aircraft 2" class="w-full h-[300px] object-cover">
+                        <img src="{{ asset('images/gambar5.png') }}" alt="Aircraft 2" class="w-full h-[300px] object-cover">
                     </div>
                 </div>
             </main>
@@ -73,23 +73,19 @@
                     <div class="flex justify-center items-center gap-6 mb-24">
                         <div class="px-8 py-4 border-2 border-[#3446AC] rounded-full">
                             <p class="text-[#3446AC] font-medium leading-snug">
-                                Industry-Recognized<br>Certification
+                                IndustryHigh-Quality Training<br>Programs with Integrated Skills
                             </p>
                         </div>
                         <div class="px-8 py-4 border-2 border-[#3446AC] rounded-full">
                             <p class="text-[#3446AC] font-medium leading-snug">
-                                Hands-on Experience<br>with Advanced Technology
+                            Inclusive & Effective<br>Learning Environment
                             </p>
                         </div>
                         <div class="px-8 py-4 border-2 border-[#3446AC] rounded-full">
                             <p class="text-[#3446AC] font-medium leading-snug">
-                                Expert-Led<br>Training Programs
+                            Continuous Improvement<br>& Evaluation
                             </p>
                         </div>
-                        <div class="px-8 py-4 border-2 border-[#3446AC] rounded-full">
-                            <p class="text-[#3446AC] font-medium leading-snug">
-                                Comprehensive<br>Industry Knowledge
-                            </p>
                         </div>
                     </div>
 
