@@ -24,8 +24,8 @@
                     </h1>
                     <p class="text-gray-600 mb-8 text-lg leading-relaxed">
                     Transform to actively contribute to human resource development and skills improvement through integrated education and training programs.
-Therefore, the IAe Training Center can be accessed by anyone who needs it because it integrates specialized knowledge in the aerospace field with facilities to support the learning process.</p>
-                    <a href="#" class="inline-flex items-center px-6 py-3 bg-blue-900 text-white rounded-full hover:bg-blue-800">
+                    Therefore, the IAe Training Center can be accessed by anyone who needs it because it integrates specialized knowledge in the aerospace field with facilities to support the learning process.</p>
+                    <a href="{{ route('catalog') }}" class="inline-flex items-center px-6 py-3 bg-blue-900 text-white rounded-full hover:bg-blue-800">
                         See the catalog
                         <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-2" viewBox="0 0 20 20" fill="currentColor">
                             <path fill-rule="evenodd" d="M16.707 10.293a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-5.293-5.293a1 1 0 011.414-1.414l6 6z" clip-rule="evenodd" />
@@ -140,100 +140,100 @@ Therefore, the IAe Training Center can be accessed by anyone who needs it becaus
 
         <!-- Training Cards Slider -->
         <div class="relative mb-32">
-        <div class="overflow-x-auto hide-scrollbar">
-            <div class="flex gap-6 pb-4">
-                <!-- Card 1 -->
-                <div class="flex-none bg-[#001E42] rounded-2xl overflow-hidden w-[380px]">
-                    <img src="{{ asset('images/catalog1.png') }}" alt="Aircraft Structure" class="w-full h-[220px] object-cover">
-                    <div class="p-6 text-left h-[200px] relative">
-                        <div>
-                            <h3 class="font-bold text-white text-2xl mb-3">Aircraft Structure</h3>
-                            <p class="text-gray-400 text-base">January 28, 2025</p>
-                            <p class="text-gray-400 text-base">Aircraft Lab</p>
-                        </div>
-                        <button class="inline-flex items-center px-6 py-2 bg-white rounded-full text-base text-[#001E42] gap-2 absolute bottom-6">
-                            See
-                            <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M4.16666 10H15.8333" stroke="#001E42" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                                <path d="M10 4.16666L15.8333 10L10 15.8333" stroke="#001E42" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                            </svg>
-                        </button>
+            <div class="overflow-x-auto hide-scrollbar">
+                <div class="flex gap-6 pb-4">
+                    <!-- Card 1 -->
+                    <div class="flex-none bg-[#001E42] rounded-2xl overflow-hidden w-[380px]">
+                        <img src="{{ asset('images/catalog1.png') }}" alt="Aircraft Structure" class="w-full h-[220px] object-cover">
+                        <div class="p-6 h-[200px] flex flex-col justify-between"> 
+                            <div>
+                                <h3 class="font-bold text-white text-2xl">Aircraft Structure</h3>
+                            </div>
+                            <div class="flex justify-between items-end"> 
+                                <div>
+                                    <p class="text-gray-400">January 28, 2025</p>
+                                    <p class="text-gray-400">Aircraft Lab</p>
+                                </div>
+                                <button class="inline-flex items-center px-4 py-2 bg-white rounded-full text-[#001E42]">
+                                    See →
+                                </button>
+                            </div>
+                        </div> 
                     </div>
-                </div>
 
                 <!-- Card 2 -->
                 <div class="flex-none bg-[#001E42] rounded-2xl overflow-hidden w-[380px]">
                     <img src="{{ asset('images/catalog2.png') }}" alt="Aircraft Systems Engineering" class="w-full h-[220px] object-cover">
-                    <div class="p-6 text-left h-[200px] relative">
+                    <div class="p-6 h-[200px] flex flex-col justify-between">
                         <div>
-                            <h3 class="font-bold text-white text-2xl mb-3">Aircraft Systems<br/>Engineering</h3>
-                            <p class="text-gray-400 text-base">January 28, 2025</p>
-                            <p class="text-gray-400 text-base">Aircraft Lab</p>
+                            <h3 class="font-bold text-white text-2xl">Aircraft Systems Engineering</h3>
                         </div>
-                        <button class="inline-flex items-center px-6 py-2 bg-white rounded-full text-base text-[#001E42] gap-2 absolute bottom-6">
-                            See
-                            <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M4.16666 10H15.8333" stroke="#001E42" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                                <path d="M10 4.16666L15.8333 10L10 15.8333" stroke="#001E42" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                            </svg>
-                        </button>
+                        <div class="flex justify-between items-end"> 
+                            <div>
+                                <p class="text-gray-400">January 28, 2025</p>
+                                <p class="text-gray-400">Aircraft Lab</p>
+                            </div>
+                            <button class="inline-flex items-center px-4 py-2 bg-white rounded-full text-[#001E42]">
+                                See →
+                            </button>
+                        </div>
                     </div>
                 </div>
 
                 <!-- Card 3 -->
                 <div class="flex-none bg-[#001E42] rounded-2xl overflow-hidden w-[380px]">
                     <img src="{{ asset('images/catalog3.png') }}" alt="Manufacturing Process" class="w-full h-[220px] object-cover">
-                    <div class="p-6 text-left h-[200px] relative">
+                    <div class="p-6 h-[200px] flex flex-col justify-between">
                         <div>
-                            <h3 class="font-bold text-white text-2xl mb-3">Manufacturing Process</h3>
-                            <p class="text-gray-400 text-base">February 05, 2025</p>
-                            <p class="text-gray-400 text-base">ManufacT Lab</p>
+                            <h3 class="font-bold text-white text-2xl">Manufacturing Process Optimization</h3>
                         </div>
-                        <button class="inline-flex items-center px-6 py-2 bg-white rounded-full text-base text-[#001E42] gap-2 absolute bottom-6">
-                            See
-                            <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M4.16666 10H15.8333" stroke="#001E42" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                                <path d="M10 4.16666L15.8333 10L10 15.8333" stroke="#001E42" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                            </svg>
-                        </button>
+                        <div class="flex justify-between items-end"> 
+                            <div>
+                                <p class="text-gray-400">February 06, 2025</p>
+                                <p class="text-gray-400">Manufact Lab</p>
+                            </div>
+                            <button class="inline-flex items-center px-4 py-2 bg-white rounded-full text-[#001E42]">
+                                See →
+                            </button>
+                        </div>
                     </div>
                 </div>
 
                 <!-- Card 4 -->
                 <div class="flex-none bg-[#001E42] rounded-2xl overflow-hidden w-[380px]">
                     <img src="{{ asset('images/catalog4.png') }}" alt="Structural Repair" class="w-full h-[220px] object-cover">
-                    <div class="p-6 text-left h-[200px] relative">
+                    <div class="p-6 h-[200px] flex flex-col justify-between">
                         <div>
-                            <h3 class="font-bold text-white text-2xl mb-3">Structural Repair Techniques</h3>
-                            <p class="text-gray-400 text-base">March 10, 2025</p>
-                            <p class="text-gray-400 text-base">HC3000 lt.1</p>
+                            <h3 class="font-bold text-white text-2xl">Structural Repair Techniques</h3>
                         </div>
-                        <button class="inline-flex items-center px-6 py-2 bg-white rounded-full text-base text-[#001E42] gap-2 absolute bottom-6">
-                            See
-                            <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M4.16666 10H15.8333" stroke="#001E42" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                                <path d="M10 4.16666L15.8333 10L10 15.8333" stroke="#001E42" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                            </svg>
-                        </button>
+                        <div class="flex justify-between items-end"> 
+                            <div>
+                                <p class="text-gray-400">Maret 10, 2025</p>
+                                <p class="text-gray-400">HC3000 lt.1</p>
+                            </div>
+                            <button class="inline-flex items-center px-4 py-2 bg-white rounded-full text-[#001E42]">
+                                See →
+                            </button>
+                        </div>
                     </div>
                 </div>
 
                 <!-- Card 5 -->
                 <div class="flex-none bg-[#001E42] rounded-2xl overflow-hidden w-[380px]">
                     <img src="{{ asset('images/catalog5.png') }}" alt="Supply Chain" class="w-full h-[220px] object-cover">
-                    <div class="p-6 text-left h-[200px] relative">
+                    <div class="p-6 h-[200px] flex flex-col justify-between">
                         <div>
-                            <h3 class="font-bold text-white text-2xl mb-3">Supply Chain Management</h3>
-                            <p class="text-gray-400 text-base">March 24, 2025</p>
-                            <p class="text-gray-400 text-base">Aircraft Lab</p>
+                            <h3 class="font-bold text-white text-2xl">Aircraft Systems Engineering</h3>
                         </div>
-                        <button class="inline-flex items-center px-6 py-2 bg-white rounded-full text-base text-[#001E42] gap-2 absolute bottom-6">
-                            See
-                            <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M4.16666 10H15.8333" stroke="#001E42" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                                <path d="M10 4.16666L15.8333 10L10 15.8333" stroke="#001E42" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                            </svg>
-                        </button>
+                        <div class="flex justify-between items-end"> 
+                            <div>
+                                <p class="text-gray-400">January 28, 2025</p>
+                                <p class="text-gray-400">Aircraft Lab</p>
+                            </div>
+                            <button class="inline-flex items-center px-4 py-2 bg-white rounded-full text-[#001E42]">
+                                See →
+                            </button>
+                        </div>
                     </div>
                 </div>
             </div>
