@@ -96,9 +96,9 @@
         </div>
     </main>
 
-    <div class="container mx-auto px-8 mt-12">
-        <a href="https://www.indonesian-aerospace.com/en/" class="text-gray-500 border-t border-gray-300 pt-4 block">https://www.indonesian-aerospace.com/en/</a>
-    </div>
+    <div class="container mx-auto px-8 mt-16">
+    <a href="https://www.indonesian-aerospace.com/en/" class="text-black-500  block underline">https://www.indonesian-aerospace.com/en/</a>
+</div>
 
    <!-- Personal Training Section -->
 <section class="bg-[#FAFBFF] py-20 font-['Poppins']">
