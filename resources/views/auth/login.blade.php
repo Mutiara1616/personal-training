@@ -66,7 +66,7 @@
                         </div>
 
                         <div class="mb-6">
-                            <a href="{{ route('password.request') }}" class="text-[#3B4EDB] text-sm">Forgot your password?</a>
+                            <a href="{{ route('password.reset') }}" class="text-[#3B4EDB] hover:text-blue-700">Forgot Password?</a>
                         </div>
 
                         <button 

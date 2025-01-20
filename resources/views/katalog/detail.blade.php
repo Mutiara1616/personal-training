@@ -12,12 +12,11 @@
             Home - PT Dirgantara Indonesia
         </x-slot>
 
-
         <!-- Detail Content -->
         <main class="container mx-auto px-8 py-12">
                 <!-- Image Header -->
                 <div class="rounded-2xl overflow-hidden mb-8">
-                    <img src="{{ asset('images/gambar1.jpg') }}" alt="Aircraft Structure Design" class="w-full h-[400px] object-cover">
+                    <img src="{{ $katalog->gambar }}" alt="{{ $katalog->judul }}" class="w-full h-[400px] object-cover">
                 </div>
 
                 <!-- Rating Stars -->
@@ -26,24 +25,24 @@
                 </div>
 
                 <!-- Title -->
-                <h1 class="text-3xl font-bold mb-4">Aircraft Structure Design</h1>
+                <h1 class="text-3xl font-bold mb-4">{{ $katalog->judul }}</h1>
 
                 <!-- Date and Location -->
                 <div class="text-gray-600 mb-6">
-                    <p class="mb-2">Date: 2, 3, 4, 5, 6, 7 Maret 2025</p>
-                    <p>Location: Jalan Pajajaran, Husen Sastranegara, No.154, Kec. Cicendo, Kota Bandung, Jawa Barat 40174</p>
+                    <p class="mb-2">Date: {{ Carbon\Carbon::parse($katalog->tanggal_mulai)->format('d M Y') }} - {{ Carbon\Carbon::parse($katalog->tanggal_selesai)->format('d M Y') }}</p>
+                    <p>Location: {{ $katalog->lokasi }}</p>
                 </div>
 
                 <!-- Description -->
                 <div class="mb-8">
                     <h2 class="text-xl font-semibold mb-4">Description</h2>
-                    <p class="text-gray-700">Training programs for Aircraft Structure Design are comprehensive learning initiatives crafted to equip aspiring engineers and professionals with the critical skills and in-depth knowledge required to make significant contributions to the aerospace industry. These programs aim to bridge the gap between theoretical understanding and practical application, preparing individuals to address the complex challenges in designing and analyzing aircraft structures. From foundational principles to specialized methodologies, these training opportunities cater to diverse proficiency levels, ranging from beginners to seasoned professionals seeking advanced certifications. Such programs are tailored to align with current industry demands and technological advancements. They encompass a wide range of topics, including the fundamental principles of aerodynamics, material science, and structural mechanics, as well as cutting-edge areas like composite material application, Finite Element Analysis (FEA), and crashworthiness. Participants are also introduced to real-world tools and software such as CATIA, Siemens NX, and ANSYS, which are widely used in aircraft design and analysis. One of the key features of these training programs is their modular structure, allowing learners to progressively build their expertise. Foundational courses provide a solid grounding in the basics of aircraft structures, including load distribution, weight optimization, and safety considerations. Intermediate modules delve into the application of these principles using computational tools, while advanced courses explore specialized areas such as fatigue analysis, fracture mechanics, and structural testing.</p>
+                    <p class="text-gray-700">{{ $katalog->deskripsi }}</p>
                 </div>
 
                 <!-- Price -->
                 <div class="flex items-center justify-between bg-gray-50 p-6 rounded-xl">
                     <div>
-                        <p class="text-3xl font-bold">Rp 1.791,78</p>
+                        <p class="text-3xl font-bold">Rp {{ number_format($katalog->harga, 2, ',', '.') }}</p>
                         <p class="text-gray-500">/Person</p>
                     </div>
                     

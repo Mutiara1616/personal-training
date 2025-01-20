@@ -40,37 +40,46 @@
                 <div class="bg-white rounded-[32px] w-[420px] p-8">
                     <h2 class="text-2xl font-medium text-center mb-6">Reset Your Password</h2>
 
-                    <form method="POST" action="{{ route('password.update') }}">
-                        @csrf
-                        
-                        <!-- Password Reset Token -->
-                        <input type="hidden" name="token" value="{{ $request->route('token') }}">
+                    @if(session('error'))
+                        <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative mb-4">
+                            {{ session('error') }}
+                        </div>
+                    @endif
 
-                        <div class="mb-4">
-                            <label class="block text-gray-800 mb-1">Email</label>
+                    <form method="POST" action="{{ route('password.update') }}" class="space-y-4">
+                        @csrf
+
+                        <div>
+                            <label class="text-gray-800 mb-1.5 block">Email</label>
                             <input 
-                                class="w-full px-4 py-2.5 rounded-lg border border-gray-200" 
+                                class="w-full px-4 py-2.5 rounded-lg border border-gray-200 @error('email') border-red-500 @enderror" 
                                 type="email" 
                                 name="email" 
-                                value="{{ old('email', $request->email) }}"
                                 placeholder="Enter your email adress"
+                                value="{{ old('email') }}"
                                 required
                             >
+                            @error('email')
+                                <p class="text-red-500 text-xs mt-1">{{ $message }}</p>
+                            @enderror
                         </div>
 
-                        <div class="mb-4">
-                            <label class="block text-gray-800 mb-1">New Password</label>
+                        <div>
+                            <label class="text-gray-800 mb-1.5 block">New Password</label>
                             <input 
-                                class="w-full px-4 py-2.5 rounded-lg border border-gray-200" 
+                                class="w-full px-4 py-2.5 rounded-lg border border-gray-200 @error('password') border-red-500 @enderror" 
                                 type="password" 
                                 name="password" 
                                 placeholder="Enter your new password"
                                 required
                             >
+                            @error('password')
+                                <p class="text-red-500 text-xs mt-1">{{ $message }}</p>
+                            @enderror
                         </div>
 
-                        <div class="mb-6">
-                            <label class="block text-gray-800 mb-1">Confirm Password</label>
+                        <div>
+                            <label class="text-gray-800 mb-1.5 block">Confirm Password</label>
                             <input 
                                 class="w-full px-4 py-2.5 rounded-lg border border-gray-200" 
                                 type="password" 
@@ -80,10 +89,10 @@
                             >
                         </div>
 
-                        <div class="flex justify-center">
+                        <div class="pt-4">
                             <button 
                                 type="submit"
-                                class="bg-[#3B4EDB] text-white py-2.5 px-8 rounded-full"
+                                class="w-full bg-[#3B4EDB] hover:bg-blue-700 text-white py-2.5 rounded-lg"
                             >
                                 Reset Password
                             </button>
@@ -91,13 +100,6 @@
                     </form>
                 </div>
             </div>
-
-            @if (session('status'))
-                <div class="mb-4 text-sm text-green-600">
-                    {{ session('status') }}
-                </div>
-            @endif
-
         </div>
     </body>
     </html>

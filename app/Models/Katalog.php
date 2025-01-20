@@ -26,7 +26,6 @@ class Katalog extends Model
        'harga' => 'decimal:2',
    ];
 
-   // Tambahkan mutator untuk mengisi slug otomatis
    protected static function boot()
    {
        parent::boot();
@@ -38,11 +37,10 @@ class Katalog extends Model
        });
    }
 
-   // Accessor untuk URL gambar dengan url()
    protected function gambar(): Attribute
    {
        return Attribute::make(
-           get: fn (string $value) => $value ? asset('storage/' . $value) : null,
+           get: fn (?string $value) => $value ? asset('storage/' . $value) : null,
        );
    }
 }

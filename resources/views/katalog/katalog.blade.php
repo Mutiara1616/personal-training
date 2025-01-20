@@ -45,167 +45,32 @@
             </div>
 
             <!-- Training Cards Grid -->
-            <div class="grid grid-cols-4 gap-6">
-                <!-- Card 1 -->
-                <div class="rounded-2xl overflow-hidden bg-[#10162C] text-white flex flex-col">
-                    <div class="h-48">
-                        <img src="{{ asset('images/gambar1.jpg') }}" alt="Aircraft" class="w-full h-full object-cover">
-                    </div>
-                    <div class="p-6 flex flex-col flex-1">
-                        <h3 class="text-lg font-semibold mb-auto">Aircraft Structure Design</h3>
-                        <div class="flex justify-between items-center text-sm mt-4">
-                            <div>
-                                <p class="text-gray-300">January 18, 2025</p>
-                                <p class="text-gray-300">Aircraft Lab</p>
-                            </div>
-                            <a href="{{ route('catalog.detail', 'aircraft-structure-design') }}" 
-                            class="px-4 py-1 rounded-full border border-white text-white hover:bg-white hover:text-[#10162C] transition duration-300">
-                                See →
-                            </a>
-                        </div>
-                    </div>
+        <div class="grid grid-cols-4 gap-6">
+            @forelse($katalogs as $katalog)
+            <div class="rounded-2xl overflow-hidden bg-[#10162C] text-white flex flex-col">
+                <div class="h-48">
+                    <img src="{{ $katalog->gambar }}" alt="{{ $katalog->judul }}" class="w-full h-full object-cover">
                 </div>
-
-                <!-- Card 2 -->
-                <div class="rounded-2xl overflow-hidden bg-[#10162C] text-white flex flex-col">
-                    <div class="h-48">
-                        <img src="{{ asset('images/gambar2.jpg') }}" alt="Aircraft Systems" class="w-full h-full object-cover">
-                    </div>
-                    <div class="p-6 flex flex-col flex-1">
-                        <h3 class="text-lg font-semibold mb-auto">Aircraft Systems Engineering</h3>
-                        <div class="flex justify-between items-center text-sm mt-4">
-                            <div>
-                                <p class="text-gray-300">January 28, 2025</p>
-                                <p class="text-gray-300">Aircraft Lab</p>
-                            </div>
-                            <a href="{{ route('catalog.detail', 'aircraft-systems-engineering') }}" 
-                            class="px-4 py-1 rounded-full border border-white text-white hover:bg-white hover:text-[#10162C] transition duration-300">
-                                See →
-                            </a>
+                <div class="p-6 flex flex-col flex-1">
+                    <h3 class="text-lg font-semibold mb-auto">{{ $katalog->judul }}</h3>
+                    <div class="flex justify-between items-center text-sm mt-4">
+                        <div>
+                            <p class="text-gray-300">{{ $katalog->tanggal_mulai->format('F d, Y') }}</p>
+                            <p class="text-gray-300">{{ $katalog->lokasi }}</p>
                         </div>
-                    </div>
-                </div>
-
-                <!-- Card 3 -->
-                <div class="rounded-2xl overflow-hidden bg-[#10162C] text-white flex flex-col">
-                    <div class="h-48">
-                        <img src="{{ asset('images/gambar3.jpg') }}" alt="Manufacturing" class="w-full h-full object-cover">
-                    </div>
-                    <div class="p-6 flex flex-col flex-1">
-                        <h3 class="text-lg font-semibold mb-auto">Manufacturing Process Optimization</h3>
-                        <div class="flex justify-between items-center text-sm mt-4">
-                            <div>
-                                <p class="text-gray-300">February 06, 2025</p>
-                                <p class="text-gray-300">Manufact Lab</p>
-                            </div>
-                            <a href="{{ route('catalog.detail', 'manufacturing-process-optimization') }}" 
-                            class="px-4 py-1 rounded-full border border-white text-white hover:bg-white hover:text-[#10162C] transition duration-300">
-                                See →
-                            </a>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Card 4 -->
-                <div class="rounded-2xl overflow-hidden bg-[#10162C] text-white flex flex-col">
-                    <div class="h-48">
-                        <img src="{{ asset('images/gambar1.jpg') }}" alt="Structural Repair" class="w-full h-full object-cover">
-                    </div>
-                    <div class="p-6 flex flex-col flex-1">
-                        <h3 class="text-lg font-semibold mb-auto">Structural Repair Techniques</h3>
-                        <div class="flex justify-between items-center text-sm mt-4">
-                            <div>
-                                <p class="text-gray-300">Maret 10, 2025</p>
-                                <p class="text-gray-300">HC3000 lt.1</p>
-                            </div>
-                            <a href="{{ route('catalog.detail', 'structural-repair-techniques') }}" 
-                            class="px-4 py-1 rounded-full border border-white text-white hover:bg-white hover:text-[#10162C] transition duration-300">
-                                See →
-                            </a>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Card 5 -->
-                <div class="rounded-2xl overflow-hidden bg-[#10162C] text-white flex flex-col">
-                    <div class="h-48">
-                        <img src="{{ asset('images/gambar1.jpg') }}" alt="Aircraft" class="w-full h-full object-cover">
-                    </div>
-                    <div class="p-6 flex flex-col flex-1">
-                        <h3 class="text-lg font-semibold mb-auto">Aircraft Structure Design</h3>
-                        <div class="flex justify-between items-center text-sm mt-4">
-                            <div>
-                                <p class="text-gray-300">January 18, 2025</p>
-                                <p class="text-gray-300">Aircraft Lab</p>
-                            </div>
-                            <a href="{{ route('catalog.detail', 'aircraft-structure-design-2') }}" 
-                            class="px-4 py-1 rounded-full border border-white text-white hover:bg-white hover:text-[#10162C] transition duration-300">
-                                See →
-                            </a>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Card 6 -->
-                <div class="rounded-2xl overflow-hidden bg-[#10162C] text-white flex flex-col">
-                    <div class="h-48">
-                        <img src="{{ asset('images/gambar2.jpg') }}" alt="Aircraft Systems" class="w-full h-full object-cover">
-                    </div>
-                    <div class="p-6 flex flex-col flex-1">
-                        <h3 class="text-lg font-semibold mb-auto">Aircraft Systems Engineering</h3>
-                        <div class="flex justify-between items-center text-sm mt-4">
-                            <div>
-                                <p class="text-gray-300">January 28, 2025</p>
-                                <p class="text-gray-300">Aircraft Lab</p>
-                            </div>
-                            <a href="{{ route('catalog.detail', 'aircraft-systems-engineering-2') }}" 
-                            class="px-4 py-1 rounded-full border border-white text-white hover:bg-white hover:text-[#10162C] transition duration-300">
-                                See →
-                            </a>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Card 7 -->
-                <div class="rounded-2xl overflow-hidden bg-[#10162C] text-white flex flex-col">
-                    <div class="h-48">
-                        <img src="{{ asset('images/gambar3.jpg') }}" alt="Manufacturing" class="w-full h-full object-cover">
-                    </div>
-                    <div class="p-6 flex flex-col flex-1">
-                        <h3 class="text-lg font-semibold mb-auto">Manufacturing Process Optimization</h3>
-                        <div class="flex justify-between items-center text-sm mt-4">
-                            <div>
-                                <p class="text-gray-300">February 06, 2025</p>
-                                <p class="text-gray-300">Manufact Lab</p>
-                            </div>
-                            <a href="{{ route('catalog.detail', 'manufacturing-process-optimization-2') }}" 
-                            class="px-4 py-1 rounded-full border border-white text-white hover:bg-white hover:text-[#10162C] transition duration-300">
-                                See →
-                            </a>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Card 8 -->
-                <div class="rounded-2xl overflow-hidden bg-[#10162C] text-white flex flex-col">
-                    <div class="h-48">
-                        <img src="{{ asset('images/gambar1.jpg') }}" alt="Structural Repair" class="w-full h-full object-cover">
-                        
-                    <div class="p-6 flex flex-col flex-1">
-                        <h3 class="text-lg font-semibold mb-auto">Structural Repair Techniques</h3>
-                        <div class="flex justify-between items-center text-sm mt-4">
-                            <div>
-                                <p class="text-gray-300">Maret 10, 2025</p>
-                                <p class="text-gray-300">HC3000 lt.1</p>
-                            </div>
-                            <a href="{{ route('catalog.detail', 'structural-repair-techniques-2') }}" 
-                            class="px-4 py-1 rounded-full border border-white text-white hover:bg-white hover:text-[#10162C] transition duration-300">
-                                See →
-                            </a>
-                        </div>
+                        <a href="{{ route('catalog.detail', $katalog->slug) }}" 
+                        class="px-4 py-1 rounded-full border border-white text-white hover:bg-white hover:text-[#10162C] transition duration-300">
+                            See →
+                        </a>
                     </div>
                 </div>
             </div>
+            @empty
+            <div class="col-span-4 text-center py-8">
+                <p class="text-gray-500">No training courses available at the moment.</p>
+            </div>
+            @endforelse
+        </div>
         </main>
     </x-app-layout>
 </body>
