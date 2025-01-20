@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Login</title>
+        <title>Reset Password</title>
         <style>
             body {
                 margin: 0;
@@ -38,55 +38,63 @@
             <!-- Content -->
             <div class="absolute inset-0 flex items-center justify-center">
                 <div class="bg-white rounded-[32px] w-[420px] p-8">
-                    <h2 class="text-2xl font-medium text-center mb-6">Login To Your Account</h2>
+                    <h2 class="text-2xl font-medium text-center mb-6">Reset Your Password</h2>
 
-                    <form method="POST" action="{{ route('login') }}">
+                    <form method="POST" action="{{ route('password.update') }}">
                         @csrf
+                        
+                        <!-- Password Reset Token -->
+                        <input type="hidden" name="token" value="{{ $request->route('token') }}">
 
                         <div class="mb-4">
-                            <label class="text-gray-800 mb-1.5 block text-sm">Email</label>
+                            <label class="block text-gray-800 mb-1">Email</label>
                             <input 
-                                class="w-full px-4 py-2.5 rounded border border-gray-200 bg-gray-50" 
+                                class="w-full px-4 py-2.5 rounded-lg border border-gray-200" 
                                 type="email" 
                                 name="email" 
+                                value="{{ old('email', $request->email) }}"
                                 placeholder="Enter your email adress"
                                 required
                             >
                         </div>
 
-                        <div class="mb-1">
-                            <label class="text-gray-800 mb-1.5 block text-sm">Password</label>
+                        <div class="mb-4">
+                            <label class="block text-gray-800 mb-1">New Password</label>
                             <input 
-                                class="w-full px-4 py-2.5 rounded border border-gray-200 bg-gray-50" 
+                                class="w-full px-4 py-2.5 rounded-lg border border-gray-200" 
                                 type="password" 
                                 name="password" 
-                                placeholder="Enter your password"
+                                placeholder="Enter your new password"
                                 required
                             >
                         </div>
 
                         <div class="mb-6">
-                            <a href="{{ route('password.request') }}" class="text-[#3B4EDB] text-sm">Forgot your password?</a>
+                            <label class="block text-gray-800 mb-1">Confirm Password</label>
+                            <input 
+                                class="w-full px-4 py-2.5 rounded-lg border border-gray-200" 
+                                type="password" 
+                                name="password_confirmation" 
+                                placeholder="Confirm your new password"
+                                required
+                            >
                         </div>
 
-                        <button 
-                            type="submit"
-                            class="w-full bg-[#3B4EDB] text-white py-2.5 rounded-lg mb-4"
-                        >
-                            Sign In
-                        </button>
-
-                        <div class="text-center text-sm">
-                            <span class="text-gray-600">Don't Have an Account? </span>
-                            <a href="{{ route('register') }}" class="text-[#3B4EDB]">Sign Up</a>
+                        <div class="flex justify-center">
+                            <button 
+                                type="submit"
+                                class="bg-[#3B4EDB] text-white py-2.5 px-8 rounded-full"
+                            >
+                                Reset Password
+                            </button>
                         </div>
                     </form>
                 </div>
             </div>
 
-            @if (session('success'))
+            @if (session('status'))
                 <div class="mb-4 text-sm text-green-600">
-                    {{ session('success') }}
+                    {{ session('status') }}
                 </div>
             @endif
 
