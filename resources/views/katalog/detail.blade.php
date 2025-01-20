@@ -51,9 +51,10 @@
                         <button class="px-8 py-3 bg-blue-900 text-white rounded-full hover:bg-blue-800">
                             Start The Negotiation
                         </button>
-                        <a href="{{ route('payment') }}" class="px-8 py-3 border border-blue-900 text-blue-900 rounded-full hover:bg-blue-50">
-                            Payment
-                        </a>
+                        <a href="{{ Auth::guard('member')->check() ? route('payment', $katalog->id) : route('login') }}" 
+                            class="inline-block px-8 py-3 border border-blue-900 text-blue-900 rounded-full hover:bg-blue-50">
+                             {{ Auth::guard('member')->check() ? 'Payment' : 'Login to Pay' }}
+                         </a>
                     </div>
                 </div>
             </div>

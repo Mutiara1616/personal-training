@@ -8,9 +8,11 @@ class Payment extends Model
 {
     protected $fillable = [
         'member_id',
-        'katalog_id', 
+        'katalog_id',
         'amount',
         'payment_method',
+        'bank_name',
+        'participants',
         'status',
         'bukti_transfer'
     ];

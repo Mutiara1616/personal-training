@@ -3,10 +3,9 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\RegisterController;
-use App\Http\Controllers\PaymentController;  // Tambahkan ini
+use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\Auth\ResetPasswordController;
 use App\Models\Katalog;
-
 
 // Homepage route
 Route::get('/', function () {
@@ -24,15 +23,16 @@ Route::get('/catalog/{slug}', function ($slug) {
 })->name('catalog.detail');
 
 // Payment routes
-Route::get('/payment', function () {
-    return view('payment.payment');
-})->name('payment');
+Route::get('/payment/{katalog_id}', function ($katalog_id) {
+    $katalog = App\Models\Katalog::findOrFail($katalog_id);
+    return view('payment.payment', compact('katalog'));
+})->name('payment')->middleware('auth:member');
 
-Route::post('/payment', [PaymentController::class, 'store'])->name('payment.store');
+Route::post('/payment', [PaymentController::class, 'store'])->name('payment.store')->middleware('auth:member');
 
 Route::get('/payment/success', function() {
     return view('payment.success');
-})->name('payment.success');
+})->name('payment.success')->middleware('auth:member');
 
 Route::get('/contact', function () {
     return view('contact.contact');
@@ -53,7 +53,6 @@ Route::post('/register', [RegisterController::class, 'register']);
 
 Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
 
-// Ganti route password reset yang ada dengan yang berikut
 Route::get('/reset-password', [ResetPasswordController::class, 'create'])
     ->name('password.reset');
 

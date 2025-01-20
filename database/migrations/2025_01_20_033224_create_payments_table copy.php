@@ -6,9 +6,6 @@ use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
 {
-    /**
-     * Run the migrations.
-     */
     public function up()
     {
         Schema::create('payments', function (Blueprint $table) {
@@ -17,15 +14,15 @@ return new class extends Migration
             $table->foreignId('katalog_id')->constrained();
             $table->decimal('amount', 10, 2);
             $table->string('payment_method');
-            $table->string('status')->default('pending'); // pending, approved, rejected
-            $table->string('bukti_transfer')->nullable();
+            $table->string('bank_name');
+            $table->integer('participants');
+            $table->string('status')->default('pending');
+            $table->string('bukti_transfer');
             $table->timestamps();
         });
     }
-    /**
-     * Reverse the migrations.
-     */
-    public function down(): void
+
+    public function down()
     {
         Schema::dropIfExists('payments');
     }

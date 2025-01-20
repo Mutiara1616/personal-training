@@ -8,6 +8,11 @@ use Illuminate\Support\Facades\Auth;
 
 class LoginController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('guest:member')->except('logout');
+    }
+
     public function login(Request $request)
     {
         $credentials = $request->validate([
@@ -18,7 +23,8 @@ class LoginController extends Controller
         if (Auth::guard('member')->attempt($credentials)) {
             $request->session()->regenerate();
             
-            return redirect()->route('home')
+            // Redirect ke intended URL jika ada
+            return redirect()->intended(route('home'))
                 ->with('success', 'Welcome back! You have successfully logged in.');
         }
 
@@ -26,6 +32,7 @@ class LoginController extends Controller
             'email' => 'The provided credentials do not match our records.',
         ])->onlyInput('email');
     }
+
     public function logout(Request $request)
     {
         Auth::guard('member')->logout();
