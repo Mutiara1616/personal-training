@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Payment</title>
+    <title>Payment - PT Dirgantara Indonesia</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     @vite('resources/css/app.css')
     <style>
@@ -12,188 +12,135 @@
         }
     </style>
 </head>
-<body class="bg-gray-100">
+<body class="bg-[#FFFFFF]">
     <x-app-layout>
-       
+        <x-slot name="title">
+            Payment - PT Dirgantara Indonesia
+        </x-slot>
 
-        <!-- Payment Form -->
-        <main class="container mx-auto px-4 py-8">
-            <div class="max-w-6xl mx-auto bg-white rounded-3xl shadow-sm p-8">
-                <div class="grid md:grid-cols-2 gap-8">
-                    <!-- Left Column - Payment Details -->
-                    <div class="space-y-6">
-                        <h2 class="text-2xl font-bold">Payment Details</h2>
-                        <form method="POST" action="{{ route('payment.store') }}" enctype="multipart/form-data">
-                            @csrf
+        <!-- Main Content -->
+        <main class="container mx-auto px-8 py-12">
+            <div class="max-w-6xl mx-auto bg-white rounded-[32px] border-2 border-blue-500 p-12">
+                <form method="POST" action="{{ route('payment.store') }}" enctype="multipart/form-data" class="space-y-8">
+                    @csrf
+                    <div class="grid md:grid-cols-2 gap-12">
+                        <!-- Left Column -->
+                        <div class="space-y-6">
+                            <h2 class="text-[#10162C] text-2xl font-bold mb-6">Payment Details</h2>
                             <input type="hidden" name="katalog_id" value="{{ $katalog->id }}">
                             
                             <div class="space-y-4">
+                                <!-- Form fields dengan styling yang konsisten -->
                                 <div>
-                                    <label class="block text-sm font-medium mb-1">Full Name</label>
-                                    <input type="text" name="name" placeholder="Enter your name" required 
-                                           class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+                                    <label class="block text-[#10162C] text-sm font-medium mb-2">Full Name</label>
+                                    <input type="text" name="name" value="{{ auth('member')->user()->name }}" required 
+                                           class="w-full px-4 py-3 rounded-xl border-2 border-blue-100 focus:border-blue-600 focus:ring-1 focus:ring-blue-600">
                                 </div>
                                 
+                                <!-- Email field -->
                                 <div>
-                                    <label class="block text-sm font-medium mb-1">Email</label>
-                                    <input type="email" name="email" placeholder="Enter your email address" required 
-                                           class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+                                    <label class="block text-[#10162C] text-sm font-medium mb-2">Email</label>
+                                    <input type="email" name="email" value="{{ auth('member')->user()->email }}" required 
+                                           class="w-full px-4 py-3 rounded-xl border-2 border-blue-100 focus:border-blue-600 focus:ring-1 focus:ring-blue-600">
                                 </div>
                                 
+                                <!-- Phone field -->
                                 <div>
-                                    <label class="block text-sm font-medium mb-1">Phone Number</label>
-                                    <input type="tel" name="phone" placeholder="Enter your phone number" required 
-                                           class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+                                    <label class="block text-[#10162C] text-sm font-medium mb-2">Phone Number</label>
+                                    <input type="tel" name="phone" required 
+                                           class="w-full px-4 py-3 rounded-xl border-2 border-blue-100 focus:border-blue-600 focus:ring-1 focus:ring-blue-600">
                                 </div>
                                 
+                                <!-- Participants field -->
                                 <div>
-                                    <label class="block text-sm font-medium mb-1">Number of Participants</label>
-                                    <input type="number" name="participants" id="participants" placeholder="Enter number of participants" required 
-                                           class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+                                    <label class="block text-[#10162C] text-sm font-medium mb-2">Number of Participants</label>
+                                    <input type="number" name="participants" id="participants" min="1" required 
+                                           class="w-full px-4 py-3 rounded-xl border-2 border-blue-100 focus:border-blue-600 focus:ring-1 focus:ring-blue-600">
                                 </div>
                                 
+                                <!-- Training Package (readonly) -->
                                 <div>
-                                    <label class="block text-sm font-medium mb-1">Training Package</label>
-                                    <input type="text" name="package" value="{{ $katalog->judul }}" readonly 
-                                           class="w-full px-4 py-3 rounded-lg border border-gray-300 bg-gray-50">
+                                    <label class="block text-[#10162C] text-sm font-medium mb-2">Training Package</label>
+                                    <input type="text" value="{{ $katalog->judul }}" readonly 
+                                           class="w-full px-4 py-3 rounded-xl border-2 border-blue-100 bg-gray-50">
                                 </div>
                                 
+                                <!-- Training Date (readonly) -->
                                 <div>
-                                    <label class="block text-sm font-medium mb-1">Training Date</label>
-                                    <input type="date" name="training_date" value="{{ $katalog->tanggal_mulai }}" readonly 
-                                           class="w-full px-4 py-3 rounded-lg border border-gray-300 bg-gray-50">
+                                    <label class="block text-[#10162C] text-sm font-medium mb-2">Training Date</label>
+                                    <input type="date" value="{{ $katalog->tanggal_mulai }}" readonly 
+                                           class="w-full px-4 py-3 rounded-xl border-2 border-blue-100 bg-gray-50">
                                 </div>
                             </div>
-                        </form>
+                        </div>
+
+                        <!-- Right Column -->
+                        <div class="space-y-6">
+                            <h2 class="text-[#10162C] text-2xl font-bold mb-6">Payment Methods</h2>
+                            
+                            <!-- Bank Selection -->
+                            <div class="mb-6">
+                                <label class="block text-[#10162C] text-sm font-medium mb-2">Bank Account</label>
+                                <div class="w-full px-4 py-3 rounded-xl border-2 border-blue-100 bg-white flex items-center space-x-3">
+                                    <img src="{{ asset('images/bsi.png') }}" alt="BSI Logo" class="h-8 w-auto">
+                                    <div class="flex-1">
+                                        <p class="text-[#10162C] font-medium">BSI (Bank Syariah Indonesia)</p>
+                                        <p class="text-gray-600 text-sm">3974**********8472</p>
+                                    </div>
+                                </div>
+                                <input type="hidden" name="bank_name" value="BSI">
+                            </div>
+
+                            <!-- Order Summary -->
+                            <div class="bg-gray-50 p-6 rounded-xl mb-6">
+                                <h2 class="text-[#10162C] text-xl font-bold mb-4">Order Summary</h2>
+                                <div class="space-y-3">
+                                    <div class="flex justify-between">
+                                        <span class="text-gray-600">Balance Amount:</span>
+                                        <span class="font-medium text-[#10162C]" id="balance-amount">
+                                            Rp {{ number_format($katalog->harga, 2) }}
+                                        </span>
+                                    </div>
+                                    <div class="flex justify-between">
+                                        <span class="text-gray-600">Tax (10%):</span>
+                                        <span class="font-medium text-[#10162C]" id="tax-amount">
+                                            Rp {{ number_format($katalog->harga * 0.1, 2) }}
+                                        </span>
+                                    </div>
+                                    <div class="flex justify-between pt-3 border-t border-gray-200">
+                                        <span class="text-[#10162C] font-medium">Total Amount</span>
+                                        <span class="text-xl font-bold text-[#10162C]" id="total-amount">
+                                            Rp {{ number_format($katalog->harga * 1.1, 2) }}
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- File Upload -->
+                            <div class="mb-8">
+                                <label class="block text-[#10162C] text-sm font-medium mb-2">Proof of Transfer Payment</label>
+                                <input type="file" name="bukti_transfer" required accept="image/*"
+                                       class="w-full px-4 py-3 rounded-xl border-2 border-blue-100 focus:border-blue-600 focus:ring-1 focus:ring-blue-600">
+                            </div>
+
+                            <input type="hidden" name="amount" id="amount-input" value="{{ $katalog->harga * 1.1 }}">
+                            
+                            <!-- Payment Button -->
+                            <button type="submit" id="paymentButton"
+                                    class="w-full py-4 bg-[#10162C] text-white rounded-full hover:bg-blue-900 transition-all duration-300 flex items-center justify-center space-x-2">
+                                <span>Payment</span>
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                                    <path fill-rule="evenodd" d="M12.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-2.293-2.293a1 1 0 010-1.414z" clip-rule="evenodd" />
+                                </svg>
+                            </button>
+                        </div>
                     </div>
-
-                      <!-- Right Column - Payment Methods & Summary -->
-                    <div class="space-y-6">
-                        <h2 class="text-2xl font-bold">Payment Methods</h2>
-                        
-                        <!-- Payment Method Selection -->
-                        <div class="space-y-2">
-                            <label class="block text-lg font-medium">Debit Card</label>
-                            <div class="relative">
-                                <div class="rounded-lg border border-gray-200" id="payment-dropdown">
-                                    <!-- Dropdown Header -->
-                                    <div class="flex items-center justify-between p-4 cursor-pointer hover:bg-gray-50" id="dropdown-header">
-                                        <!-- Default Visa Display -->
-                                        <div class="flex items-center gap-2" id="visa-display">
-                                            <img src="{{ asset('images/visa.png') }}" alt="Visa" class="h-5 w-auto">
-                                            <span class="text-lg">Debit Card</span>
-                                        </div>
-                                        <!-- BSI Display (Initially Hidden) -->
-                                        <div class="flex items-center gap-2 hidden" id="bsi-display">
-                                            <span class="text-[#0066FF] font-semibold">BSI</span>
-                                            <span class="text-gray-600">- 3974**********8472</span>
-                                        </div>
-                                        <svg class="w-5 h-5 text-gray-400 transform transition-transform duration-200" id="dropdown-arrow" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
-                                        </svg>
-                                    </div>
-                                </div>
-                                <!-- BSI Account Info (Dropdown Content) -->
-                                <div class="hidden absolute w-full mt-1 bg-gray-50 rounded-lg border border-gray-200 p-4 z-10" id="bsi-info">
-                                    <div class="flex items-center gap-2 cursor-pointer" onclick="selectBSI()">
-                                        <span class="text-[#0066FF] font-semibold">BSI</span>
-                                        <span class="text-gray-600">- 3974**********8472</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <script>
-                            document.addEventListener('DOMContentLoaded', function() {
-                                const dropdownHeader = document.getElementById('dropdown-header');
-                                const bsiInfo = document.getElementById('bsi-info');
-                                const dropdownArrow = document.getElementById('dropdown-arrow');
-                                const visaDisplay = document.getElementById('visa-display');
-                                const bsiDisplay = document.getElementById('bsi-display');
-                                let isOpen = false;
-                                let isBSISelected = false;
-
-                                window.selectBSI = function() {
-                                    visaDisplay.classList.add('hidden');
-                                    bsiDisplay.classList.remove('hidden');
-                                    bsiInfo.classList.add('hidden');
-                                    dropdownArrow.classList.remove('rotate-180');
-                                    isBSISelected = true;
-                                    isOpen = false;
-                                }
-
-                                dropdownHeader.addEventListener('click', function() {
-                                    if (!isBSISelected) {
-                                        isOpen = !isOpen;
-                                        if (isOpen) {
-                                            bsiInfo.classList.remove('hidden');
-                                            dropdownArrow.classList.add('rotate-180');
-                                        } else {
-                                            bsiInfo.classList.add('hidden');
-                                            dropdownArrow.classList.remove('rotate-180');
-                                        }
-                                    }
-                                });
-
-                                // Close dropdown when clicking outside
-                                document.addEventListener('click', function(event) {
-                                    if (!event.target.closest('#payment-dropdown') && !event.target.closest('#bsi-info')) {
-                                        bsiInfo.classList.add('hidden');
-                                        dropdownArrow.classList.remove('rotate-180');
-                                        isOpen = false;
-                                    }
-                                });
-                            });
-                        </script>
-                        <!-- Order Summary -->
-                        <div>
-                            <h2 class="text-2xl font-bold mb-4">Order Summary</h2>
-                            <div class="space-y-3">
-                                <div class="flex justify-between">
-                                    <span class="text-gray-600">Balance Amount:</span>
-                                    <span class="font-medium">Rp. 29.000.000,00</span>
-                                </div>
-                                <div class="flex justify-between">
-                                    <span class="text-gray-600">Tax (10%):</span>
-                                    <span class="font-medium">Rp. 2.900.000,00</span>
-                                </div>
-                                <div class="flex justify-between pt-3 border-t">
-                                    <div>
-                                        <span class="font-medium">Total:</span>
-                                        <span class="text-gray-500 text-sm">(Inc. Tax)</span>
-                                    </div>
-                                    <span class="text-xl font-bold">Rp. 29.900.000,00</span>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- File Upload -->
-                        <div>
-                            <p class="text-sm text-gray-600 mb-2">Proof of Transfer Payment (250 Kb)</p>
-                            <div class="flex items-center border border-gray-300 rounded-lg overflow-hidden">
-                                <div class="flex-1">
-                                    <input type="file" name="bukti_transfer" required
-                                           class="block w-full text-sm text-gray-500 px-3 py-2
-                                                  file:mr-4 file:py-2 file:px-4
-                                                  file:rounded-full file:border-0
-                                                  file:text-sm file:font-medium
-                                                  file:bg-gray-100 file:text-gray-700
-                                                  hover:file:bg-gray-200">
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Payment Button -->
-                        <button type="submit" class="w-full py-4 bg-blue-600 text-white rounded-full hover:bg-blue-700 font-medium">
-                            Payment
-                        </button>
-                    </div>
-                </div>
+                </form>
             </div>
         </main>
 
         <script>
-            // Calculate total amount based on number of participants
+            // Kalkulasi harga
             document.getElementById('participants').addEventListener('change', function() {
                 const basePrice = {{ $katalog->harga }};
                 const participants = this.value;
@@ -201,20 +148,18 @@
                 const tax = totalAmount * 0.1;
                 const finalAmount = totalAmount + tax;
                 
-                // Update display amounts
-                document.getElementById('balance-amount').textContent = 'Rp. ' + totalAmount.toLocaleString('id-ID', {
-                    minimumFractionDigits: 2,
-                    maximumFractionDigits: 2
-                });
-                document.getElementById('tax-amount').textContent = 'Rp. ' + tax.toLocaleString('id-ID', {
-                    minimumFractionDigits: 2,
-                    maximumFractionDigits: 2
-                });
-                document.getElementById('total-amount').textContent = 'Rp. ' + finalAmount.toLocaleString('id-ID', {
-                    minimumFractionDigits: 2,
-                    maximumFractionDigits: 2
-                });
+                document.getElementById('balance-amount').textContent = 'Rp ' + totalAmount.toLocaleString('id-ID', {minimumFractionDigits: 2});
+                document.getElementById('tax-amount').textContent = 'Rp ' + tax.toLocaleString('id-ID', {minimumFractionDigits: 2});
+                document.getElementById('total-amount').textContent = 'Rp ' + finalAmount.toLocaleString('id-ID', {minimumFractionDigits: 2});
+                document.getElementById('amount-input').value = finalAmount;
             });
+
+            document.querySelector('form').addEventListener('submit', function() {
+                const button = document.getElementById('paymentButton');
+                button.disabled = true;
+                button.innerHTML = '<span>Processing...</span>';
+            });
+
         </script>
     </x-app-layout>
 </body>
