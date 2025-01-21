@@ -15,7 +15,7 @@
             <!-- Main Content -->
             <main class="container mx-auto px-8 mt-8 flex justify-between items-start">
                 <div class="w-[45%]">
-                    <div class="inline-block px-4 py-2 rounded-full border border-gray-200 shadow-sm mb-4">
+                    <div class="inline-block px-4 py-2 rounded-full border border-gray-800 shadow-sm mb-4">
                         Welcome to
                     </div>
                     <h1 class="text-[3.5rem] leading-tight font-bold mb-6">
@@ -25,12 +25,24 @@
                     <p class="text-gray-600 mb-8 text-lg leading-relaxed">
                     Transform to actively contribute to human resource development and skills improvement through integrated education and training programs.
                     Therefore, the IAe Training Center can be accessed by anyone who needs it because it integrates specialized knowledge in the aerospace field with facilities to support the learning process.</p>
-                    <a href="{{ route('catalog') }}" class="inline-flex items-center px-6 py-3 bg-blue-900 text-white rounded-full hover:bg-blue-800">
-                        See the catalog
-                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-2" viewBox="0 0 20 20" fill="currentColor">
-                            <path fill-rule="evenodd" d="M16.707 10.293a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-5.293-5.293a1 1 0 011.414-1.414l6 6z" clip-rule="evenodd" />
+                    <a href="{{ route('catalog') }}" 
+                    class="inline-flex items-center px-6 py-3 bg-blue-900 text-white rounded-full relative overflow-hidden group transition-all duration-300 ease-out hover:shadow-lg">
+                        <span class="relative z-10 transition-transform duration-300 group-hover:translate-x-1">
+                            See the catalog
+                        </span>
+                        <svg xmlns="http://www.w3.org/2000/svg" 
+                            class="h-5 w-5 ml-2 relative z-10 transition-all duration-300 group-hover:translate-x-2" 
+                            viewBox="0 0 20 20" 
+                            fill="currentColor">
+                            <path fill-rule="evenodd" 
+                                d="M16.707 10.293a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-5.293-5.293a1 1 0 011.414-1.414l6 6z" 
+                                clip-rule="evenodd" />
                         </svg>
+                        <div class="absolute inset-0 w-full h-full bg-blue-600 transform scale-x-0 origin-left group-hover:scale-x-100 transition-transform duration-300"></div>
                     </a>
+                    <p class="text-gray-800 mt-8 mb-10 text-lg leading-relaxed">
+                        <a href="https://www.indonesian-aerospace.com/en/" class="text-black-500  block underline">https://www.indonesian-aerospace.com/en/</a>
+                    </p>
                 </div>
                 <div class="w-[50%] space-y-6">
                     <div class="rounded-2xl overflow-hidden shadow-lg">
@@ -41,9 +53,6 @@
                     </div>
                 </div>
             </main>
-
-            <div class="container mx-auto px-8 mt-16">
-            <a href="https://www.indonesian-aerospace.com/en/" class="text-black-500  block underline">https://www.indonesian-aerospace.com/en/</a>
         </div>
 
         <!-- Personal Training Section -->
@@ -142,102 +151,33 @@
         <div class="relative mb-32">
             <div class="overflow-x-auto hide-scrollbar">
                 <div class="flex gap-6 pb-4">
-                    <!-- Card 1 -->
+                    @forelse($katalogs as $katalog)
                     <div class="flex-none bg-[#001E42] rounded-2xl overflow-hidden w-[380px]">
-                        <img src="{{ asset('images/catalog1.png') }}" alt="Aircraft Structure" class="w-full h-[220px] object-cover">
-                        <div class="p-6 h-[200px] flex flex-col justify-between"> 
+                        <img src="{{ $katalog->gambar }}" alt="{{ $katalog->judul }}" class="w-full h-[220px] object-cover">
+                        <div class="p-6 h-[200px] flex flex-col justify-between">
                             <div>
-                                <h3 class="font-bold text-white text-2xl">Aircraft Structure</h3>
+                                <h3 class="font-bold text-white text-2xl">{{ $katalog->judul }}</h3>
                             </div>
-                            <div class="flex justify-between items-end"> 
+                            <div class="flex justify-between items-end">
                                 <div>
-                                    <p class="text-gray-400">January 28, 2025</p>
-                                    <p class="text-gray-400">Aircraft Lab</p>
+                                    <p class="text-gray-400">{{ \Carbon\Carbon::parse($katalog->tanggal_mulai)->format('F d, Y') }}</p>
+                                    <p class="text-gray-400">{{ $katalog->lokasi }}</p>
                                 </div>
-                                <button class="inline-flex items-center px-4 py-2 bg-white rounded-full text-[#001E42]">
-                                    See →
-                                </button>
+                                <a href="{{ route('catalog.detail', $katalog->slug) }}" 
+                                    class="px-4 py-1 rounded-full border border-white text-white hover:bg-white hover:text-[#10162C] transition-all duration-300 flex items-center space-x-1 group">
+                                     <span>See</span>
+                                     <span class="transform translate-x-0 group-hover:translate-x-1 transition-transform duration-300">→</span>
+                                </a>
                             </div>
-                        </div> 
-                    </div>
-
-                <!-- Card 2 -->
-                <div class="flex-none bg-[#001E42] rounded-2xl overflow-hidden w-[380px]">
-                    <img src="{{ asset('images/catalog2.png') }}" alt="Aircraft Systems Engineering" class="w-full h-[220px] object-cover">
-                    <div class="p-6 h-[200px] flex flex-col justify-between">
-                        <div>
-                            <h3 class="font-bold text-white text-2xl">Aircraft Systems Engineering</h3>
-                        </div>
-                        <div class="flex justify-between items-end"> 
-                            <div>
-                                <p class="text-gray-400">January 28, 2025</p>
-                                <p class="text-gray-400">Aircraft Lab</p>
-                            </div>
-                            <button class="inline-flex items-center px-4 py-2 bg-white rounded-full text-[#001E42]">
-                                See →
-                            </button>
                         </div>
                     </div>
-                </div>
-
-                <!-- Card 3 -->
-                <div class="flex-none bg-[#001E42] rounded-2xl overflow-hidden w-[380px]">
-                    <img src="{{ asset('images/catalog3.png') }}" alt="Manufacturing Process" class="w-full h-[220px] object-cover">
-                    <div class="p-6 h-[200px] flex flex-col justify-between">
-                        <div>
-                            <h3 class="font-bold text-white text-2xl">Manufacturing Process Optimization</h3>
-                        </div>
-                        <div class="flex justify-between items-end"> 
-                            <div>
-                                <p class="text-gray-400">February 06, 2025</p>
-                                <p class="text-gray-400">Manufact Lab</p>
-                            </div>
-                            <button class="inline-flex items-center px-4 py-2 bg-white rounded-full text-[#001E42]">
-                                See →
-                            </button>
-                        </div>
+                    @empty
+                    <div class="text-center w-full py-8">
+                        <p class="text-gray-500">No training courses available at the moment.</p>
                     </div>
-                </div>
-
-                <!-- Card 4 -->
-                <div class="flex-none bg-[#001E42] rounded-2xl overflow-hidden w-[380px]">
-                    <img src="{{ asset('images/catalog4.png') }}" alt="Structural Repair" class="w-full h-[220px] object-cover">
-                    <div class="p-6 h-[200px] flex flex-col justify-between">
-                        <div>
-                            <h3 class="font-bold text-white text-2xl">Structural Repair Techniques</h3>
-                        </div>
-                        <div class="flex justify-between items-end"> 
-                            <div>
-                                <p class="text-gray-400">Maret 10, 2025</p>
-                                <p class="text-gray-400">HC3000 lt.1</p>
-                            </div>
-                            <button class="inline-flex items-center px-4 py-2 bg-white rounded-full text-[#001E42]">
-                                See →
-                            </button>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Card 5 -->
-                <div class="flex-none bg-[#001E42] rounded-2xl overflow-hidden w-[380px]">
-                    <img src="{{ asset('images/catalog5.png') }}" alt="Supply Chain" class="w-full h-[220px] object-cover">
-                    <div class="p-6 h-[200px] flex flex-col justify-between">
-                        <div>
-                            <h3 class="font-bold text-white text-2xl">Aircraft Systems Engineering</h3>
-                        </div>
-                        <div class="flex justify-between items-end"> 
-                            <div>
-                                <p class="text-gray-400">January 28, 2025</p>
-                                <p class="text-gray-400">Aircraft Lab</p>
-                            </div>
-                            <button class="inline-flex items-center px-4 py-2 bg-white rounded-full text-[#001E42]">
-                                See →
-                            </button>
-                        </div>
-                    </div>
+                    @endforelse
                 </div>
             </div>
-        </div>
         </div>
 
         <style>

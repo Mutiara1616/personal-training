@@ -11,8 +11,11 @@ use App\Http\Controllers\PaymentHistoryController;
 
 // Homepage route
 Route::get('/', function () {
-    return view('welcome');
-})->name('home'); 
+    $katalogs = \App\Models\Katalog::orderBy('tanggal_mulai', 'asc')
+        ->take(5)  // Ambil 5 katalog terbaru
+        ->get();
+    return view('welcome', compact('katalogs'));
+})->name('home');
 
 Route::get('/catalog', function () {
     $katalogs = Katalog::orderBy('tanggal_mulai', 'asc')->get();

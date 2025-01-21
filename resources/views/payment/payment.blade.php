@@ -34,27 +34,31 @@
                                 <div>
                                     <label class="block text-[#10162C] text-sm font-medium mb-2">Full Name</label>
                                     <input type="text" name="name" value="{{ auth('member')->user()->name }}" required 
-                                           class="w-full px-4 py-3 rounded-xl border-2 border-blue-100 focus:border-blue-600 focus:ring-1 focus:ring-blue-600">
+                                           class="w-full px-4 py-3 rounded-xl border-2 border-blue-100 bg-gray-50">
                                 </div>
                                 
                                 <!-- Email field -->
                                 <div>
                                     <label class="block text-[#10162C] text-sm font-medium mb-2">Email</label>
-                                    <input type="email" name="email" value="{{ auth('member')->user()->email }}" required 
-                                           class="w-full px-4 py-3 rounded-xl border-2 border-blue-100 focus:border-blue-600 focus:ring-1 focus:ring-blue-600">
+                                    <input type="text" 
+                                           value="{{ auth('member')->user()->email }}" 
+                                           readonly 
+                                           class="w-full px-4 py-3 rounded-xl border-2 border-blue-100 bg-gray-50">
+                                    <!-- Tambahkan hidden input untuk menyimpan nilai email -->
+                                    <input type="hidden" name="email" value="{{ auth('member')->user()->email }}">
                                 </div>
                                 
                                 <!-- Phone field -->
                                 <div>
                                     <label class="block text-[#10162C] text-sm font-medium mb-2">Phone Number</label>
                                     <input type="tel" name="phone" required 
-                                           class="w-full px-4 py-3 rounded-xl border-2 border-blue-100 focus:border-blue-600 focus:ring-1 focus:ring-blue-600">
+                                           class="w-full px-4 py-3 rounded-xl border-2 border-blue-100 focus:border-blue-200 focus:ring-1 focus:ring-blue-600">
                                 </div>
                                 
                                 <!-- Participants field -->
                                 <div>
                                     <label class="block text-[#10162C] text-sm font-medium mb-2">Number of Participants</label>
-                                    <input type="number" name="participants" id="participants" min="1" required 
+                                    <input type="number" name="participants" id="participants" min="1" value="1" oninput="this.value = this.value <= 0 ? 1 : Math.abs(this.value)" required 
                                            class="w-full px-4 py-3 rounded-xl border-2 border-blue-100 focus:border-blue-600 focus:ring-1 focus:ring-blue-600">
                                 </div>
                                 
@@ -68,7 +72,9 @@
                                 <!-- Training Date (readonly) -->
                                 <div>
                                     <label class="block text-[#10162C] text-sm font-medium mb-2">Training Date</label>
-                                    <input type="date" value="{{ $katalog->tanggal_mulai }}" readonly 
+                                    <input type="text" 
+                                           value="{{ \Carbon\Carbon::parse($katalog->tanggal_mulai)->format('d/m/Y') }}" 
+                                           readonly 
                                            class="w-full px-4 py-3 rounded-xl border-2 border-blue-100 bg-gray-50">
                                 </div>
                             </div>
@@ -82,7 +88,7 @@
                             <div class="mb-6">
                                 <label class="block text-[#10162C] text-sm font-medium mb-2">Bank Account</label>
                                 <div class="w-full px-4 py-3 rounded-xl border-2 border-blue-100 bg-white flex items-center space-x-3">
-                                    <img src="{{ asset('images/bsi.png') }}" alt="BSI Logo" class="h-8 w-auto">
+                                    <img src="{{ asset('images/bsi.png') }}" alt="BSI Logo" class="h-6 w-auto">
                                     <div class="flex-1">
                                         <p class="text-[#10162C] font-medium">BSI (Bank Syariah Indonesia)</p>
                                         <p class="text-gray-600 text-sm">3974**********8472</p>
@@ -127,7 +133,7 @@
                             
                             <!-- Payment Button -->
                             <button type="submit" id="paymentButton"
-                                    class="w-full py-4 bg-[#10162C] text-white rounded-full hover:bg-blue-900 transition-all duration-300 flex items-center justify-center space-x-2">
+                                    class="w-full py-4 bg-[#10162C] text-white rounded-full hover:bg-blue-700 transition-all duration-300 flex items-center justify-center space-x-2">
                                 <span>Payment</span>
                                 <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
                                     <path fill-rule="evenodd" d="M12.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-2.293-2.293a1 1 0 010-1.414z" clip-rule="evenodd" />
@@ -142,8 +148,11 @@
         <script>
             // Kalkulasi harga
             document.getElementById('participants').addEventListener('change', function() {
+            if (this.value < 1) {
+            this.value = 1;
+    }
                 const basePrice = {{ $katalog->harga }};
-                const participants = this.value;
+                const participants = Math.abs(parseInt(this.value));
                 const totalAmount = basePrice * participants;
                 const tax = totalAmount * 0.1;
                 const finalAmount = totalAmount + tax;
