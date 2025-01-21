@@ -4,82 +4,189 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Payment</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     @vite('resources/css/app.css')
+    <style>
+        * {
+            font-family: 'Poppins', sans-serif;
+        }
+    </style>
 </head>
-<body class="bg-white">
+<body class="bg-gray-100">
     <x-app-layout>
-        <x-slot name="title">
-            Home - PT Dirgantara Indonesia
-        </x-slot>
+       
 
         <!-- Payment Form -->
-        <main class="container mx-auto px-8 py-12">
-            <div class="max-w-6xl mx-auto bg-white rounded-[32px] border-2 border-blue-200 p-12">
-                <div class="grid grid-cols-2 gap-12">
+        <main class="container mx-auto px-4 py-8">
+            <div class="max-w-6xl mx-auto bg-white rounded-3xl shadow-sm p-8">
+                <div class="grid md:grid-cols-2 gap-8">
                     <!-- Left Column - Payment Details -->
-                    <div>
-                        <h2 class="text-2xl font-semibold mb-8">Payment Details</h2>
-                        <form method="POST" action="{{ route('payment.store') }}" class="space-y-6" enctype="multipart/form-data">
+                    <div class="space-y-6">
+                        <h2 class="text-2xl font-bold">Payment Details</h2>
+                        <form method="POST" action="{{ route('payment.store') }}" enctype="multipart/form-data">
                             @csrf
                             <input type="hidden" name="katalog_id" value="{{ $katalog->id }}">
-                            <div>
-                                <label class="block mb-2">Full Name</label>
-                                <input type="text" name="name" placeholder="Enter your name" required class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500">
-                            </div>
-                            <div>
-                                <label class="block mb-2">Email</label>
-                                <input type="email" name="email" placeholder="Enter your email address" required class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500">
-                            </div>
-                            <div>
-                                <label class="block mb-2">Phone Number</label>
-                                <input type="tel" name="phone" placeholder="Enter your phone number" required class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500">
-                            </div>
-                            <div>
-                                <label class="block mb-2">Number of Participants</label>
-                                <input type="number" name="participants" id="participants" placeholder="Enter number of participants" required class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500">
-                            </div>
-                            <div>
-                                <label class="block mb-2">Training Package</label>
-                                <input type="text" name="package" value="{{ $katalog->judul }}" readonly class="w-full px-4 py-3 rounded-lg border border-gray-300 bg-gray-50">
-                            </div>
-                            <div>
-                                <label class="block mb-2">Training Date</label>
-                                <input type="date" name="training_date" value="{{ $katalog->tanggal_mulai }}" readonly class="w-full px-4 py-3 rounded-lg border border-gray-300 bg-gray-50">
-                            </div>
-                            <div>
-                                <label class="block mb-2">Payment Proof</label>
-                                <input type="file" name="bukti_transfer" required class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500">
-                            </div>
-                            <input type="hidden" name="amount" id="total_amount" value="{{ $katalog->harga }}">
-                            <input type="hidden" name="payment_method" id="payment_method" value="bank_transfer">
-
-                            <!-- Payment Methods -->
-                            <div>
-                                <h2 class="text-2xl font-semibold mb-8">Payment Methods</h2>
-                                <!-- Dropdown Container -->
-                                <div class="relative mb-6">
-                                    <!-- Payment method selection -->
-                                    <select name="bank_name" class="w-full p-4 bg-white rounded-lg border-2 border-gray-200 appearance-none">
-                                        <option value="bri">BRI - 3974**********8472</option>
-                                        <option value="bca">BCA - 1234**********8765</option>
-                                    </select>
+                            
+                            <div class="space-y-4">
+                                <div>
+                                    <label class="block text-sm font-medium mb-1">Full Name</label>
+                                    <input type="text" name="name" placeholder="Enter your name" required 
+                                           class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-500 focus:border-transparent">
                                 </div>
-
-                                <!-- Price Summary -->
-                                <div class="flex justify-between items-center mb-6">
-                                    <span>Due Today</span>
-                                    <div class="text-right">
-                                        <span class="text-3xl font-bold" id="display_amount">Rp {{ number_format($katalog->harga, 2) }}</span>
-                                        <span class="text-gray-500">/Person</span>
-                                    </div>
+                                
+                                <div>
+                                    <label class="block text-sm font-medium mb-1">Email</label>
+                                    <input type="email" name="email" placeholder="Enter your email address" required 
+                                           class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-500 focus:border-transparent">
                                 </div>
-
-                                <!-- Payment Button -->
-                                <button type="submit" class="w-full py-3 bg-[#3B4EDB] text-white rounded-full hover:bg-blue-700">
-                                    Payment
-                                </button>
+                                
+                                <div>
+                                    <label class="block text-sm font-medium mb-1">Phone Number</label>
+                                    <input type="tel" name="phone" placeholder="Enter your phone number" required 
+                                           class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+                                </div>
+                                
+                                <div>
+                                    <label class="block text-sm font-medium mb-1">Number of Participants</label>
+                                    <input type="number" name="participants" id="participants" placeholder="Enter number of participants" required 
+                                           class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+                                </div>
+                                
+                                <div>
+                                    <label class="block text-sm font-medium mb-1">Training Package</label>
+                                    <input type="text" name="package" value="{{ $katalog->judul }}" readonly 
+                                           class="w-full px-4 py-3 rounded-lg border border-gray-300 bg-gray-50">
+                                </div>
+                                
+                                <div>
+                                    <label class="block text-sm font-medium mb-1">Training Date</label>
+                                    <input type="date" name="training_date" value="{{ $katalog->tanggal_mulai }}" readonly 
+                                           class="w-full px-4 py-3 rounded-lg border border-gray-300 bg-gray-50">
+                                </div>
                             </div>
                         </form>
+                    </div>
+
+                      <!-- Right Column - Payment Methods & Summary -->
+                    <div class="space-y-6">
+                        <h2 class="text-2xl font-bold">Payment Methods</h2>
+                        
+                        <!-- Payment Method Selection -->
+                        <div class="space-y-2">
+                            <label class="block text-lg font-medium">Debit Card</label>
+                            <div class="relative">
+                                <div class="rounded-lg border border-gray-200" id="payment-dropdown">
+                                    <!-- Dropdown Header -->
+                                    <div class="flex items-center justify-between p-4 cursor-pointer hover:bg-gray-50" id="dropdown-header">
+                                        <!-- Default Visa Display -->
+                                        <div class="flex items-center gap-2" id="visa-display">
+                                            <img src="{{ asset('images/visa.png') }}" alt="Visa" class="h-5 w-auto">
+                                            <span class="text-lg">Debit Card</span>
+                                        </div>
+                                        <!-- BSI Display (Initially Hidden) -->
+                                        <div class="flex items-center gap-2 hidden" id="bsi-display">
+                                            <span class="text-[#0066FF] font-semibold">BSI</span>
+                                            <span class="text-gray-600">- 3974**********8472</span>
+                                        </div>
+                                        <svg class="w-5 h-5 text-gray-400 transform transition-transform duration-200" id="dropdown-arrow" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                                        </svg>
+                                    </div>
+                                </div>
+                                <!-- BSI Account Info (Dropdown Content) -->
+                                <div class="hidden absolute w-full mt-1 bg-gray-50 rounded-lg border border-gray-200 p-4 z-10" id="bsi-info">
+                                    <div class="flex items-center gap-2 cursor-pointer" onclick="selectBSI()">
+                                        <span class="text-[#0066FF] font-semibold">BSI</span>
+                                        <span class="text-gray-600">- 3974**********8472</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <script>
+                            document.addEventListener('DOMContentLoaded', function() {
+                                const dropdownHeader = document.getElementById('dropdown-header');
+                                const bsiInfo = document.getElementById('bsi-info');
+                                const dropdownArrow = document.getElementById('dropdown-arrow');
+                                const visaDisplay = document.getElementById('visa-display');
+                                const bsiDisplay = document.getElementById('bsi-display');
+                                let isOpen = false;
+                                let isBSISelected = false;
+
+                                window.selectBSI = function() {
+                                    visaDisplay.classList.add('hidden');
+                                    bsiDisplay.classList.remove('hidden');
+                                    bsiInfo.classList.add('hidden');
+                                    dropdownArrow.classList.remove('rotate-180');
+                                    isBSISelected = true;
+                                    isOpen = false;
+                                }
+
+                                dropdownHeader.addEventListener('click', function() {
+                                    if (!isBSISelected) {
+                                        isOpen = !isOpen;
+                                        if (isOpen) {
+                                            bsiInfo.classList.remove('hidden');
+                                            dropdownArrow.classList.add('rotate-180');
+                                        } else {
+                                            bsiInfo.classList.add('hidden');
+                                            dropdownArrow.classList.remove('rotate-180');
+                                        }
+                                    }
+                                });
+
+                                // Close dropdown when clicking outside
+                                document.addEventListener('click', function(event) {
+                                    if (!event.target.closest('#payment-dropdown') && !event.target.closest('#bsi-info')) {
+                                        bsiInfo.classList.add('hidden');
+                                        dropdownArrow.classList.remove('rotate-180');
+                                        isOpen = false;
+                                    }
+                                });
+                            });
+                        </script>
+                        <!-- Order Summary -->
+                        <div>
+                            <h2 class="text-2xl font-bold mb-4">Order Summary</h2>
+                            <div class="space-y-3">
+                                <div class="flex justify-between">
+                                    <span class="text-gray-600">Balance Amount:</span>
+                                    <span class="font-medium">Rp. 29.000.000,00</span>
+                                </div>
+                                <div class="flex justify-between">
+                                    <span class="text-gray-600">Tax (10%):</span>
+                                    <span class="font-medium">Rp. 2.900.000,00</span>
+                                </div>
+                                <div class="flex justify-between pt-3 border-t">
+                                    <div>
+                                        <span class="font-medium">Total:</span>
+                                        <span class="text-gray-500 text-sm">(Inc. Tax)</span>
+                                    </div>
+                                    <span class="text-xl font-bold">Rp. 29.900.000,00</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- File Upload -->
+                        <div>
+                            <p class="text-sm text-gray-600 mb-2">Proof of Transfer Payment (250 Kb)</p>
+                            <div class="flex items-center border border-gray-300 rounded-lg overflow-hidden">
+                                <div class="flex-1">
+                                    <input type="file" name="bukti_transfer" required
+                                           class="block w-full text-sm text-gray-500 px-3 py-2
+                                                  file:mr-4 file:py-2 file:px-4
+                                                  file:rounded-full file:border-0
+                                                  file:text-sm file:font-medium
+                                                  file:bg-gray-100 file:text-gray-700
+                                                  hover:file:bg-gray-200">
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Payment Button -->
+                        <button type="submit" class="w-full py-4 bg-blue-600 text-white rounded-full hover:bg-blue-700 font-medium">
+                            Payment
+                        </button>
                     </div>
                 </div>
             </div>
@@ -91,9 +198,19 @@
                 const basePrice = {{ $katalog->harga }};
                 const participants = this.value;
                 const totalAmount = basePrice * participants;
+                const tax = totalAmount * 0.1;
+                const finalAmount = totalAmount + tax;
                 
-                document.getElementById('total_amount').value = totalAmount;
-                document.getElementById('display_amount').textContent = 'Rp ' + totalAmount.toLocaleString('id-ID', {
+                // Update display amounts
+                document.getElementById('balance-amount').textContent = 'Rp. ' + totalAmount.toLocaleString('id-ID', {
+                    minimumFractionDigits: 2,
+                    maximumFractionDigits: 2
+                });
+                document.getElementById('tax-amount').textContent = 'Rp. ' + tax.toLocaleString('id-ID', {
+                    minimumFractionDigits: 2,
+                    maximumFractionDigits: 2
+                });
+                document.getElementById('total-amount').textContent = 'Rp. ' + finalAmount.toLocaleString('id-ID', {
                     minimumFractionDigits: 2,
                     maximumFractionDigits: 2
                 });
