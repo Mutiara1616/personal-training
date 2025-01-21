@@ -6,6 +6,7 @@ use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\Auth\ResetPasswordController;
 use App\Models\Katalog;
+use Illuminate\Support\Facades\Mail;
 
 // Homepage route
 Route::get('/', function () {
@@ -58,3 +59,23 @@ Route::get('/reset-password', [ResetPasswordController::class, 'create'])
 
 Route::post('/reset-password', [ResetPasswordController::class, 'reset'])
     ->name('password.update');
+
+    Route::get('/test', function() {
+        try {
+            $details = [
+                'to' => 'mutiarasabrina1616@gmail.com',
+                'subject' => 'Test Email',
+                'body' => 'This is a test email'
+            ];
+            
+            Mail::raw($details['body'], function($message) use ($details) {
+                $message->from(env('MAIL_FROM_ADDRESS'), env('MAIL_FROM_NAME'))
+                       ->to($details['to'])
+                       ->subject($details['subject']);
+            });
+            
+            return "Email sent successfully!";
+        } catch (\Exception $e) {
+            return "Error: " . $e->getMessage() . "\nTrace: " . $e->getTraceAsString();
+        }
+    });
