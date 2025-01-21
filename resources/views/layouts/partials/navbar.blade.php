@@ -6,6 +6,9 @@
         <a href="/" class="{{ request()->is('/') ? 'text-blue-900 font-medium border-b-2 border-blue-900' : 'text-gray-400' }}">Home</a>
         <a href="{{ route('catalog') }}" class="{{ request()->routeIs('catalog*') ? 'text-blue-900 font-medium border-b-2 border-blue-900' : 'text-gray-400' }}">Catalog</a>
         <a href="{{ route('contact') }}" class="{{ request()->routeIs('contact') ? 'text-blue-900 font-medium border-b-2 border-blue-900' : 'text-gray-400' }}">Contact</a>
+        @auth('member')
+            <a href="{{ route('payment.history') }}" class="{{ request()->routeIs('payment.history') ? 'text-blue-900 font-medium border-b-2 border-blue-900' : 'text-gray-400' }}">Payment History</a>
+        @endauth
     </div>
     <div>
         @auth('member')

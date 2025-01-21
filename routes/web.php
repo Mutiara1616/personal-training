@@ -7,6 +7,7 @@ use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\Auth\ResetPasswordController;
 use App\Models\Katalog;
 use Illuminate\Support\Facades\Mail;
+use App\Http\Controllers\PaymentHistoryController;
 
 // Homepage route
 Route::get('/', function () {
@@ -24,16 +25,23 @@ Route::get('/catalog/{slug}', function ($slug) {
 })->name('catalog.detail');
 
 // Payment routes
+
+Route::get('/payment/success', function() {
+    return view('payment.success');
+})->name('payment.success')->middleware('auth:member');
+
+Route::get('/payment/history', [PaymentHistoryController::class, 'index'])
+    ->name('payment.history')
+    ->middleware('auth:member');
+
 Route::get('/payment/{katalog_id}', function ($katalog_id) {
     $katalog = App\Models\Katalog::findOrFail($katalog_id);
     return view('payment.payment', compact('katalog'));
 })->name('payment')->middleware('auth:member');
 
-Route::post('/payment', [PaymentController::class, 'store'])->name('payment.store')->middleware('auth:member');
-
-Route::get('/payment/success', function() {
-    return view('payment.success');
-})->name('payment.success')->middleware('auth:member');
+Route::post('/payment', [PaymentController::class, 'store'])
+    ->name('payment.store')
+    ->middleware('auth:member');
 
 Route::get('/contact', function () {
     return view('contact.contact');
