@@ -17,7 +17,8 @@ class Katalog extends Model
        'tanggal_mulai',
        'tanggal_selesai',
        'lokasi',
-       'gambar'
+       'gambar',
+       'whatsapp'
    ];
 
    protected $casts = [

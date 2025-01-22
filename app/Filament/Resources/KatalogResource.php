@@ -67,6 +67,15 @@ class KatalogResource extends Resource
                             ->numeric()
                             ->prefix('Rp'),
 
+                        Forms\Components\TextInput::make('whatsapp')
+                            ->label('Nomor WhatsApp Admin')
+                            ->required()
+                            ->prefix('+62')
+                            ->helperText('85803228042')
+                            ->maxLength(15)
+                            ->rules(['required', 'regex:/^[1-9][0-9]{9,}$/'])
+                            ->placeholder('85803228042'),
+
                         FileUpload::make('gambar')
                             ->label('Gambar')
                             ->image()
@@ -109,6 +118,11 @@ class KatalogResource extends Resource
                 Tables\Columns\ImageColumn::make('gambar')
                     ->label('Gambar')
                     ->size(100),
+                    
+                Tables\Columns\TextColumn::make('whatsapp')
+                    ->label('WhatsApp Admin')
+                    ->searchable()
+                    ->formatStateUsing(fn (string $state): string => '+62 ' . $state),
             ])
             ->filters([
                 //
