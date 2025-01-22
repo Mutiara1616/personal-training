@@ -102,16 +102,24 @@
                     </div>
                 </div>
 
-                <p class="text-gray-500 mb-8">
-                    Thank you for your payment. We have received your payment submission 
-                    and it is currently under review. You will receive an email confirmation once 
-                    your payment has been verified.
-                </p>
-
-                <a href="{{ route('catalog') }}" 
-                   class="inline-flex items-center px-8 py-3 bg-[#25317C] text-white rounded-full hover:bg-blue-800 transition-colors">
-                    Back to Catalog
-                </a>
+                <div class="text-center mb-8">
+                    <p class="text-gray-600 mb-4">
+                        Thank you for your payment. We have received your payment submission and it is currently under review.
+                        You will receive an email confirmation once your payment has been verified.
+                    </p>
+                </div>
+    
+                <!-- Navigation Buttons -->
+                <div class="flex justify-center space-x-4">
+                    <a href="{{ route('catalog') }}" 
+                       class="inline-flex items-center px-6 py-3 bg-[#25317C] text-white rounded-full hover:bg-blue-800 transition duration-300">
+                        Back to Catalog
+                    </a>
+                    <a href="{{ route('feedback.create') }}" 
+                       class="inline-flex items-center px-6 py-3 bg-green-600 text-white rounded-full hover:bg-green-700 transition duration-300">
+                        Give Feedback
+                    </a>
+                </div>
             </div>
         </main>
     </x-app-layout>

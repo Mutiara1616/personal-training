@@ -8,6 +8,7 @@ use App\Http\Controllers\Auth\ResetPasswordController;
 use App\Models\Katalog;
 use Illuminate\Support\Facades\Mail;
 use App\Http\Controllers\PaymentHistoryController;
+use App\Http\Controllers\FeedbackController;
 
 // Homepage route
 Route::get('/', function () {
@@ -26,6 +27,13 @@ Route::get('/catalog/{slug}', function ($slug) {
     $katalog = Katalog::where('slug', $slug)->firstOrFail();
     return view('katalog.detail', compact('katalog'));
 })->name('catalog.detail');
+
+Route::middleware(['auth:member'])->group(function () {
+    Route::get('/catalog/{slug}/negotiation', function ($slug) {
+        $katalog = Katalog::where('slug', $slug)->firstOrFail();
+        return view('katalog.detail', compact('katalog'));
+    })->name('catalog.negotiation');
+});
 
 // Payment routes
 
@@ -70,6 +78,11 @@ Route::get('/reset-password', [ResetPasswordController::class, 'create'])
 
 Route::post('/reset-password', [ResetPasswordController::class, 'reset'])
     ->name('password.update');
+
+Route::middleware(['auth:member'])->group(function () {
+    Route::get('/feedback', [FeedbackController::class, 'create'])->name('feedback.create');
+    Route::post('/feedback', [FeedbackController::class, 'store'])->name('feedback.store');
+});
 
     Route::get('/test', function() {
         try {

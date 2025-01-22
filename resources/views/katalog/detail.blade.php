@@ -10,7 +10,7 @@
     <x-app-layout>
         <x-slot name="title">
             Home - PT Dirgantara Indonesia
-        </x-slot>
+        </x-slot> 
 
         <!-- Detail Content -->
         <main class="container mx-auto px-8 py-12">
@@ -23,7 +23,6 @@
                 <div class="flex mb-4">
                     <span class="text-yellow-400">★★★★★</span>
                 </div>
-
                 <!-- Title -->
                 <h1 class="text-3xl font-bold mb-4">{{ $katalog->judul }}</h1>
 
@@ -49,14 +48,23 @@
                     <!-- Action Buttons -->
                     <div class="space-x-4">
                         @if($katalog->whatsapp)
-                            <button onclick="window.open('https://wa.me/62{{ $katalog->whatsapp }}?text=Halo, saya tertarik dengan pelatihan {{ urlencode($katalog->judul) }}. Mohon informasi lebih lanjut.')" class="px-8 py-3 bg-blue-900 text-white rounded-full hover:bg-blue-800">
-                                Start The Negotiation
-                            </button>
+                            @auth('member')
+                                <button onclick="window.open('https://wa.me/62{{ $katalog->whatsapp }}?text=Halo, saya tertarik dengan pelatihan {{ urlencode($katalog->judul) }}. Mohon informasi lebih lanjut.')" 
+                                        class="px-8 py-3.5 bg-blue-900 text-white rounded-full hover:bg-blue-800">
+                                    Start The Negotiation
+                                </button>
+                            @else
+                                <a href="{{ route('login') }}" 
+                                class="px-8 py-3.5 bg-blue-900 text-white rounded-full hover:bg-blue-800">
+                                    Login to Negotiate
+                                </a>
+                            @endauth
                         @endif
+
                         <a href="{{ Auth::guard('member')->check() ? route('payment', $katalog->id) : route('login') }}" 
                             class="inline-block px-8 py-3 border border-blue-900 text-blue-900 rounded-full hover:bg-blue-50">
-                             {{ Auth::guard('member')->check() ? 'Payment' : 'Login to Pay' }}
-                         </a>
+                            {{ Auth::guard('member')->check() ? 'Payment' : 'Login to Pay' }}
+                        </a>
                     </div>
                 </div>
             </div>
