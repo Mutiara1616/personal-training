@@ -9,6 +9,7 @@ use App\Models\Katalog;
 use Illuminate\Support\Facades\Mail;
 use App\Http\Controllers\PaymentHistoryController;
 use App\Http\Controllers\FeedbackController;
+use App\Http\Controllers\CertificateController;
 
 // Homepage route
 Route::get('/', function () {
@@ -44,6 +45,23 @@ Route::get('/payment/success', function() {
 Route::get('/payment/history', [PaymentHistoryController::class, 'index'])
     ->name('payment.history')
     ->middleware('auth:member');
+
+    
+
+// Add this route for the claim certificate form page
+Route::get('/certificate/claim/{payment}', [CertificateController::class, 'showClaimForm'])
+    ->name('certificate.claim')
+    ->middleware(['auth:member']);
+
+// Modify the existing certificate download route
+Route::get('/certificate/{payment}', [CertificateController::class, 'download'])
+    ->name('certificate.download')
+    ->middleware(['auth:member']);
+
+// Add this route to handle the certificate claim form submission
+Route::post('/certificate/claim/{payment}', [CertificateController::class, 'processClaim'])
+    ->name('certificate.process-claim')
+    ->middleware(['auth:member']);
 
 Route::get('/payment/{katalog_id}', function ($katalog_id) {
     $katalog = App\Models\Katalog::findOrFail($katalog_id);
