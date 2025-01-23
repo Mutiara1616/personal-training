@@ -24,7 +24,7 @@
             background-color: #3B4FBF;
             color: white;
             padding: 8px 24px;
-            border-radius: 8px;
+            border-radius: 20px;
             display: flex;
             align-items: center;
             gap: 8px;
@@ -69,14 +69,34 @@
             <form action="{{ route('feedback.store') }}" method="POST">
                 @csrf
                 
+                <script>
+                    document.addEventListener('DOMContentLoaded', function() {
+                       const stars = document.querySelectorAll('.star');
+                       const ratingInput = document.querySelector('input[name="rating"]');
+                       
+                       stars.forEach((star, index) => {
+                           star.style.color = '#E5E7EB'; // Set initial gray color
+                           
+                           star.addEventListener('click', () => {
+                               ratingInput.value = index + 1;
+                               // Only update colors on click
+                               stars.forEach((s, i) => {
+                                   s.style.color = i <= index ? '#FFD700' : '#E5E7EB';
+                               });
+                           });
+                       });
+                    });
+                </script>
+                
                 <div class="mb-6">
                     <p class="text-base mb-4">Please Rate The Personal Training Quality! (Optional)</p>
-                    <div class="star-rating flex">
-                        <span class="star">★</span>
-                        <span class="star">★</span>
-                        <span class="star">★</span>
-                        <span class="star">★</span>
-                        <span class="star" style="color: #E5E7EB;">★</span>
+                    <div class="star-rating flex justify-center space-x-4">
+                        <input type="hidden" name="rating" value="0">
+                        <span class="star cursor-pointer text-5xl">★</span>
+                        <span class="star cursor-pointer text-5xl">★</span>
+                        <span class="star cursor-pointer text-5xl">★</span>
+                        <span class="star cursor-pointer text-5xl">★</span>
+                        <span class="star cursor-pointer text-5xl">★</span>
                     </div>
                 </div>
                 
@@ -85,28 +105,45 @@
                     <div class="textarea-container">
                         <textarea
                             name="feedback"
+                            id="feedback"
                             class="w-full border border-gray-200 rounded-lg p-4 resize-none"
                             rows="4"
                             placeholder="Best Personal Training in my entire life! Highly Recommend"
+                            onkeyup="countWords(this)"
                         ></textarea>
-                        <div class="word-count">
-                            240 Words Left
-                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                <circle cx="12" cy="12" r="10"/>
-                                <path d="M8 14s1.5 2 4 2 4-2 4-2"/>
-                                <line x1="9" y1="9" x2="9.01" y2="9"/>
-                                <line x1="15" y1="9" x2="15.01" y2="9"/>
-                            </svg>
+
+                        <div class="word-count" id="wordCount">
+                            50 Words Left
                         </div>
                     </div>
+                     
+                    <script>
+                        function countWords(textarea) {
+                        const maxWords = 50;
+                        const words = textarea.value.trim().split(/\s+/).filter(Boolean);
+                        
+                        if (words.length > maxWords) {
+                            textarea.value = words.slice(0, maxWords).join(' ') + ' ';
+                            document.getElementById('wordCount').textContent = '0 Words Left';
+                            return false;
+                        }
+                        
+                        const wordsLeft = maxWords - words.length;
+                        document.getElementById('wordCount').textContent = `${wordsLeft} Words Left`;
+                        return true;
+                        }
+
+                        document.getElementById('feedback').addEventListener('input', function(e) {
+                        if (!countWords(this)) {
+                            e.preventDefault();
+                        }
+                        });
+                    </script>
                 </div>
                 
                 <div class="flex justify-end">
                     <button type="submit" class="upload-button">
-                        Upload
-                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <path d="M3 15v4c0 1.1.9 2 2 2h14a2 2 0 0 0 2-2v-4M17 8l-5-5-5 5M12 3v12"/>
-                        </svg>
+                        Submit
                     </button>
                 </div>
             </form>

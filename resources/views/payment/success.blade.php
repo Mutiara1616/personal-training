@@ -1,3 +1,4 @@
+{{-- success.blade.php --}}
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 <head>
@@ -68,37 +69,38 @@
                 </div>
                 
                 <h1 class="text-3xl font-bold text-gray-900 mb-4">Payment Successfully Submitted!</h1>
-                <p class="text-gray-500 mb-4">The has been sent to mutiara@gmail.com</p>
+                <p class="text-gray-500 mb-4">The confirmation has been sent to {{ Auth::guard('member')->user()->email }}</p>
 
                 <div class="bg-white rounded-lg shadow-sm border border-gray-100 p-8 mb-8">
                     <div class="grid grid-cols-2 gap-y-6">
                         <div class="text-left text-gray-500">Full Name</div>
-                        <div class="text-right">Mutiara Sabrina</div>
+                        <div class="text-right">{{ session('payment_details.name') }}</div>
                         
                         <div class="text-left text-gray-500">Email</div>
-                        <div class="text-right">mutiara@gmail.com</div>
+                        <div class="text-right">{{ session('payment_details.email') }}</div>
                         
                         <div class="text-left text-gray-500">Phone Number</div>
-                        <div class="text-right">081381959775</div>
+                        <div class="text-right">{{ session('payment_details.phone') }}</div>
                         
                         <div class="text-left text-gray-500">Number of Participants</div>
-                        <div class="text-right">10</div>
+                        <div class="text-right">{{ session('payment_details.participants') }}</div>
                         
                         <div class="text-left text-gray-500">Training Package</div>
-                        <div class="text-right">Painting Aircraft</div>
+                        <div class="text-right">{{ session('payment_details.training_package') }}</div>
                         
                         <div class="text-left text-gray-500">Training Date</div>
-                        <div class="text-right">16/5/2025-21/5/2025</div>
+                        <div class="text-right">{{ session('payment_details.training_date') }}</div>
+
+                        <div class="col-span-2 border-t w-full"></div>
                         
-                        <div class="text-left text-gray-500 pt-4 border-t">Balance Amount:</div>
-                        <div class="text-right pt-4 border-t">Rp. 29.000.000,00</div>
+                        <div class="text-left text-gray-500">Balance Amount :</div>
+                        <div class="text-right">Rp {{ number_format(session('payment_data.balance_amount', 0), 2, ',', '.') }}</div>
                         
                         <div class="text-left text-gray-500">Tax (10%):</div>
-                        <div class="text-right">Rp. 2.900.000,00</div>
-                        
-                        <div class="text-left text-gray-700 font-medium pt-4 border-t">Total:</div>
-                        <div class="text-right text-xl font-bold pt-4 border-t">Rp.29.900.000,00</div>
-                        <div class="text-left text-gray-500 text-sm">(Inc. Tax)</div>
+                        <div class="text-right">Rp {{ number_format(session('payment_data.tax_amount', 0), 2, ',', '.') }}</div>
+                        <div class="col-span-2 border-t w-full"></div>
+                        <div class="text-left text-gray-700 font-medium">Total :</div>
+                        <div class="text-right">Rp {{ number_format(session('payment_data.total_amount', 0), 2, ',', '.') }}</div>
                     </div>
                 </div>
 

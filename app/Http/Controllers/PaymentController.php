@@ -33,19 +33,40 @@ class PaymentController extends Controller
 
         $buktiTransferPath = $request->file('bukti_transfer')->store('bukti-transfer', 'public');
 
+        $katalog = Katalog::find($request->katalog_id);
+        $baseAmount = $katalog->harga;
+        $subtotal = $baseAmount * $request->participants;
+        $tax = $subtotal * 0.1;
+        $totalAmount = $subtotal + $tax;
+
         $payment = Payment::create([
             'member_id' => Auth::guard('member')->id(),
-            'katalog_id' => $validated['katalog_id'],
-            'amount' => $validated['amount'],
+            'katalog_id' => $request->katalog_id,
+            'amount' => $totalAmount,
             'payment_method' => 'bank_transfer',
-            'bank_name' => $validated['bank_name'],
-            'participants' => $validated['participants'],
-            'bukti_transfer' => $buktiTransferPath,
+            'bank_name' => $request->bank_name,
+            'participants' => $request->participants,
+            'bukti_transfer' => $request->file('bukti_transfer')->store('bukti-transfer', 'public'),
             'status' => 'pending'
         ]);
 
-        // Ubah return menjadi redirect
-        return redirect()->route('payment.success')
-            ->with('success', 'Payment submitted successfully!');
-    }
+        // Set session data dengan nilai yang benar
+        session()->put('payment_details', [
+            'name' => $request->name,
+            'email' => $request->email,
+            'phone' => $request->phone,
+            'participants' => $request->participants,
+            'training_package' => $katalog->judul,
+            'training_date' => $katalog->tanggal_mulai->format('d/m/Y') . ' - ' . $katalog->tanggal_selesai->format('d/m/Y'),
+        ]);
+        
+        session()->put('payment_data', [
+            'balance_amount' => $subtotal,
+            'tax_amount' => $tax, 
+            'total_amount' => $totalAmount
+        ]);
+
+        return redirect()->route('payment.success');
+        
+        }
 }
