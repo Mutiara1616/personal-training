@@ -63,6 +63,10 @@ Route::post('/certificate/claim/{payment}', [CertificateController::class, 'proc
     ->name('certificate.process-claim')
     ->middleware(['auth:member']);
 
+    Route::get('/certificate/{payment}/show', [CertificateController::class, 'show'])
+    ->name('certificate.show')
+    ->middleware(['auth:member']);
+
 Route::get('/payment/{katalog_id}', function ($katalog_id) {
     $katalog = App\Models\Katalog::findOrFail($katalog_id);
     return view('payment.payment', compact('katalog'));

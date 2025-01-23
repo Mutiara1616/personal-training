@@ -45,7 +45,6 @@ class CertificateController extends Controller
             abort(403);
         }
 
-        // Add validation and processing logic here
         $validated = $request->validate([
             'full_name' => 'required|string|max:255',
             'participants' => 'required|array'
@@ -53,7 +52,12 @@ class CertificateController extends Controller
 
         // Process the claim and generate certificate
         
-        return redirect()->route('payment.history')
-            ->with('success', 'Certificate claimed successfully');
+        return redirect()->route('certificate.show', $payment->id);
     }
+
+
+public function show(Payment $payment) 
+{
+    return view('payment.certificate', compact('payment'));
+}
 }

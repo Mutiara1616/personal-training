@@ -29,12 +29,13 @@
        <div class="max-w-3xl mx-auto bg-white rounded-xl shadow-sm border border-gray-100 p-8">
            <h1 class="text-2xl font-semibold text-center mb-8">Claim Your Certificate</h1>
            
-           <form>
+           <form action="{{ route('certificate.process-claim', $payment->id) }}" method="POST">
+             @csrf
                <div class="space-y-6">
-                   <div>
-                       <label class="block mb-2 text-gray-700">Full Name</label>
-                       <input type="text" placeholder="Enter your full name" class="w-full px-4 py-2 rounded-lg border border-gray-300">
-                   </div>
+               <div>
+                    <label class="block mb-2 text-gray-700">Full Name</label>
+                    <input type="text" name="full_name" placeholder="Enter your full name" class="w-full px-4 py-2 rounded-lg border border-gray-300">
+                </div>
 
                    <div>
                        <label class="block mb-2 text-gray-700">Name of Training</label>
@@ -55,19 +56,21 @@
                                </tr>
                            </thead>
                            <tbody>
-                               @for ($i = 0; $i < 10; $i++)
-                               <tr>
-                                   <td class="px-4 py-2 border">{{ $i + 1 }}</td>
-                                   <td class="px-4 py-2 border"></td>
-                               </tr>
-                               @endfor
-                           </tbody>
+                                @for ($i = 0; $i < 10; $i++)
+                                <tr>
+                                    <td class="px-4 py-2 border">{{ $i + 1 }}</td>
+                                    <td class="px-4 py-2 border">
+                                        <input type="text" name="participants[]">
+                                    </td>
+                                </tr>
+                                @endfor
+                            </tbody>
                        </table>
                    </div>
 
                    <div class="text-center">
-                       <button type="submit" class="bg-indigo-600 text-white px-8 py-3 rounded-lg font-medium">Submit</button>
-                   </div>
+        <button type="submit" class="bg-indigo-600 text-white px-8 py-3 rounded-lg font-medium">Submit</button>
+    </div>
                </div>
            </form>
        </div>
