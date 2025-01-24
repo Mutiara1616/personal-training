@@ -10,25 +10,34 @@ class FeedbackController extends Controller
 {
     public function create()
     {
+        $hasApprovedPayment = Auth::guard('member')->user()
+            ->payments()
+            ->where('status', 'approved')
+            ->exists();
+
+        if (!$hasApprovedPayment) {
+            return redirect()->route('payment.history')
+                ->with('error', 'You can only give feedback after your payment is approved.');
+        }
+
         return view('feedback.feedback');
     }
 
     public function store(Request $request)
     {
         $validated = $request->validate([
-            'rating' => 'required|integer|min:1|max:5',
-            'type' => 'required|string',
-            'message' => 'required|string'
+            'rating' => 'required|integer|min:1|max:5',  
+            'feedback' => 'required|string'
         ]);
-
+        
         $feedback = Feedback::create([
             'member_id' => Auth::guard('member')->id(),
             'rating' => $validated['rating'],
-            'type' => $validated['type'],
-            'message' => $validated['message']
+            'message' => $validated['feedback'],
+            'type' => 'training'
         ]);
 
-        return redirect()->route('home')
-            ->with('success', 'Thank you for your feedback!');
+        return redirect()->route('payment.history')
+            ->with('success', 'Terima kasih atas feedback Anda!');
     }
 }

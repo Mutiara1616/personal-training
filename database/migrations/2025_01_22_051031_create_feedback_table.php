@@ -11,17 +11,14 @@ return new class extends Migration
         Schema::create('feedback', function (Blueprint $table) {
             $table->id();
             $table->foreignId('member_id')->constrained();
-            $table->integer('rating');
+            $table->integer('rating')->nullable();
+            $table->text('message')->nullable();
             $table->string('type');
-            $table->text('message');
             $table->timestamps();
         });
     }
 
-    /**
-     * Reverse the migrations.
-     */
-    public function down(): void
+    public function down()
     {
         Schema::dropIfExists('feedback');
     }

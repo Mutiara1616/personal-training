@@ -26,18 +26,40 @@
                     @csrf
                     <div class="space-y-6">
                     <div>
-                            <label class="block mb-2 text-gray-700">Full Name</label>
-                            <input type="text" name="full_name" placeholder="Enter your full name" class="w-full px-4 py-2 rounded-lg border border-gray-300">
+                            <label class="block mb-2 text-gray-700">Full Name of Participants</label>
+                            <input type="text" name="full_name" placeholder="Enter your full name" class="w-full px-4 py-3 rounded-lg border border-gray-300">
                         </div>
+
+                        <script>
+                            document.querySelector('input[name="full_name"]').addEventListener('keypress', function(e) {
+                                if (e.key === 'Enter') {
+                                    e.preventDefault();
+                                    
+                                    const name = this.value.trim();
+                                    if (!name) return;
+                            
+                                    // Find first empty row
+                                    const rows = document.querySelectorAll('tbody tr');
+                                    for (let row of rows) {
+                                        const input = row.querySelector('input');
+                                        if (!input.value) {
+                                            input.value = name;
+                                            this.value = ''; // Clear input
+                                            break;
+                                        }
+                                    }
+                                }
+                            });
+                        </script>
 
                         <div>
                             <label class="block mb-2 text-gray-700">Name of Training</label>
-                            <input type="text" class="w-full px-4 py-2 rounded-lg bg-gray-100" readonly>
+                            <input type="text" value="{{ $payment->katalog->judul }}" class="w-full px-4 py-3 rounded-lg bg-gray-100" readonly>
                         </div>
-
+                        
                         <div>
                             <label class="block mb-2 text-gray-700">Date of Training</label>
-                            <input type="text" class="w-full px-4 py-2 rounded-lg bg-gray-100" readonly>
+                            <input type="text" value="{{ $payment->katalog->tanggal_mulai->format('d F Y') }}" class="w-full px-4 py-3 rounded-lg bg-gray-100" readonly>
                         </div>
 
                         <div class="overflow-x-auto">
@@ -45,7 +67,7 @@
                                 <thead>
                                     <tr class="bg-gray-50">
                                         <th class="px-4 py-2 text-left border">No</th>
-                                        <th class="px-4 py-2 text-left border">Full Name</th>
+                                        <th class="px-4 py-2 text-left border">Participants Name</th>
                                     </tr>
                                 </thead>
                                 <tbody>

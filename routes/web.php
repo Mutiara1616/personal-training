@@ -14,9 +14,15 @@ use App\Http\Controllers\CertificateController;
 // Homepage route
 Route::get('/', function () {
     $katalogs = \App\Models\Katalog::orderBy('tanggal_mulai', 'asc')
-        ->take(5)  // Ambil 5 katalog terbaru
+        ->take(5)
         ->get();
-    return view('welcome', compact('katalogs'));
+    
+    $feedbacks = \App\Models\Feedback::with('member')
+        ->latest()
+        ->take(4)
+        ->get();
+        
+    return view('welcome', compact('katalogs', 'feedbacks'));
 })->name('home');
 
 Route::get('/catalog', function () {
@@ -47,15 +53,14 @@ Route::get('/payment/history', [PaymentHistoryController::class, 'index'])
     ->middleware('auth:member');
 
     
-
-// Add this route for the claim certificate form page
-Route::get('/certificate/claim/{payment}', [CertificateController::class, 'showClaimForm'])
-    ->name('certificate.claim')
+// Download certificate route
+Route::get('/certificate/{payment}/download', [CertificateController::class, 'download'])
+    ->name('certificate.download')
     ->middleware(['auth:member']);
 
-// Modify the existing certificate download route
-Route::get('/certificate/{payment}', [CertificateController::class, 'download'])
-    ->name('certificate.download')
+// View certificate route
+Route::get('/certificate/claim/{payment}', [CertificateController::class, 'showClaimForm'])
+    ->name('certificate.claim')
     ->middleware(['auth:member']);
 
 // Add this route to handle the certificate claim form submission

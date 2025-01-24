@@ -58,7 +58,6 @@
         <!-- Personal Training Section -->
         <section class="bg-[#FAFBFF] py-20 font-['Poppins']">
             <div class="container mx-auto px-8">
-                <!-- Heading -->
                 <!-- Heading Section -->
         <div class="max-w-6xl mx-auto text-center font-poppins">
                 <h2 class="text-3xl mb-4 leading-normal">
@@ -324,89 +323,25 @@
 
         <div class="max-w-7xl mx-auto">
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-                <!-- Testimonial 1 -->
-                <div class="testimonial-card bg-white rounded-3xl p-6 shadow-sm border-2 border-[#929CD7]">
-                    <div class="flex gap-4 mb-4">
-                        <div class="avatar" style="background-color: #0D9488;">
-                            M
+                @foreach($feedbacks->sortByDesc('created_at')->take(4) as $feedback)
+                <div class="bg-white p-6 rounded-xl shadow-md hover:-translate-y-1 transition-transform duration-300">
+                    <div class="flex items-center gap-3 mb-4">
+                        <div class="w-10 h-10 rounded-full bg-[#3446AC] flex items-center justify-center text-white font-semibold">
+                            {{ strtoupper(substr($feedback->member->name, 0, 1)) }}
                         </div>
                         <div>
-                            <h3 class="font-semibold text-gray-900">Mutiara Sabrina</h3>
-                            <div class="flex gap-1">
-                                @for ($i = 0; $i < 5; $i++)
-                                    <svg class="w-4 h-4 text-yellow-400" fill="currentColor" viewBox="0 0 20 20">
-                                        <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
-                                    </svg>
-                                @endfor
-                            </div>
-                            <p class="text-sm text-gray-500">15 Okt 2024</p>
+                            <p class="font-semibold">{{ $feedback->member->name }}</p>
+                            <p class="text-sm text-gray-500">{{ $feedback->created_at->format('d M Y') }}</p>
                         </div>
                     </div>
-                    <p class="text-gray-600 text-xs">The Aircraft Systems Training exceeded my expectations. The hands-on experience with actual aircraft components was invaluable. Instructors are true industry experts!</p>
-                </div>
-
-                <!-- Testimonial 2 -->
-                <div class="testimonial-card bg-white rounded-3xl p-6 shadow-sm border-2 border-[#929CD7]">
-                    <div class="flex gap-4 mb-4">
-                        <div class="avatar" style="background-color: #84B442;">
-                            R
-                        </div>
-                        <div>
-                            <h3 class="font-semibold text-gray-900">Rasyania Sherryl</h3>
-                            <div class="flex gap-1">
-                                @for ($i = 0; $i < 5; $i++)
-                                    <svg class="w-4 h-4 text-yellow-400" fill="currentColor" viewBox="0 0 20 20">
-                                        <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
-                                    </svg>
-                                @endfor
-                            </div>
-                            <p class="text-sm text-gray-500">28 Sept 2024</p>
-                        </div>
+                    <div class="flex mb-2">
+                        @for($i = 1; $i <= 5; $i++)
+                            <span class="text-yellow-400">{{ $i <= $feedback->rating ? '★' : '☆' }}</span>
+                        @endfor
                     </div>
-                    <p class="text-gray-600 text-xs">Quality Ground training was very thorough and practical. The qualification process is well-structured and professional. Really appreciate the real-world case studies.</p>
+                    <p class="text-gray-600">{{ $feedback->message }}</p>
                 </div>
-
-                <!-- Testimonial 3 -->
-                <div class="testimonial-card bg-white rounded-3xl p-6 shadow-sm border-2 border-[#929CD7]">
-                    <div class="flex gap-4 mb-4">
-                        <div class="avatar" style="background-color: #6D28D9;">
-                            S
-                        </div>
-                        <div>
-                            <h3 class="font-semibold text-gray-900">Sarah Maysara</h3>
-                            <div class="flex gap-1">
-                                @for ($i = 0; $i < 5; $i++)
-                                    <svg class="w-4 h-4 text-yellow-400" fill="currentColor" viewBox="0 0 20 20">
-                                        <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
-                                    </svg>
-                                @endfor
-                            </div>
-                            <p class="text-sm text-gray-500">03 Des 2024</p>
-                        </div>
-                    </div>
-                    <p class="text-gray-600 text-xs">Excellent training on Aircraft Maintenance Planning. The practical sessions were comprehensive and the facilities are state-of-the-art. Highly recommended for aviation professionals.</p>
-                </div>
-
-                <!-- Testimonial 4 -->
-                <div class="testimonial-card bg-white rounded-3xl p-6 shadow-sm border-2 border-[#929CD7]">
-                    <div class="flex gap-4 mb-4">
-                        <div class="avatar" style="background-color: #0EA5E9;">
-                            D
-                        </div>
-                        <div>
-                            <h3 class="font-semibold text-gray-900">David Wijaya</h3>
-                            <div class="flex gap-1">
-                                @for ($i = 0; $i < 5; $i++)
-                                    <svg class="w-4 h-4 text-yellow-400" fill="currentColor" viewBox="0 0 20 20">
-                                        <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
-                                    </svg>
-                                @endfor
-                            </div>
-                            <p class="text-sm text-gray-500">28 Nov 2024</p>
-                        </div>
-                    </div>
-                    <p class="text-gray-600 text-xs">The CAD/CAM in Aerospace program was exactly what I needed. Great balance of theory and practical application. The instructors shared many valuable insights.</p>
-                </div>
+                @endforeach
             </div>
         </div>
     </x-app-layout>

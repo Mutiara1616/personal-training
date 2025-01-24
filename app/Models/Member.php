@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use App\Models\Payment;
 
 class Member extends Authenticatable
 {
@@ -19,4 +20,9 @@ class Member extends Authenticatable
         'password',
         'remember_token',
     ];
+
+    public function payments()
+    {
+        return $this->hasMany(Payment::class);
+    }
 }
