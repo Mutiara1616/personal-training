@@ -4,7 +4,7 @@
             <!-- Left Side -->
             <div>
                 <div class="flex items-center gap-2 mb-4">
-                    <img src="{{ asset('images/logo.png') }}" alt="Logo" class="h-9 w-9">
+                    <img src="{{ asset('images/logos.png') }}" alt="Logo" class="h-16 w-16">
                     <h2 class="font-bold text-base tracking-tight">PT DIRGANTARA INDONESIA</h2>
                 </div>
 
