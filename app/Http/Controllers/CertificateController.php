@@ -5,30 +5,19 @@ namespace App\Http\Controllers;
 use App\Models\Payment;
 use Illuminate\Http\Response;
 use Illuminate\Http\Request;
+use Barryvdh\DomPDF\Facade\Pdf;
 
 class CertificateController extends Controller
 {
     public function download(Payment $payment)
-    {
-        if ($payment->status !== 'approved') {
-            abort(403, 'Certificate only available for approved payments');
-        }
-
-        $filePath = storage_path("app/certificates/{$payment->id}.pdf");
-        
-        if (!file_exists($filePath)) {
-            abort(404, 'Certificate file not found');
-        }
-
-        return response()->download(
-            $filePath,
-            "certificate-{$payment->katalog->judul}.pdf",
-            [
-                'Content-Type' => 'application/pdf',
-                'Content-Disposition' => 'attachment'
-            ]
-        );
-    }
+{
+    $pdf = PDF::loadView('payment.certificate-pdf', [
+        'payment' => $payment,
+        'participants' => json_decode($payment->participants)
+    ]);
+    
+    return $pdf->download('certificate.pdf');
+}
 
     public function showClaimForm(Payment $payment)
     {
@@ -56,8 +45,14 @@ class CertificateController extends Controller
     }
 
 
-public function show(Payment $payment) 
-{
-    return view('payment.certificate', compact('payment'));
-}
+    public function show(Request $request, Payment $payment)
+    {
+        // Simpan data partisipan ke dalam array
+        $participants = [];
+        if ($request->has('participants')) {
+            $participants = json_decode($request->participants, true);
+        }
+        
+        return view('payment.certificate', compact('payment', 'participants'));
+    }
 }

@@ -68,7 +68,11 @@ Route::post('/certificate/claim/{payment}', [CertificateController::class, 'proc
     ->name('certificate.process-claim')
     ->middleware(['auth:member']);
 
-    Route::get('/certificate/{payment}/show', [CertificateController::class, 'show'])
+Route::get('/certificate/{payment}/show', [CertificateController::class, 'show'])
+    ->name('certificate.show')
+    ->middleware(['auth:member']);
+
+Route::post('/certificate/{payment}/show', [CertificateController::class, 'show'])
     ->name('certificate.show')
     ->middleware(['auth:member']);
 
