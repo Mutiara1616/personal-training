@@ -63,7 +63,7 @@
                         <!-- Header -->
                         <div class="relative mb-3">
                             <h1 class="text-[#001973] text-lg font-bold pr-10">CERTIFICATE OF TRAINING</h1>
-                            <img src="{{ asset('images/logos.png') }}" alt="Logo" class="logo-img">
+                            <img src="{{ asset('images/pekokk.png') }}" alt="Logo" class="logo-img">
                         </div>
 
                         <!-- Content -->

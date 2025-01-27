@@ -1,6 +1,6 @@
 <nav class="container mx-auto px-8 py-6 flex justify-between items-center">
     <div>
-        <img src="{{ asset('images/logos.png') }}" alt="Logo" class="h-20">
+        <img src="{{ asset('images/pekokk.png') }}" alt="Logo" class="h-20">
     </div>
     <div class="flex space-x-8">
         <a href="/" class="{{ request()->is('/') ? 'text-blue-900 font-medium border-b-2 border-blue-900' : 'text-gray-400' }}">Home</a>

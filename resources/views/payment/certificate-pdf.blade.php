@@ -2,179 +2,152 @@
 <html>
 <head>
     <meta charset="utf-8">
-    <title>Training Certificates</title>
     <style>
         @page {
+            size: 210mm 297mm landscape;
             margin: 0;
-            padding: 0;
         }
-        
         body {
-            font-family: Arial, sans-serif;
             margin: 0;
-            padding: 0;
-            background: #fff;
-        }
-
-        .certificate {
+            height: 210mm;
+            width: 297mm;
             position: relative;
-            width: 100%;
-            height: 297mm; /* A4 height */
-            padding: 40px;
-            box-sizing: border-box;
-            page-break-after: always;
-            background: #fff;
         }
-
-        .header {
-            position: relative;
-            text-align: center;
-            margin-bottom: 50px;
-            padding-top: 40px;
+        .border {
+            position: absolute;
+            top: 5mm;
+            left: 5mm;
+            right: 5mm;
+            bottom: 5mm;
+            border: 2px solid #000080;
+            border-radius: 2mm;
         }
-
         .logo {
             position: absolute;
-            top: 20px;
-            right: 40px;
-            width: 80px;
-            height: auto;
+            top: 20mm;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 30mm;
         }
-
-        .title {
-            color: #001973;
-            font-size: 28px;
-            font-weight: bold;
-            text-align: center;
-            margin-bottom: 40px;
-        }
-
         .content {
-            text-align: center;
-            margin-bottom: 60px;
-        }
-
-        .presenter {
-            color: #666;
-            font-size: 14px;
-            margin-bottom: 10px;
-        }
-
-        .name {
-            color: #3B4EDB;
-            font-size: 24px;
-            font-weight: bold;
-            margin-bottom: 20px;
-        }
-
-        .completion {
-            color: #666;
-            font-size: 14px;
-            margin-bottom: 10px;
-        }
-
-        .course {
-            color: #3B4EDB;
-            font-size: 18px;
-            font-weight: bold;
-            margin-bottom: 15px;
-        }
-
-        .date {
-            color: #666;
-            font-size: 14px;
-            margin-bottom: 40px;
-        }
-
-        .signatures {
             position: absolute;
-            bottom: 60px;
+            top: 60mm;
+            left: 0;
+            right: 0;
+            text-align: center;
+        }
+        .title {
+            color: #000080;
+            font-size: 24pt;
+            font-weight: bold;
+            margin-bottom: 10mm;
+        }
+        .subtitle {
+            color: #666;
+            font-size: 12pt;
+            margin-bottom: 5mm;
+        }
+        .name {
+            color: #000080;
+            font-size: 20pt;
+            font-weight: bold;
+            margin: 5mm 0;
+            border-bottom: 1pt solid #000080;
+            display: inline-block;
+            padding: 0 20mm;
+        }
+        .course {
+            font-size: 16pt;
+            margin: 5mm 0;
+        }
+        .date {
+            font-size: 12pt;
+            color: #666;
+            margin: 5mm 0;
+        }
+        .signature-container {
+            position: absolute;
+            bottom: 30mm;
             left: 0;
             right: 0;
             display: flex;
             justify-content: space-between;
-            align-items: flex-end;
-            padding: 0 100px;
+            padding: 0 50mm;
         }
-
-        .signature-box {
+        .signature {
             text-align: center;
-            width: 200px;
+            width: 60mm;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
         }
-
-        .signature-img {
-            width: 120px;
-            height: auto;
-            margin-bottom: 10px;
+        .signature img {
+            width: 25mm;
+            margin-bottom: 3mm;
         }
-
-        .seal-img {
-            width: 100px;
-            height: auto;
-        }
-
-        .signature-line {
-            border-top: 1px solid #ddd;
-            padding-top: 10px;
-            margin-top: 10px;
-        }
-
-        .signature-title {
+        .signature-name {
+            font-size: 11pt;
             font-weight: bold;
-            font-size: 12px;
-            margin: 0;
-            padding: 0;
+            margin-bottom: 1mm;
         }
-
-        .signature-subtitle {
+        .signature-title {
+            font-size: 9pt;
             color: #666;
-            font-size: 10px;
-            margin: 5px 0 0 0;
-            padding: 0;
+        }
+        .stamp {
+            position: absolute;
+            bottom: 50mm;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 25mm;
+            z-index: 1;
+        }
+        .signature-line {
+            width: 50mm;
+            border-top: 1px solid #000;
+            margin-top: 2mm;
+            margin-bottom: 2mm;
         }
     </style>
 </head>
 <body>
-    @foreach($participants as $participant)
-    <div class="certificate">
-        <div class="header">
-            <img src="{{ $logoPath }}" alt="Logo" class="logo">
-            <h1 class="title">CERTIFICATE OF TRAINING</h1>
-        </div>
-
+    <div class="border">
+        <img src="{{ $logoPath }}" class="logo">
+        
         <div class="content">
-            <p class="presenter">THIS CERTIFICATE IS PROUDLY PRESENTED TO:</p>
-            <h2 class="name">{{ $participant }}</h2>
+            <div class="title">TIBOOOOO</div>
             
-            <p class="completion">For successfully completing</p>
-            <p class="course">{{ $payment->katalog->judul }}</p>
+            <div class="subtitle">THIS CERTIFICATE IS PROUDLY PRESENTED TO:</div>
             
-            <p class="date">
-                {{ $payment->katalog->tanggal_mulai->format('F d, Y') }} - 
-                {{ $payment->katalog->tanggal_selesai->format('F d, Y') }}
-            </p>
+            <div class="name">{{ $payment->member->name }}</div>
+            
+            <div class="subtitle">For successfully completing</div>
+            
+            <div class="course">{{ $payment->katalog->judul }}</div>
+            
+            <div class="date">
+                {{ \Carbon\Carbon::parse($payment->katalog->tanggal_mulai)->format('F d, Y') }} - 
+                {{ \Carbon\Carbon::parse($payment->katalog->tanggal_selesai)->format('F d, Y') }}
+            </div>
         </div>
 
-        <div class="signatures">
-            <div class="signature-box">
-                <img src="{{ $signaturePath }}" alt="Training Director Signature" class="signature-img">
-                <div class="signature-line">
-                    <p class="signature-title">Training Director</p>
-                    <p class="signature-subtitle">REPRESENTATIVES</p>
-                </div>
+        <img src="{{ $logoPath }}" class="stamp">
+
+        <div class="signature-container">
+            <div class="signature">
+                <img src="{{ $signaturePath }}">
+                <div class="signature-line"></div>
+                <div class="signature-name">Training Director</div>
+                <div class="signature-title">REPRESENTATIVES</div>
             </div>
-
-            <img src="{{ $approvedPath }}" alt="Approved Seal" class="seal-img">
-
-            <div class="signature-box">
-                <img src="{{ $signaturePath }}" alt="CEO Signature" class="signature-img">
-                <div class="signature-line">
-                    <p class="signature-title">Chief Executive Officer</p>
-                    <p class="signature-subtitle">REPRESENTATIVES</p>
-                </div>
+            
+            <div class="signature">
+                <img src="{{ $signaturePath }}">
+                <div class="signature-line"></div>
+                <div class="signature-name">Chief Executive Officer</div>
+                <div class="signature-title">REPRESENTATIVES</div>
             </div>
         </div>
     </div>
-    @endforeach
 </body>
 </html>

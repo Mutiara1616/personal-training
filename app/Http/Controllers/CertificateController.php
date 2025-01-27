@@ -3,34 +3,32 @@
 namespace App\Http\Controllers;
 
 use App\Models\Payment;
-use Illuminate\Http\Response;
 use Illuminate\Http\Request;
-use Barryvdh\DomPDF\Facade\Pdf;
-use Illuminate\Support\Facades\Log;
+use Mpdf\Mpdf;
 
 class CertificateController extends Controller
 {
     public function downloadAll(Payment $payment)
     {
-        // Pastikan participants dalam bentuk array
-        $participants = json_decode($payment->participants);
-        
-        if (!is_array($participants)) {
-            $participants = [];
-        }
-
-        // Definisikan path absolut untuk gambar-gambar
-        $data = [
+        $mpdf = new Mpdf([
+            'mode' => 'utf-8',
+            'format' => [210, 297 ],
+            'orientation' => 'L',
+            'margin_left' => 0,
+            'margin_right' => 0,
+            'margin_top' => 0,
+            'margin_bottom' => 0,
+            'tempDir' => storage_path('temp')
+        ]);
+    
+        $html = view('payment.certificate-pdf', [
             'payment' => $payment,
-            'participants' => $participants,
-            'logoPath' => public_path('images/logos.png'),
-            'signaturePath' => public_path('images/signature.png'),
-            'approvedPath' => public_path('images/approved.png')
-        ];
+            'logoPath' => public_path('images/pekokk.png'),
+            'signaturePath' => public_path('images/signature.png')
+        ])->render();
         
-        $pdf = PDF::loadView('payment.certificate-pdf', $data);
-        
-        return $pdf->download('certificates-' . $payment->katalog->judul . '.pdf');
+        $mpdf->WriteHTML($html);
+        return $mpdf->Output('certificate.pdf', 'D');
     }
 
     public function showClaimForm(Payment $payment)
