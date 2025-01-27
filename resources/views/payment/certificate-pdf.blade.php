@@ -119,7 +119,7 @@
             
             <div class="subtitle">THIS CERTIFICATE IS PROUDLY PRESENTED TO:</div>
             
-            <div class="name">{{ $payment->member->name }}</div>
+            <div class="name">{{ $participant }}</div>
             
             <div class="subtitle">For successfully completing</div>
             

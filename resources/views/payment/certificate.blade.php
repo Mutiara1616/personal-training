@@ -44,15 +44,14 @@
 <body class="bg-white">
     <x-app-layout>
         <main class="container mx-auto">
-            <!-- Tombol Download Semua -->
             <div class="flex justify-end px-8">
-                <a href="{{ route('certificate.download-all', $payment->id) }}" 
-                   class="bg-[#3B4EDB] text-white px-6 py-3 rounded-lg flex items-center gap-2 hover:bg-blue-700 transition-colors">
-                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" 
-                              d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/>
-                    </svg>
-                    Download All Certificates
+                <a href="{{ route('certificate.download-all', $payment->id) }}?participants={{ json_encode($participants) }}" 
+                    class="bg-[#3B4EDB] text-white px-6 py-3 rounded-lg flex items-center gap-2 hover:bg-blue-700 transition-colors">
+                     <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" 
+                               d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/>
+                     </svg>
+                     Download All Certificates
                 </a>
             </div>
 
@@ -63,7 +62,7 @@
                         <!-- Header -->
                         <div class="relative mb-3">
                             <h1 class="text-[#001973] text-lg font-bold pr-10">CERTIFICATE OF TRAINING</h1>
-                            <img src="{{ asset('images/pekokk.png') }}" alt="Logo" class="logo-img">
+                            <img src="{{ asset('images/logo.png') }}" alt="Logo" class="logo-img">
                         </div>
 
                         <!-- Content -->

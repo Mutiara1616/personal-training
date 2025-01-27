@@ -8,28 +8,52 @@ use Mpdf\Mpdf;
 
 class CertificateController extends Controller
 {
-    public function downloadAll(Payment $payment)
-    {
-        $mpdf = new Mpdf([
-            'mode' => 'utf-8',
-            'format' => [210, 297 ],
-            'orientation' => 'L',
-            'margin_left' => 0,
-            'margin_right' => 0,
-            'margin_top' => 0,
-            'margin_bottom' => 0,
-            'tempDir' => storage_path('temp')
-        ]);
-    
+    public function downloadAll(Payment $payment, Request $request)
+{
+    if ($payment->status !== 'approved') {
+        abort(403, 'Certificate only available for approved payments');
+    }
+
+    $mpdf = new Mpdf([
+        'mode' => 'utf-8',
+        'format' => [210, 297],
+        'orientation' => 'L',
+        'margin_left' => 0,
+        'margin_right' => 0,
+        'margin_top' => 0,
+        'margin_bottom' => 0,
+        'tempDir' => storage_path('temp')
+    ]);
+
+    // Ambil data participants dari request
+    $participants = [];
+    if ($request->has('participants')) {
+        $participants = json_decode($request->participants, true);
+    }
+
+    if (empty($participants)) {
+        abort(404, 'No participants found');
+    }
+
+    // Render sertifikat untuk setiap participant
+    foreach ($participants as $index => $participant) {
         $html = view('payment.certificate-pdf', [
             'payment' => $payment,
-            'logoPath' => public_path('images/pekokk.png'),
+            'participant' => $participant,
+            'logoPath' => public_path('images/logo.png'),
             'signaturePath' => public_path('images/signature.png')
         ])->render();
         
         $mpdf->WriteHTML($html);
-        return $mpdf->Output('certificate.pdf', 'D');
+        
+        // Tambah halaman baru jika bukan participant terakhir
+        if ($index !== array_key_last($participants)) {
+            $mpdf->AddPage();
+        }
     }
+
+    return $mpdf->Output('certificates.pdf', 'D');
+}
 
     public function showClaimForm(Payment $payment)
     {
