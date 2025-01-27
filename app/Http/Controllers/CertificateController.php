@@ -6,18 +6,32 @@ use App\Models\Payment;
 use Illuminate\Http\Response;
 use Illuminate\Http\Request;
 use Barryvdh\DomPDF\Facade\Pdf;
+use Illuminate\Support\Facades\Log;
 
 class CertificateController extends Controller
 {
-    public function download(Payment $payment)
-{
-    $pdf = PDF::loadView('payment.certificate-pdf', [
-        'payment' => $payment,
-        'participants' => json_decode($payment->participants)
-    ]);
-    
-    return $pdf->download('certificate.pdf');
-}
+    public function downloadAll(Payment $payment)
+    {
+        // Pastikan participants dalam bentuk array
+        $participants = json_decode($payment->participants);
+        
+        if (!is_array($participants)) {
+            $participants = [];
+        }
+
+        // Definisikan path absolut untuk gambar-gambar
+        $data = [
+            'payment' => $payment,
+            'participants' => $participants,
+            'logoPath' => public_path('images/logos.png'),
+            'signaturePath' => public_path('images/signature.png'),
+            'approvedPath' => public_path('images/approved.png')
+        ];
+        
+        $pdf = PDF::loadView('payment.certificate-pdf', $data);
+        
+        return $pdf->download('certificates-' . $payment->katalog->judul . '.pdf');
+    }
 
     public function showClaimForm(Payment $payment)
     {
@@ -33,26 +47,31 @@ class CertificateController extends Controller
         if ($payment->status !== 'approved') {
             abort(403);
         }
-
+    
         $validated = $request->validate([
-            'full_name' => 'required|string|max:255',
-            'participants' => 'required|array'
+            'participants' => 'required'
         ]);
-
-        // Process the claim and generate certificate
-        
-        return redirect()->route('certificate.show', $payment->id);
+    
+        // Decode participants JSON string
+        $participants = json_decode($validated['participants'], true);
+    
+        // Redirect ke halaman certificate dengan data participants
+        return view('payment.certificate', [
+            'payment' => $payment,
+            'participants' => $participants
+        ]);
     }
-
 
     public function show(Request $request, Payment $payment)
     {
-        // Simpan data partisipan ke dalam array
         $participants = [];
         if ($request->has('participants')) {
-            $participants = json_decode($request->participants, true);
+            $participants = collect(json_decode($request->participants, true));
         }
         
-        return view('payment.certificate', compact('payment', 'participants'));
+        return view('payment.certificate', [
+            'payment' => $payment,
+            'participants' => $participants
+        ]);
     }
 }

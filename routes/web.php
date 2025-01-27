@@ -58,6 +58,10 @@ Route::get('/certificate/{payment}/download', [CertificateController::class, 'do
     ->name('certificate.download')
     ->middleware(['auth:member']);
 
+Route::get('/certificate/{payment}/download-all', [CertificateController::class, 'downloadAll'])
+    ->name('certificate.download-all')
+    ->middleware(['auth:member']);
+
 // View certificate route
 Route::get('/certificate/claim/{payment}', [CertificateController::class, 'showClaimForm'])
     ->name('certificate.claim')
