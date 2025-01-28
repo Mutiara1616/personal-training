@@ -18,13 +18,19 @@ class Katalog extends Model
        'tanggal_selesai',
        'lokasi',
        'gambar',
-       'whatsapp'
+       'whatsapp',
+       'is_active',
+       'quota',               
+        'registered_participants'
    ];
 
    protected $casts = [
        'tanggal_mulai' => 'date',
        'tanggal_selesai' => 'date',
        'harga' => 'decimal:2',
+       'is_active' => 'boolean',
+       'quota' => 'integer',               
+       'registered_participants' => 'integer' 
    ];
 
    protected static function boot()

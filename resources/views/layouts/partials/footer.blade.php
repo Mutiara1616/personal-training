@@ -1,10 +1,10 @@
-<div class="bg-white font-[Poppins] py-12">
-    <div class="max-w-7xl mx-auto px-4">
+<div class="bg-white font-[Poppins] py-4">
+    <div class="max-w-7xl mx-auto px-4 mt-4">
         <div class="grid grid-cols-2 gap-40">
             <!-- Left Side -->
             <div>
                 <div class="flex items-center gap-2 mb-4">
-                    <img src="{{ asset('images/logos.png') }}" alt="Logo" class="h-16 w-16">
+                    <img src="{{ asset('images/logo.png') }}" alt="Logo" class="h-16 w-16">
                     <h2 class="font-bold text-base tracking-tight">PT DIRGANTARA INDONESIA</h2>
                 </div>
 

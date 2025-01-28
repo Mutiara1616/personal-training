@@ -147,7 +147,7 @@
             </div>
 
         <!-- Training Cards Slider -->
-        <div class="relative mb-32">
+        <div class="relative mb-20">
             <div class="overflow-x-auto hide-scrollbar">
                 <div class="flex gap-6 pb-4">
                     @forelse($katalogs as $katalog)
@@ -322,28 +322,42 @@
         <body class="bg-gray-100 p-8">
 
         <div class="max-w-7xl mx-auto">
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-                @foreach($feedbacks->sortByDesc('created_at')->take(4) as $feedback)
-                <div class="bg-white p-6 rounded-xl shadow-md hover:-translate-y-1 transition-transform duration-300">
-                    <div class="flex items-center gap-3 mb-4">
-                        <div class="w-10 h-10 rounded-full bg-[#3446AC] flex items-center justify-center text-white font-semibold">
-                            {{ strtoupper(substr($feedback->member->name, 0, 1)) }}
+            <div class="relative">
+                <div class="overflow-x-auto hide-scrollbar">
+                    <div class="flex gap-6 pb-4">
+                        @foreach($feedbacks as $feedback)
+                        <div class="flex-none w-[300px] bg-white p-6 rounded-xl shadow-md hover:-translate-y-1 transition-transform duration-300">
+                            <div class="flex items-center gap-3 mb-4">
+                                <div class="w-10 h-10 rounded-full bg-[#3446AC] flex items-center justify-center text-white font-semibold">
+                                    {{ strtoupper(substr($feedback->member->name, 0, 1)) }}
+                                </div>
+                                <div>
+                                    <p class="font-semibold">{{ $feedback->member->name }}</p>
+                                    <p class="text-sm text-gray-500">{{ $feedback->created_at->format('d M Y') }}</p>
+                                </div>
+                            </div>
+                            <div class="flex mb-2">
+                                @for($i = 1; $i <= 5; $i++)
+                                    <span class="text-yellow-400">{{ $i <= $feedback->rating ? '★' : '☆' }}</span>
+                                @endfor
+                            </div>
+                            <p class="text-gray-600 line-clamp-2">{{ $feedback->message }}</p>
                         </div>
-                        <div>
-                            <p class="font-semibold">{{ $feedback->member->name }}</p>
-                            <p class="text-sm text-gray-500">{{ $feedback->created_at->format('d M Y') }}</p>
-                        </div>
+                        @endforeach
                     </div>
-                    <div class="flex mb-2">
-                        @for($i = 1; $i <= 5; $i++)
-                            <span class="text-yellow-400">{{ $i <= $feedback->rating ? '★' : '☆' }}</span>
-                        @endfor
-                    </div>
-                    <p class="text-gray-600">{{ $feedback->message }}</p>
                 </div>
-                @endforeach
             </div>
         </div>
+
+        <style>
+            .hide-scrollbar {
+                -ms-overflow-style: none;  /* IE and Edge */
+                scrollbar-width: none;  /* Firefox */
+            }
+            .hide-scrollbar::-webkit-scrollbar {
+                display: none;  /* Chrome, Safari and Opera */
+            }
+        </style>
     </x-app-layout>
 </body>
 </html>

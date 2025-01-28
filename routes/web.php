@@ -13,20 +13,24 @@ use App\Http\Controllers\CertificateController;
 
 // Homepage route
 Route::get('/', function () {
-    $katalogs = \App\Models\Katalog::orderBy('tanggal_mulai', 'asc')
+    $katalogs = \App\Models\Katalog::where('is_active', true)  // Tambahkan where clause ini
+        ->orderBy('tanggal_mulai', 'asc')
         ->take(5)
         ->get();
     
     $feedbacks = \App\Models\Feedback::with('member')
+        ->where('type', 'training')
         ->latest()
-        ->take(4)
+        ->take(8)
         ->get();
-        
+            
     return view('welcome', compact('katalogs', 'feedbacks'));
 })->name('home');
 
 Route::get('/catalog', function () {
-    $katalogs = Katalog::orderBy('tanggal_mulai', 'asc')->get();
+    $katalogs = Katalog::where('is_active', true)
+        ->orderBy('tanggal_mulai', 'asc')
+        ->get();
     return view('katalog.katalog', compact('katalogs'));
 })->name('catalog');
 

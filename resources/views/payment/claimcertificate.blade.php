@@ -75,15 +75,14 @@
                 // Pagination constants
                 const PARTICIPANTS_PER_PAGE = 10;
                 let currentPage = 1;
-                let participants = [];
+                let participants = JSON.parse(localStorage.getItem('tempParticipants')) || [];
                 
                 // Add participant
                 function addParticipant(name) {
                     participants.push(name);
-                    // Hitung halaman yang seharusnya ditampilkan
+                    localStorage.setItem('tempParticipants', JSON.stringify(participants));
+    
                     const newPage = Math.ceil(participants.length / PARTICIPANTS_PER_PAGE);
-                    
-                    // Jika ada data baru di halaman berikutnya, pindah ke halaman tersebut
                     if (newPage > currentPage) {
                         currentPage = newPage;
                     }
@@ -93,9 +92,8 @@
                 // Remove participant
                 function removeParticipant(index) {
                     participants.splice(index, 1);
-                    renderParticipants();
-
-                    // Jika halaman sekarang kosong, kembali ke halaman sebelumnya
+                    localStorage.setItem('tempParticipants', JSON.stringify(participants));
+                    
                     const startIndex = (currentPage - 1) * PARTICIPANTS_PER_PAGE;
                     if (startIndex >= participants.length && currentPage > 1) {
                         currentPage--;
@@ -172,8 +170,14 @@
                 function handleSubmit(e) {
                     e.preventDefault();
                     document.getElementById('participantsData').value = JSON.stringify(participants);
+                    localStorage.removeItem('tempParticipants');
                     document.getElementById('participantForm').submit();
-                }      
+                }   
+                
+                // Render participants saat halaman dimuat
+                document.addEventListener('DOMContentLoaded', function() {
+                    renderParticipants();
+                });
             </script>
         </main>
     </x-app-layout>  

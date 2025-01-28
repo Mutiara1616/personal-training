@@ -32,6 +32,16 @@
                     <p>Location: {{ $katalog->lokasi }}</p>
                 </div>
 
+                <div class="mb-4">
+                    <p class="text-gray-600">
+                        <span class="font-semibold">Kuota:</span> 
+                        {{ $katalog->registered_participants }}/{{ $katalog->quota }} Peserta
+                    </p>
+                    @if($katalog->registered_participants >= $katalog->quota)
+                        <p class="text-red-500 mt-1">Kuota sudah penuh</p>
+                    @endif
+                </div>
+
                 <!-- Description -->
                 <div class="mb-8">
                     <h2 class="text-xl font-semibold mb-4">Description</h2>
@@ -47,25 +57,31 @@
                     
                     <!-- Action Buttons -->
                     <div class="space-x-4">
-                        @if($katalog->whatsapp)
-                            @auth('member')
-                                <button onclick="window.open('https://wa.me/62{{ $katalog->whatsapp }}?text=Halo, saya tertarik dengan pelatihan {{ urlencode($katalog->judul) }}. Mohon informasi lebih lanjut.')" 
-                                        class="px-8 py-3.5 bg-blue-900 text-white rounded-full hover:bg-blue-800">
-                                    Start The Negotiation
-                                </button>
-                            @else
-                                <a href="{{ route('login') }}" 
-                                class="px-8 py-3.5 bg-blue-900 text-white rounded-full hover:bg-blue-800">
-                                    Login to Negotiate
-                                </a>
-                            @endauth
-                        @endif
+                        @if($katalog->registered_participants < $katalog->quota)
+                            @if($katalog->whatsapp)
+                                @auth('member')
+                                    <button onclick="window.open('https://wa.me/62{{ $katalog->whatsapp }}?text=Halo, saya tertarik dengan pelatihan {{ urlencode($katalog->judul) }}. Mohon informasi lebih lanjut.')" 
+                                            class="px-8 py-3.5 bg-blue-900 text-white rounded-full hover:bg-blue-800">
+                                        Start The Negotiation
+                                    </button>
+                                @else
+                                    <a href="{{ route('login') }}" 
+                                    class="px-8 py-3.5 bg-blue-900 text-white rounded-full hover:bg-blue-800">
+                                        Login to Negotiate
+                                    </a>
+                                @endauth
+                            @endif
 
-                        <a href="{{ Auth::guard('member')->check() ? route('payment', $katalog->id) : route('login') }}" 
-                            class="inline-block px-8 py-3 border border-blue-900 text-blue-900 rounded-full hover:bg-blue-50">
-                            {{ Auth::guard('member')->check() ? 'Payment' : 'Login to Pay' }}
-                        </a>
-                    </div>
+                            <a href="{{ Auth::guard('member')->check() ? route('payment', $katalog->id) : route('login') }}" 
+                                class="inline-block px-8 py-3 border border-blue-900 text-blue-900 rounded-full hover:bg-blue-50">
+                                {{ Auth::guard('member')->check() ? 'Payment' : 'Login to Pay' }}
+                            </a>
+                        @else
+                            <button disabled class="px-8 py-3.5 bg-gray-400 text-white rounded-full cursor-not-allowed">
+                                Kuota Penuh
+                            </button>
+                        @endif
+</div>
                 </div>
             </div>
         </main>

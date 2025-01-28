@@ -104,7 +104,7 @@
                     <p class="text-base mb-4">Do you have any thoughts to share? (Optional)</p>
                     <div class="textarea-container">
                         <textarea
-                            name="feedback"
+                            name="message"
                             id="feedback"
                             class="w-full border border-gray-200 rounded-lg p-4 resize-none"
                             rows="4"

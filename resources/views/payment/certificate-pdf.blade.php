@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <style>
         @page {
-            size: 210mm 297mm landscape;
+            size: 297mm 210mm landscape;
             margin: 0;
         }
         body {
@@ -13,139 +13,145 @@
             width: 297mm;
             position: relative;
         }
-        .border {
+        .certificate-container {
             position: absolute;
-            top: 5mm;
-            left: 5mm;
-            right: 5mm;
-            bottom: 5mm;
-            border: 2px solid #000080;
-            border-radius: 2mm;
+            top: 10mm;
+            left: 10mm;
+            right: 10mm;
+            bottom: 10mm;
+            border: 1px solid #000080;
+            border-radius: 10px;
         }
         .logo {
             position: absolute;
-            top: 20mm;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 30mm;
+            top: 30mm;
+            left: 30mm;
+            width: 35mm;
+            height: auto;
         }
+
         .content {
+            width: 100%;
+            text-align: center;
             position: absolute;
             top: 60mm;
-            left: 0;
-            right: 0;
-            text-align: center;
         }
         .title {
+            font-size: 36pt;
             color: #000080;
-            font-size: 24pt;
+            font-weight: bold;
+            margin-bottom: 15mm;
+        }
+        .presented {
+            color: #666;
+            font-size: 14pt;
+            margin-bottom: 10mm;
+        }
+        .name {
+            font-size: 28pt;
+            color: #000080;
             font-weight: bold;
             margin-bottom: 10mm;
         }
-        .subtitle {
+        .completing {
             color: #666;
-            font-size: 12pt;
+            font-size: 14pt;
             margin-bottom: 5mm;
         }
-        .name {
-            color: #000080;
-            font-size: 20pt;
-            font-weight: bold;
-            margin: 5mm 0;
-            border-bottom: 1pt solid #000080;
-            display: inline-block;
-            padding: 0 20mm;
-        }
         .course {
-            font-size: 16pt;
-            margin: 5mm 0;
+            font-size: 18pt;
+            color: #000080;
+            margin-bottom: 5mm;
         }
         .date {
             font-size: 12pt;
             color: #666;
-            margin: 5mm 0;
-        }
-        .signature-container {
-            position: absolute;
-            bottom: 30mm;
-            left: 0;
-            right: 0;
-            display: flex;
-            justify-content: space-between;
-            padding: 0 50mm;
-        }
-        .signature {
-            text-align: center;
-            width: 60mm;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
-        .signature img {
-            width: 25mm;
-            margin-bottom: 3mm;
-        }
-        .signature-name {
-            font-size: 11pt;
-            font-weight: bold;
-            margin-bottom: 1mm;
-        }
-        .signature-title {
-            font-size: 9pt;
-            color: #666;
         }
         .stamp {
             position: absolute;
-            bottom: 50mm;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 25mm;
-            z-index: 1;
+            left: 100mm;
+            bottom: 90mm;
+            width: 45mm;
+            opacity: 0.9;
         }
-        .signature-line {
-            width: 50mm;
-            border-top: 1px solid #000;
-            margin-top: 2mm;
-            margin-bottom: 2mm;
+
+        .signatures {
+            position: absolute;
+            bottom: 60mm;
+            width: calc(100% - 60mm); /* Kurangi padding kiri dan kanan */
+            padding: 0 30mm;
+            display: flex;
+            justify-content: space-between; /* Ini akan membuat spasi antara tanda tangan */
+            align-items: flex-end;
+        }
+
+        .signature {
+            text-align: center;
+            width: 60mm;
+        }
+
+        .signature-left {
+            margin-right: auto; /* Dorong ke kiri */
+        }
+
+        .signature-right {
+            margin-left: auto; /* Dorong ke kanan */
+        }
+        .sign-img {
+            width: 30mm;
+            margin-bottom: 5mm;
+        }
+
+        .sign-line {
+            width: 100%;
+            border-top: 1px solid black;
+            margin: 10mm 0 5mm 0;
+        }
+
+        .sign-name {
+            font-size: 14pt;
+            font-weight: bold;
+            margin-bottom: 3mm;
+        }
+
+        .sign-title {
+            font-size: 11pt;
+            color: #666;
+            text-transform: uppercase;
         }
     </style>
 </head>
 <body>
-    <div class="border">
+    <div class="certificate-container">
         <img src="{{ $logoPath }}" class="logo">
         
         <div class="content">
-            <div class="title">TIBOOOOO</div>
-            
-            <div class="subtitle">THIS CERTIFICATE IS PROUDLY PRESENTED TO:</div>
-            
+            <div class="title">CERTIFICATE OF TRAINING</div>
+            <div class="presented">THIS CERTIFICATE IS PROUDLY PRESENTED TO:</div>
             <div class="name">{{ $participant }}</div>
-            
-            <div class="subtitle">For successfully completing</div>
-            
+            <div class="completing">For successfully completing</div>
             <div class="course">{{ $payment->katalog->judul }}</div>
-            
             <div class="date">
                 {{ \Carbon\Carbon::parse($payment->katalog->tanggal_mulai)->format('F d, Y') }} - 
                 {{ \Carbon\Carbon::parse($payment->katalog->tanggal_selesai)->format('F d, Y') }}
             </div>
         </div>
 
-        <img src="{{ $logoPath }}" class="stamp">
+        <img src="{{ public_path('images/approved.png') }}" class="stamp">
 
-        <div class="signature-container">
-            <div class="signature">
-                <img src="{{ $signaturePath }}">
-                <div class="signature-line"></div>
-                <div class="signature-name">Training Director</div>
-                <div class="signature-title">REPRESENTATIVES</div>
+        <div class="signatures">
+            <div class="signature signature-left">
+                <img src="{{ $signaturePath }}" class="sign-img">
+                <div class="sign-line"></div>
+                <div class="sign-name">Training Director</div>
+                <div class="sign-title">REPRESENTATIVES</div>
             </div>
             
-            <div class="signature">
-                <img src="{{ $signaturePath }}">
-                <div class="signature-line"></div>
-                <div class="signature-name">Chief Executive Officer</div>
-                <div class="signature-title">REPRESENTATIVES</div>
+            <div class="signature signature-right">
+                <img src="{{ $signaturePath }}" class="sign-img">
+                <div class="sign-line"></div>
+                <div class="sign-name">Chief Executive Officer</div>
+                <div class="sign-title">REPRESENTATIVES</div>
             </div>
         </div>
     </div>

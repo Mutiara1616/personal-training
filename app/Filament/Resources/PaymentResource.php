@@ -10,10 +10,9 @@ use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Table;
-use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Database\Eloquent\SoftDeletingScope;
 use Illuminate\Support\Facades\Mail;
 use App\Mail\PaymentApproved;
+use Filament\Tables\Columns\ImageColumn;
 
 class PaymentResource extends Resource
 {
@@ -51,7 +50,14 @@ class PaymentResource extends Resource
             ->columns([
                 Tables\Columns\TextColumn::make('member.name'),
                 Tables\Columns\TextColumn::make('katalog.judul'),
-                Tables\Columns\TextColumn::make('amount'),
+
+                Tables\Columns\TextColumn::make('participants')
+                ->label('Peserta')
+                ->sortable(),
+
+                Tables\Columns\TextColumn::make('amount')
+                    ->money('IDR')  
+                    ->sortable(),
                 Tables\Columns\TextColumn::make('status')
                     ->badge()
                     ->color(fn (string $state): string => match ($state) {
@@ -59,7 +65,10 @@ class PaymentResource extends Resource
                         'rejected' => 'danger',
                         default => 'warning',
                     }),
-                Tables\Columns\ImageColumn::make('bukti_transfer'),
+                Tables\Columns\ImageColumn::make('bukti_transfer')
+                    ->label('Bukti Transfer')
+                    ->disk('public')
+                    ->size(100)
             ])
             ->filters([
                 //

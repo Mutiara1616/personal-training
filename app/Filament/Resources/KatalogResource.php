@@ -12,6 +12,8 @@ use Filament\Tables\Table;
 use Illuminate\Support\Str;
 use Filament\Forms\Components\FileUpload;
 use Illuminate\Support\Facades\Storage;
+use Filament\Forms\Components\Toggle;
+use Filament\Tables\Actions\Action;
 
 class KatalogResource extends Resource
 {
@@ -76,13 +78,34 @@ class KatalogResource extends Resource
                             ->rules(['required', 'regex:/^[1-9][0-9]{9,}$/'])
                             ->placeholder('85803228042'),
 
+                        Forms\Components\TextInput::make('quota')
+                            ->label('Kuota Peserta')
+                            ->numeric()
+                            ->minValue(0)
+                            ->required()
+                            ->helperText('Masukkan jumlah maksimal peserta yang dapat mendaftar'),
+
+                        Forms\Components\TextInput::make('registered_participants')
+                            ->label('Peserta Terdaftar')
+                            ->numeric()
+                            ->disabled()
+                            ->dehydrated(false)
+                            ->helperText('Jumlah peserta yang sudah terdaftar'),
+
                         FileUpload::make('gambar')
                             ->label('Gambar')
                             ->image()
                             ->directory('katalog')
                             ->disk('public')
                             ->preserveFilenames()
-                            ->maxSize(5120)
+                            ->maxSize(5120),
+                        
+                        Forms\Components\Toggle::make('is_active')
+                            ->label('Active')
+                            ->helperText('Toggle to show/hide this catalog on homepage')
+                            ->default(true)
+                            ->required(),
+                            
                     ])->columns(1)
             ]);
     }
@@ -115,6 +138,16 @@ class KatalogResource extends Resource
                     ->label('Lokasi')
                     ->searchable(),
 
+                Tables\Columns\TextColumn::make('quota')
+                    ->label('Kuota')
+                    ->numeric()
+                    ->sortable(),
+                    
+                Tables\Columns\TextColumn::make('registered_participants')
+                    ->label('Terdaftar')
+                    ->numeric()
+                    ->sortable(),
+
                 Tables\Columns\ImageColumn::make('gambar')
                     ->label('Gambar')
                     ->size(100),
@@ -123,11 +156,30 @@ class KatalogResource extends Resource
                     ->label('WhatsApp Admin')
                     ->searchable()
                     ->formatStateUsing(fn (string $state): string => '+62 ' . $state),
+
+                Tables\Columns\ToggleColumn::make('is_active')
+                ->label('Active')
+                ->sortable(),
             ])
             ->filters([
                 //
             ])
             ->actions([
+                Action::make('increaseQuota')
+                    ->label('Tambah Kuota')
+                    ->icon('heroicon-o-plus')
+                    ->modalHeading('Tambah Kuota Pelatihan')
+                    ->form([
+                        Forms\Components\TextInput::make('additional_quota')
+                            ->label('Tambahan Kuota')
+                            ->numeric()
+                            ->minValue(1)
+                            ->required()
+                            ->helperText('Masukkan jumlah kuota tambahan'),
+                    ])
+                    ->action(function (Katalog $record, array $data): void {
+                        $record->increment('quota', $data['additional_quota']);
+                    }),
                 Tables\Actions\EditAction::make()
                     ->label('Edit'),
                 Tables\Actions\DeleteAction::make()

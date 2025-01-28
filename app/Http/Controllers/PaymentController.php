@@ -12,6 +12,12 @@ class PaymentController extends Controller
     public function index($katalog_id)
     {
         $katalog = Katalog::findOrFail($katalog_id);
+
+        // Cek kuota sebelum menampilkan halaman payment
+        if ($katalog->registered_participants >= $katalog->quota) {
+            return redirect()->back()->with('error', 'Maaf, kuota pelatihan sudah penuh.');
+        }
+
         return view('payment.payment', compact('katalog'));
     }
     public function store(Request $request)
@@ -34,6 +40,17 @@ class PaymentController extends Controller
         $buktiTransferPath = $request->file('bukti_transfer')->store('bukti-transfer', 'public');
 
         $katalog = Katalog::find($request->katalog_id);
+
+        // Cek apakah jumlah peserta yang didaftarkan melebihi sisa kuota
+        $sisa_kuota = $katalog->quota - $katalog->registered_participants;
+        if ($request->participants > $sisa_kuota) {
+            return back()->withErrors([
+                'participants' => "Jumlah peserta melebihi sisa kuota. Sisa kuota: {$sisa_kuota} orang."
+            ])->withInput();
+        }
+
+        $buktiTransferPath = $request->file('bukti_transfer')->store('bukti-transfer', 'public');
+
         $baseAmount = $katalog->harga;
         $subtotal = $baseAmount * $request->participants;
         $tax = $subtotal * 0.1;
@@ -49,6 +66,9 @@ class PaymentController extends Controller
             'bukti_transfer' => $request->file('bukti_transfer')->store('bukti-transfer', 'public'),
             'status' => 'pending'
         ]);
+
+        // Update jumlah peserta terdaftar
+        $katalog->increment('registered_participants', $request->participants);
 
         // Set session data dengan nilai yang benar
         session()->put('payment_details', [
