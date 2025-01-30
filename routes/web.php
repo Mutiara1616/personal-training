@@ -122,23 +122,3 @@ Route::middleware(['auth:member'])->group(function () {
     Route::get('/feedback', [FeedbackController::class, 'create'])->name('feedback.create');
     Route::post('/feedback', [FeedbackController::class, 'store'])->name('feedback.store');
 });
-
-    Route::get('/test', function() {
-        try {
-            $details = [
-                'to' => 'mutiarasabrina1616@gmail.com',
-                'subject' => 'Test Email',
-                'body' => 'This is a test email'
-            ];
-            
-            Mail::raw($details['body'], function($message) use ($details) {
-                $message->from(env('MAIL_FROM_ADDRESS'), env('MAIL_FROM_NAME'))
-                       ->to($details['to'])
-                       ->subject($details['subject']);
-            });
-            
-            return "Email sent successfully!";
-        } catch (\Exception $e) {
-            return "Error: " . $e->getMessage() . "\nTrace: " . $e->getTraceAsString();
-        }
-    });
