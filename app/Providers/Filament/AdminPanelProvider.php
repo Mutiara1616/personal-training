@@ -19,6 +19,9 @@ use Illuminate\Session\Middleware\StartSession;
 use Illuminate\View\Middleware\ShareErrorsFromSession;
 use App\Filament\Widgets\MemberListWidget;
 use App\Filament\Resources\PaymentResource;
+use App\Filament\Widgets\MonthlyStatsWidget;
+use App\Filament\Widgets\TrainingDetailsWidget;
+
 
 class AdminPanelProvider extends PanelProvider
 {
@@ -43,6 +46,8 @@ class AdminPanelProvider extends PanelProvider
             ])
             ->discoverWidgets(in: app_path('Filament/Widgets'), for: 'App\\Filament\\Widgets')
             ->widgets([
+                MonthlyStatsWidget::class,
+                TrainingDetailsWidget::class,
                 MemberListWidget::class,
                 Widgets\AccountWidget::class,
                 Widgets\FilamentInfoWidget::class,

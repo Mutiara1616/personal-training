@@ -56,7 +56,6 @@ Route::get('/payment/history', [PaymentHistoryController::class, 'index'])
     ->name('payment.history')
     ->middleware('auth:member');
 
-    
 // Download certificate route
 Route::get('/certificate/{payment}/download', [CertificateController::class, 'download'])
     ->name('certificate.download')
