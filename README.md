@@ -1,3 +1,138 @@
+# Personal Training Management System
+
+![Laravel](https://img.shields.io/badge/Laravel-FF2D20?style=for-the-badge&logo=laravel&logoColor=white)
+![PHP](https://img.shields.io/badge/PHP-777BB4?style=for-the-badge&logo=php&logoColor=white)
+![MySQL](https://img.shields.io/badge/MySQL-005C84?style=for-the-badge&logo=mysql&logoColor=white)
+![Node.js](https://img.shields.io/badge/Node.js-339933?style=for-the-badge&logo=nodedotjs&logoColor=white)
+
+Sistem manajemen untuk personal training berbasis web menggunakan Laravel.
+
+## Persyaratan Sistem
+
+Sebelum menginstal, pastikan sistem Anda memenuhi persyaratan berikut:
+
+- PHP >= 8.3.7
+- Composer
+- Node.js & NPM
+- Git
+- MySQL/MariaDB
+- Laragon (recommended) atau XAMPP
+
+## Langkah-langkah Instalasi
+
+### 1. Clone Repository
+bash
+# Pindah ke direktori www Laragon
+cd c:\laragon\www
+
+# Clone repository
+git clone https://github.com/Mutiara1616/personal-training.git
+
+# Pindah ke direktori project
+cd personal-training
+
+
+### 2. Install Dependencies
+bash
+# Install PHP dependencies
+composer install
+
+# Install Node.js dependencies
+npm install
+
+
+### 3. Konfigurasi Environment
+bash
+# Copy file environment
+cp .env.example .env
+
+# Generate application key
+php artisan key:generate
+
+
+### 4. Setup Database
+1. Buka Laragon
+2. Klik tombol Database untuk membuka HeidiSQL
+3. Buat database baru:
+   - Nama database: personal_training
+   - Charset: utf8mb4
+   - Collation: utf8mb4_unicode_ci
+4. Sesuaikan konfigurasi database di file .env:
+   env
+   DB_CONNECTION=mysql
+   DB_HOST=127.0.0.1
+   DB_PORT=3306
+   DB_DATABASE=personal_training
+   DB_USERNAME=root
+   DB_PASSWORD=
+   
+
+### 5. Migrasi Database
+bash
+# Jalankan migrasi database
+php artisan migrate
+
+# [Optional] Jalankan seeder jika ada
+php artisan db:seed
+
+
+### 6. Menjalankan Aplikasi
+bash
+# Terminal 1: Jalankan server Laravel
+php artisan serve
+
+# Terminal 2: Jalankan Vite untuk development
+npm run dev
+
+
+Aplikasi akan dapat diakses di:
+- Frontend: http://localhost:8000
+- Backend: http://localhost:8000/admin
+
+## Fitur
+
+- Manajemen Member
+- Penjadwalan Training
+- Tracking Progress
+- Laporan dan Statistik
+- Dan lain-lain
+
+## Struktur Project
+
+
+personal-training/
+├── app/                    # Logic aplikasi
+├── config/                 # Konfigurasi aplikasi
+├── database/              # Migrasi dan seeder
+├── public/                # Asset publik
+├── resources/             # View dan asset
+├── routes/                # Definisi route
+└── tests/                 # Unit/Feature tests
+
+
+## Kontribusi
+
+Jika Anda ingin berkontribusi pada project ini:
+
+1. Fork repository
+2. Buat branch untuk fitur Anda (git checkout -b feature/AmazingFeature)
+3. Commit perubahan Anda (git commit -m 'Add some AmazingFeature')
+4. Push ke branch (git push origin feature/AmazingFeature)
+5. Buat Pull Request
+
+## Lisensi
+
+Distributed under the MIT License. See LICENSE for more information.
+
+## Kontak
+
+Mutiara - [GitHub](https://github.com/Mutiara1616)
+
+Project Link: [https://github.com/Mutiara1616/personal-training](https://github.com/Mutiara1616/personal-training)
+
+
+
+
 <p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
 
 <p align="center">
